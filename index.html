@@ -300,6 +300,13 @@
       <p>Điền thông tin & chọn phương thức<br>thanh toán, sau đó nhấn <strong>Xác nhận</strong></p>
     </div>
     <div class="qcard" id="qc"></div>
+    <!-- Export bar -->
+    <div id="exportBar" style="display:none; align-items:center; gap:12px; margin-bottom:14px; padding:12px 16px; background:#fff; border:1px solid #DDD0BB; border-top:3px solid #B8953F;">
+      <span style="font-size:11px;color:#7A6E62;letter-spacing:.5px;">Tên file:</span>
+      <span class="exp-name" style="font-size:12px;font-weight:500;color:#2E2820;flex:1"></span>
+      <button id="btnExport" onclick="exportPNG()" style="padding:9px 20px;background:#1A1611;color:#fff;border:none;cursor:pointer;font-family:'DM Sans',sans-serif;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;transition:background .2s;" onmouseover="this.style.background='#B8953F'" onmouseout="this.style.background='#1A1611'">🖼 Xuất ảnh PNG (A4)</button>
+    </div>
+    <div class="qcard" id="qc"></div>
   </section>
 </div>
 
@@ -731,8 +738,90 @@ function gen() {
   const qc = document.getElementById('qc');
   qc.innerHTML = html;
   qc.className = 'qcard show';
+  // Show export bar with filename
+  const exportBar = document.getElementById('exportBar');
+  exportBar.style.display = 'flex';
+  document.querySelector('.exp-name').textContent =
+    `PTG_${maCanHo}_${m.toUpperCase()}`;
+
   qc.scrollIntoView({ behavior:'smooth', block:'start' });
 }
+
+// ── EXPORT PNG (A4, 300dpi-equivalent) ──
+async function exportPNG() {
+  const qc = document.getElementById('qc');
+  if(!qc.classList.contains('show')) { alert('Vui lòng bấm Xác nhận trước!'); return; }
+
+  const btn = document.getElementById('btnExport');
+  const orig = btn.textContent;
+  btn.textContent = '⏳ Đang xuất…';
+  btn.disabled = true;
+
+  // A4 portrait at 96dpi base = 794px wide
+  // We render at scale=3 → 2382px wide ≈ 300dpi print quality
+  const A4_W  = 794;
+  const SCALE = 3;
+
+  // Force qcard to A4 width for capture
+  const savedW  = qc.style.width;
+  const savedMW = qc.style.maxWidth;
+  qc.style.width    = A4_W + 'px';
+  qc.style.maxWidth = A4_W + 'px';
+
+  // Wait for reflow
+  await new Promise(r => requestAnimationFrame(() => requestAnimationFrame(r)));
+
+  const canvas = await html2canvas(qc, {
+    scale: SCALE,
+    useCORS: true,
+    allowTaint: true,
+    backgroundColor: '#ffffff',
+    logging: false,
+    width: A4_W,
+    windowWidth: A4_W + 40,
+  });
+
+  // Restore
+  qc.style.width    = savedW;
+  qc.style.maxWidth = savedMW;
+
+  const expName = document.querySelector('.exp-name').textContent || 'baogia';
+
+  // A4 page height in canvas pixels
+  const A4_H_RATIO = 1.41421356; // sqrt(2)
+  const pageH_canvas = Math.round(A4_W * SCALE * A4_H_RATIO);
+  const totalH = canvas.height;
+  const totalW = canvas.width;
+  const pages  = Math.ceil(totalH / pageH_canvas);
+
+  if(pages === 1) {
+    const link = document.createElement('a');
+    link.download = expName + '.png';
+    link.href = canvas.toDataURL('image/png');
+    link.click();
+  } else {
+    for(let i = 0; i < pages; i++) {
+      const sliceH   = Math.min(pageH_canvas, totalH - i * pageH_canvas);
+      const pg       = document.createElement('canvas');
+      pg.width  = totalW;
+      pg.height = sliceH;
+      const ctx = pg.getContext('2d');
+      ctx.fillStyle = '#ffffff';
+      ctx.fillRect(0, 0, totalW, sliceH);
+      ctx.drawImage(canvas, 0, -i * pageH_canvas);
+      await new Promise(r => setTimeout(r, 80));
+      const link = document.createElement('a');
+      link.download = `${expName}_p${i+1}.png`;
+      link.href = pg.toDataURL('image/png');
+      link.click();
+      await new Promise(r => setTimeout(r, 400));
+    }
+  }
+
+  btn.textContent = orig;
+  btn.disabled = false;
+}
 </script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 </body>
 </html>
