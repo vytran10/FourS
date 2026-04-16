@@ -19,278 +19,142 @@
     --white: #FFFFFF;
     --red: #B33A3A;
     --green: #2E6B3E;
-    --blue-soft: #EDF3FA;
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
-  body {
-    font-family: 'DM Sans', sans-serif;
-    background: var(--bg);
-    color: var(--text);
-    font-size: 14px;
-    min-height: 100vh;
-  }
+  body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); font-size: 14px; min-height: 100vh; }
 
-  /* ─── HEADER ─── */
-  .site-header {
-    background: var(--dark);
-    padding: 18px 40px;
-    display: flex; align-items: center; gap: 16px;
-  }
-  .site-header .logo-mark {
-    width: 42px; height: 42px;
-    border: 1.5px solid var(--gold);
-    display: flex; align-items: center; justify-content: center;
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 18px; color: var(--gold); letter-spacing: 1px;
-  }
-  .site-header .brand { color: var(--white); }
-  .site-header .brand h1 { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 300; letter-spacing: 3px; }
-  .site-header .brand p { font-size: 10px; letter-spacing: 2px; color: var(--gold); text-transform: uppercase; margin-top: 1px; }
+  /* HEADER */
+  .site-header { background: var(--dark); padding: 16px 40px; display: flex; align-items: center; gap: 16px; }
+  .logo-mark { width: 40px; height: 40px; border: 1.5px solid var(--gold); display: flex; align-items: center; justify-content: center; font-family: 'Cormorant Garamond', serif; font-size: 18px; color: var(--gold); }
+  .brand h1 { font-family: 'Cormorant Garamond', serif; font-size: 21px; font-weight: 300; letter-spacing: 3px; color: var(--white); }
+  .brand p { font-size: 10px; letter-spacing: 2px; color: var(--gold); text-transform: uppercase; margin-top: 1px; }
 
-  /* ─── MAIN LAYOUT ─── */
-  .main-wrap {
-    max-width: 1100px; margin: 0 auto;
-    padding: 40px 24px;
-    display: grid; grid-template-columns: 380px 1fr; gap: 32px;
-  }
+  /* LAYOUT */
+  .main-wrap { max-width: 1120px; margin: 0 auto; padding: 36px 20px; display: grid; grid-template-columns: 370px 1fr; gap: 28px; }
 
-  /* ─── FORM PANEL ─── */
-  .form-panel {
-    background: var(--white);
-    border: 1px solid var(--line);
-    border-top: 3px solid var(--gold);
-    padding: 32px 28px;
-    align-self: start;
-    position: sticky; top: 20px;
-  }
-  .panel-title {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 20px; font-weight: 400;
-    color: var(--dark); letter-spacing: 1px;
-    margin-bottom: 6px;
-  }
-  .panel-sub { font-size: 11px; color: var(--muted); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 28px; }
+  /* FORM PANEL */
+  .form-panel { background: var(--white); border: 1px solid var(--line); border-top: 3px solid var(--gold); padding: 28px 24px; align-self: start; position: sticky; top: 16px; }
+  .panel-title { font-family: 'Cormorant Garamond', serif; font-size: 19px; color: var(--dark); letter-spacing: 1px; }
+  .panel-sub { font-size: 11px; color: var(--muted); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 22px; margin-top: 2px; }
 
-  .section-label {
-    font-size: 10px; font-weight: 500; text-transform: uppercase;
-    letter-spacing: 1.5px; color: var(--gold);
-    margin: 24px 0 12px;
-    display: flex; align-items: center; gap: 8px;
-  }
-  .section-label::after { content: ''; flex: 1; height: 1px; background: var(--gold-pale); }
+  .sec { font-size: 10px; font-weight: 500; text-transform: uppercase; letter-spacing: 1.5px; color: var(--gold); margin: 20px 0 10px; display: flex; align-items: center; gap: 8px; }
+  .sec::after { content: ''; flex: 1; height: 1px; background: var(--gold-pale); }
 
-  .field { margin-bottom: 14px; }
-  .field label { display: block; font-size: 11px; color: var(--muted); margin-bottom: 4px; letter-spacing: 0.5px; }
-  .field input, .field select {
-    width: 100%; padding: 9px 12px;
-    border: 1px solid var(--line);
-    background: var(--bg);
-    font-family: 'DM Sans', sans-serif;
-    font-size: 13px; color: var(--text);
-    outline: none; transition: border-color .2s;
-    appearance: none;
-  }
-  .field select { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%237A6E62' d='M6 8L0 0h12z'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 12px center; padding-right: 32px; }
+  .field { margin-bottom: 12px; }
+  .field label { display: block; font-size: 11px; color: var(--muted); margin-bottom: 4px; }
+  .field input, .field select { width: 100%; padding: 8px 11px; border: 1px solid var(--line); background: var(--bg); font-family: 'DM Sans', sans-serif; font-size: 13px; color: var(--text); outline: none; transition: border-color .2s; appearance: none; }
+  .field select { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='7' viewBox='0 0 10 7'%3E%3Cpath fill='%237A6E62' d='M5 7L0 0h10z'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 11px center; padding-right: 28px; }
   .field input:focus, .field select:focus { border-color: var(--gold); }
   .field input[readonly] { background: #F0EBE2; color: var(--muted); cursor: default; }
+  .row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
 
-  .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .toggle-row { display: flex; gap: 6px; margin-bottom: 12px; }
+  .tog { flex: 1; padding: 8px 4px; border: 1px solid var(--line); background: var(--bg); font-family: 'DM Sans', sans-serif; font-size: 12px; color: var(--muted); cursor: pointer; text-align: center; transition: all .15s; }
+  .tog.on { background: var(--dark); border-color: var(--dark); color: var(--white); }
 
-  .toggle-row {
-    display: flex; gap: 8px; margin-bottom: 14px;
-  }
-  .toggle-btn {
-    flex: 1; padding: 9px 4px; border: 1px solid var(--line);
-    background: var(--bg); font-family: 'DM Sans', sans-serif;
-    font-size: 12px; color: var(--muted); cursor: pointer;
-    text-align: center; transition: all .2s; letter-spacing: 0.5px;
-  }
-  .toggle-btn.active {
-    background: var(--dark); border-color: var(--dark);
-    color: var(--white);
-  }
+  .rank-row { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 12px; }
+  .rank-btn { padding: 5px 9px; border: 1px solid var(--line); background: var(--bg); font-size: 11px; cursor: pointer; color: var(--muted); transition: all .15s; }
+  .rank-btn.on { background: var(--gold); border-color: var(--gold); color: var(--white); font-weight: 500; }
 
-  /* Checkboxes */
-  .check-field { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; }
-  .check-field input[type=checkbox] { width: 15px; height: 15px; accent-color: var(--gold); cursor: pointer; flex-shrink: 0; }
-  .check-field label { font-size: 12px; color: var(--text); cursor: pointer; }
+  .sub-field { margin-bottom: 12px; padding-left: 12px; border-left: 2px solid var(--gold-pale); }
+  .sub-field label { font-size: 11px; color: var(--muted); display: block; margin-bottom: 4px; }
+  .sub-field input { width: 80px; padding: 6px 10px; border: 1px solid var(--line); background: var(--bg); font-family: 'DM Sans', sans-serif; font-size: 13px; color: var(--text); outline: none; }
+  .sub-field input:focus { border-color: var(--gold); }
+  .sub-field span { font-size: 12px; color: var(--muted); margin-left: 4px; }
 
-  /* Member rank */
-  .rank-select { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 14px; }
-  .rank-btn {
-    padding: 5px 10px; border: 1px solid var(--line);
-    background: var(--bg); font-size: 11px; cursor: pointer;
-    color: var(--muted); transition: all .15s; letter-spacing: 0.5px;
-  }
-  .rank-btn.active { background: var(--gold); border-color: var(--gold); color: var(--white); font-weight: 500; }
+  .method-tabs { display: flex; flex-direction: column; gap: 5px; margin-bottom: 12px; }
+  .mtab { display: flex; align-items: center; gap: 10px; padding: 9px 11px; border: 1px solid var(--line); background: var(--bg); cursor: pointer; transition: all .15s; }
+  .mtab:hover { border-color: var(--gold-light); }
+  .mtab.on { border-color: var(--gold); background: var(--gold-pale); }
+  .rdot { width: 13px; height: 13px; border-radius: 50%; border: 2px solid var(--line); flex-shrink: 0; transition: all .15s; }
+  .mtab.on .rdot { border-color: var(--gold); background: var(--gold); }
+  .mname { font-size: 12px; font-weight: 500; color: var(--text); }
+  .mck { font-size: 11px; color: var(--muted); margin-top: 1px; }
+  .mtab.on .mname { color: var(--mid); }
 
-  /* Payment method tabs */
-  .method-tabs { display: flex; flex-direction: column; gap: 6px; margin-bottom: 14px; }
-  .method-tab {
-    display: flex; align-items: center; gap: 10px;
-    padding: 10px 12px; border: 1px solid var(--line);
-    background: var(--bg); cursor: pointer; transition: all .2s;
-  }
-  .method-tab:hover { border-color: var(--gold-light); }
-  .method-tab.active { border-color: var(--gold); background: var(--gold-pale); }
-  .method-tab .radio-dot {
-    width: 14px; height: 14px; border-radius: 50%;
-    border: 2px solid var(--line); flex-shrink: 0; transition: all .2s;
-  }
-  .method-tab.active .radio-dot { border-color: var(--gold); background: var(--gold); }
-  .method-tab .method-info { flex: 1; }
-  .method-tab .method-name { font-size: 12px; font-weight: 500; color: var(--text); }
-  .method-tab .method-ck { font-size: 11px; color: var(--muted); margin-top: 1px; }
-  .method-tab.active .method-name { color: var(--mid); }
+  .btn-ok { width: 100%; padding: 13px; background: var(--dark); color: var(--white); border: none; cursor: pointer; font-family: 'DM Sans', sans-serif; font-size: 12px; letter-spacing: 2px; text-transform: uppercase; margin-top: 22px; transition: background .2s; }
+  .btn-ok:hover { background: var(--gold); }
 
-  /* Confirm button */
-  .btn-confirm {
-    width: 100%; padding: 14px;
-    background: var(--dark); color: var(--white);
-    border: none; cursor: pointer;
-    font-family: 'DM Sans', sans-serif; font-size: 13px;
-    letter-spacing: 2px; text-transform: uppercase;
-    margin-top: 28px; transition: background .2s;
-  }
-  .btn-confirm:hover { background: var(--gold); }
-
-  /* ─── QUOTATION PANEL ─── */
+  /* QUOTE */
   .quote-panel { align-self: start; }
-  .quote-placeholder {
-    border: 1px dashed var(--line);
-    padding: 80px 40px; text-align: center; color: var(--muted);
-  }
-  .quote-placeholder .ico { font-size: 36px; margin-bottom: 12px; opacity: .4; }
-  .quote-placeholder p { font-size: 13px; letter-spacing: 0.5px; }
+  .placeholder { border: 1px dashed var(--line); padding: 70px 40px; text-align: center; color: var(--muted); }
+  .placeholder .ico { font-size: 32px; margin-bottom: 10px; opacity: .3; }
+  .placeholder p { font-size: 13px; }
 
-  /* Quotation card */
-  .quote-card {
-    background: var(--white);
-    border: 1px solid var(--line);
-    display: none;
-  }
-  .quote-card.visible { display: block; animation: fadeIn .4s ease; }
-  @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+  .qcard { background: var(--white); border: 1px solid var(--line); display: none; }
+  .qcard.show { display: block; animation: fi .35s ease; }
+  @keyframes fi { from { opacity:0; transform:translateY(6px); } to { opacity:1; transform:translateY(0); } }
 
-  /* Header of quote */
-  .qc-header {
-    background: var(--dark);
-    padding: 24px 28px;
-    display: flex; justify-content: space-between; align-items: flex-end;
-  }
-  .qc-brand { color: var(--white); }
-  .qc-brand h2 { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 300; letter-spacing: 3px; }
-  .qc-brand p { font-size: 11px; color: var(--gold); letter-spacing: 2px; margin-top: 3px; }
-  .qc-type { text-align: right; }
-  .qc-type .method-badge {
-    display: inline-block; padding: 4px 10px;
-    background: var(--gold); color: var(--white);
-    font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase;
-    margin-bottom: 4px;
-  }
-  .qc-type .csbh-label { color: var(--line); font-size: 11px; letter-spacing: 1px; }
+  /* Quote header */
+  .qh { background: var(--dark); padding: 22px 26px; display: flex; justify-content: space-between; align-items: flex-end; }
+  .qh-brand h2 { font-family: 'Cormorant Garamond', serif; font-size: 21px; font-weight: 300; letter-spacing: 3px; color: var(--white); }
+  .qh-brand p { font-size: 11px; color: var(--gold); letter-spacing: 2px; margin-top: 2px; }
+  .qh-right { text-align: right; }
+  .badge { display: inline-block; padding: 3px 10px; background: var(--gold); color: var(--white); font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 3px; }
+  .csbh-txt { color: #aaa; font-size: 11px; letter-spacing: .5px; }
 
-  /* Property info strip */
-  .qc-property {
-    background: var(--gold-pale); padding: 16px 28px;
-    display: flex; gap: 28px; flex-wrap: wrap;
-    border-bottom: 1px solid var(--line);
-  }
-  .qc-prop-item {}
-  .qc-prop-item .plabel { font-size: 10px; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; }
-  .qc-prop-item .pval { font-size: 14px; font-weight: 500; color: var(--dark); margin-top: 1px; }
+  /* Property strip */
+  .qprop { background: var(--gold-pale); padding: 14px 26px; display: flex; gap: 24px; flex-wrap: wrap; border-bottom: 1px solid var(--line); }
+  .qpi .pl { font-size: 10px; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; }
+  .qpi .pv { font-size: 13px; font-weight: 500; color: var(--dark); margin-top: 1px; }
 
   /* Body */
-  .qc-body { padding: 28px; }
+  .qbody { padding: 24px 26px; }
 
-  /* Policy section */
-  .policy-table {
-    width: 100%; border-collapse: collapse; margin-bottom: 24px;
-  }
-  .policy-table thead tr { border-bottom: 2px solid var(--gold); }
-  .policy-table thead th {
-    padding: 8px 10px; font-size: 10px; text-transform: uppercase;
-    letter-spacing: 1px; color: var(--gold); font-weight: 500;
-    text-align: left;
-  }
-  .policy-table thead th:last-child, .policy-table thead th:nth-child(3) { text-align: right; }
-  .policy-table tbody tr { border-bottom: 1px solid var(--line); }
-  .policy-table tbody tr:last-child { border-bottom: none; }
-  .policy-table tbody td { padding: 9px 10px; font-size: 12.5px; color: var(--text); vertical-align: top; }
-  .policy-table tbody td:last-child, .policy-table tbody td:nth-child(3) { text-align: right; }
-  .policy-table .stt { color: var(--muted); width: 24px; }
-  .policy-table .applied { color: var(--green); font-size: 11px; font-weight: 500; }
-  .policy-table .not-applied { color: var(--muted); font-size: 11px; }
-  .policy-table .highlight-row td { background: #F9F5EC; }
-  .policy-table .timing-badge {
-    display: inline-block; padding: 2px 6px;
-    font-size: 10px; letter-spacing: .5px; border: 1px solid;
-  }
-  .timing-hdthnv { color: #5A6E8A; border-color: #A8BDD0; background: #EDF3FA; }
-  .timing-hdmb { color: #7A5A2A; border-color: #C9A86C; background: #FBF5E8; }
+  /* Policy table */
+  .ptbl { width: 100%; border-collapse: collapse; margin-bottom: 20px; }
+  .ptbl thead tr { border-bottom: 2px solid var(--gold); }
+  .ptbl thead th { padding: 7px 9px; font-size: 10px; text-transform: uppercase; letter-spacing: 1px; color: var(--gold); font-weight: 500; text-align: left; }
+  .ptbl thead th:last-child, .ptbl thead th:nth-child(4), .ptbl thead th:nth-child(5) { text-align: right; }
+  .ptbl tbody tr { border-bottom: 1px solid var(--line); }
+  .ptbl tbody tr:last-child { border-bottom: none; }
+  .ptbl tbody td { padding: 8px 9px; font-size: 12.5px; vertical-align: top; }
+  .ptbl tbody td:last-child, .ptbl tbody td:nth-child(4), .ptbl tbody td:nth-child(5) { text-align: right; }
+  .stt { color: var(--muted); width: 22px; }
+  .ok { color: var(--green); font-size: 11px; font-weight: 500; }
+  .no { color: var(--muted); font-size: 11px; }
+  .hl td { background: #F9F5EC; }
+  .tbadge { display: inline-block; padding: 2px 6px; font-size: 10px; border: 1px solid; }
+  .t-hdthnv { color: #5A6E8A; border-color: #A8BDD0; background: #EDF3FA; }
+  .t-hdmb { color: #7A5A2A; border-color: #C9A86C; background: #FBF5E8; }
+  .divider-row td { background: var(--bg); font-size: 11px; color: var(--muted); font-style: italic; padding: 4px 9px !important; }
 
   /* Price summary */
-  .price-summary { background: var(--bg); padding: 20px 24px; margin-bottom: 24px; border: 1px solid var(--line); }
-  .ps-row { display: flex; justify-content: space-between; align-items: baseline; padding: 5px 0; }
-  .ps-row .ps-label { font-size: 12.5px; color: var(--text); }
-  .ps-row .ps-val { font-size: 13px; color: var(--text); font-variant-numeric: tabular-nums; }
-  .ps-row.deduct .ps-val { color: var(--red); }
-  .ps-row.deduct .ps-label { color: var(--muted); }
-  .ps-row.separator { border-top: 1px solid var(--line); margin-top: 4px; padding-top: 10px; }
-  .ps-row.total {
-    border-top: 2px solid var(--gold); margin-top: 8px; padding-top: 12px;
-  }
-  .ps-row.total .ps-label { font-size: 13px; font-weight: 500; color: var(--dark); }
-  .ps-row.total .ps-val { font-size: 16px; font-weight: 500; color: var(--gold); }
+  .psum { background: var(--bg); padding: 18px 22px; margin-bottom: 22px; border: 1px solid var(--line); }
+  .pr { display: flex; justify-content: space-between; align-items: baseline; padding: 4px 0; }
+  .pr .lbl { font-size: 12.5px; color: var(--text); }
+  .pr .val { font-size: 13px; color: var(--text); font-variant-numeric: tabular-nums; }
+  .pr.ded .val { color: var(--red); }
+  .pr.ded .lbl { color: var(--muted); }
+  .pr.sep { border-top: 1px solid var(--line); margin-top: 4px; padding-top: 9px; }
+  .pr.tot { border-top: 2px solid var(--gold); margin-top: 6px; padding-top: 10px; }
+  .pr.tot .lbl { font-size: 13px; font-weight: 500; color: var(--dark); }
+  .pr.tot .val { font-size: 16px; font-weight: 500; color: var(--gold); }
 
-  /* Schedule table */
-  .schedule-title {
-    font-family: 'Cormorant Garamond', serif; font-size: 17px;
-    color: var(--dark); margin-bottom: 14px; letter-spacing: 1px;
-  }
-  .schedule-table { width: 100%; border-collapse: collapse; }
-  .schedule-table thead tr { background: var(--dark); }
-  .schedule-table thead th {
-    padding: 9px 10px; font-size: 10px; text-transform: uppercase;
-    letter-spacing: 1px; color: var(--gold); font-weight: 400; text-align: left;
-  }
-  .schedule-table thead th:last-child { text-align: right; }
-  .schedule-table tbody tr { border-bottom: 1px solid var(--line); }
-  .schedule-table tbody tr:nth-child(even) { background: var(--bg); }
-  .schedule-table tbody tr.milestone { background: #F5EDD6 !important; }
-  .schedule-table tbody tr.milestone td { font-size: 11px; color: var(--gold); font-style: italic; padding: 5px 10px; }
-  .schedule-table tbody td { padding: 8px 10px; font-size: 12.5px; vertical-align: top; }
-  .schedule-table tbody td:last-child { text-align: right; font-variant-numeric: tabular-nums; }
-  .schedule-table tfoot tr { border-top: 2px solid var(--gold); background: var(--gold-pale); }
-  .schedule-table tfoot td { padding: 11px 10px; font-weight: 500; font-size: 13px; }
-  .schedule-table tfoot td:last-child { text-align: right; color: var(--gold); font-size: 14px; }
-
-  .note-row { font-size: 11px; color: var(--muted); font-style: italic; }
-  .note-row td { padding: 5px 10px 10px !important; }
+  /* Schedule */
+  .stit { font-family: 'Cormorant Garamond', serif; font-size: 16px; color: var(--dark); margin-bottom: 12px; letter-spacing: 1px; }
+  .stbl { width: 100%; border-collapse: collapse; }
+  .stbl thead tr { background: var(--dark); }
+  .stbl thead th { padding: 8px 9px; font-size: 10px; text-transform: uppercase; letter-spacing: 1px; color: var(--gold); font-weight: 400; text-align: left; }
+  .stbl thead th:nth-child(3), .stbl thead th:nth-child(4) { text-align: right; }
+  .stbl tbody tr { border-bottom: 1px solid var(--line); }
+  .stbl tbody tr:nth-child(even) { background: var(--bg); }
+  .stbl tbody tr.ms { background: var(--gold-pale) !important; }
+  .stbl tbody tr.ms td { font-size: 11px; color: #8A6B2A; font-style: italic; padding: 5px 9px; }
+  .stbl tbody td { padding: 8px 9px; font-size: 12.5px; vertical-align: top; }
+  .stbl tbody td:nth-child(3), .stbl tbody td:nth-child(4) { text-align: right; }
+  .stbl tbody tr.note-r td { font-size: 11px; color: var(--muted); font-style: italic; padding: 4px 9px 8px !important; background: var(--white) !important; border-bottom: 1px solid var(--line); }
+  .stbl tfoot tr { border-top: 2px solid var(--gold); background: var(--gold-pale); }
+  .stbl tfoot td { padding: 10px 9px; font-weight: 500; font-size: 13px; }
+  .stbl tfoot td:last-child { text-align: right; color: var(--gold); font-size: 14px; }
 
   /* Footer */
-  .qc-footer {
-    padding: 16px 28px; border-top: 1px solid var(--line);
-    display: flex; justify-content: space-between; align-items: center;
-  }
-  .qc-footer p { font-size: 11px; color: var(--muted); font-style: italic; }
-  .qc-disclaimer { font-size: 10px; color: #CCC; }
+  .qfooter { padding: 14px 26px; border-top: 1px solid var(--line); display: flex; justify-content: space-between; align-items: center; }
+  .qfooter p { font-size: 11px; color: var(--muted); font-style: italic; }
+  .qnote { font-size: 11px; color: var(--muted); font-style: italic; padding: 0 26px 18px; line-height: 1.8; }
 
-  .disclaimer-note {
-    font-size: 11px; color: var(--muted); font-style: italic;
-    padding: 0 28px 20px; line-height: 1.7;
-  }
-
-  /* Responsive */
-  @media (max-width: 780px) {
-    .main-wrap { grid-template-columns: 1fr; }
-    .form-panel { position: static; }
-  }
-  @media print {
-    .form-panel { display: none; }
-    .main-wrap { grid-template-columns: 1fr; padding: 0; }
-    .quote-card { border: none; }
-  }
+  @media(max-width:780px) { .main-wrap { grid-template-columns: 1fr; } .form-panel { position: static; } }
+  @media print { .form-panel { display: none; } .main-wrap { grid-template-columns: 1fr; padding: 0; } }
 </style>
 </head>
 <body>
@@ -299,7 +163,7 @@
   <div class="logo-mark">F</div>
   <div class="brand">
     <h1>FOURS TOWER</h1>
-    <p>Phiếu Tính Giá – CSBH01 / HĐTHNV</p>
+    <p>Phiếu Tính Giá Tạm Tính – CSBH01 / HĐTHNV</p>
   </div>
 </header>
 
@@ -308,38 +172,33 @@
   <!-- ══ FORM ══ -->
   <aside class="form-panel">
     <div class="panel-title">Thông tin báo giá</div>
-    <div class="panel-sub">Nhập thông tin & chính sách</div>
+    <div class="panel-sub">Nhập thông tin & chọn chính sách</div>
 
-    <div class="section-label">Thông tin khách hàng</div>
+    <div class="sec">Thông tin khách hàng</div>
     <div class="field">
       <label>Họ và tên khách hàng</label>
       <input type="text" id="tenKH" placeholder="Nguyễn Văn A">
     </div>
 
-    <div class="section-label">Thông tin căn hộ</div>
-    <div class="field-row">
+    <div class="sec">Thông tin căn hộ</div>
+    <div class="row2">
       <div class="field">
         <label>Tòa</label>
-        <select id="toa">
-          <option value="F1">F1</option>
-          <option value="F2">F2</option>
-          <option value="F3">F3</option>
-          <option value="F4">F4</option>
-        </select>
+        <select id="toa"><option>F1</option><option>F2</option><option>F3</option><option>F4</option></select>
       </div>
       <div class="field">
         <label>Tầng</label>
         <input type="number" id="tang" value="15" min="1" max="50">
       </div>
     </div>
-    <div class="field-row">
+    <div class="row2">
       <div class="field">
         <label>Căn số</label>
         <input type="text" id="can" value="01">
       </div>
       <div class="field">
-        <label>Loại hình căn hộ</label>
-        <select id="loaiCanHo" onchange="updateDienTich()">
+        <label>Loại căn hộ</label>
+        <select id="loai">
           <option value="STU">Studio (STU)</option>
           <option value="1BR" selected>1 Phòng ngủ (1BR)</option>
           <option value="1BR+">1 Phòng ngủ+ (1BR+)</option>
@@ -348,601 +207,532 @@
         </select>
       </div>
     </div>
-    <div class="field-row">
+    <div class="row2">
       <div class="field">
         <label>Diện tích thông thủy (m²)</label>
-        <input type="number" id="dienTich" value="50" step="0.01">
+        <input type="number" id="dt" value="50" step="0.01">
       </div>
       <div class="field">
         <label>Mã căn hộ</label>
-        <input type="text" id="maCanHo" readonly>
+        <input type="text" id="ma" readonly>
       </div>
     </div>
 
-    <div class="section-label">Giá bán</div>
+    <div class="sec">Giá bán</div>
     <div class="field">
       <label>Tổng giá niêm yết (đã VAT + KPBT) (VNĐ)</label>
-      <input type="number" id="giaNiemYet" value="3000000000" step="1000000">
+      <input type="number" id="ny" value="3000000000" step="1000000">
     </div>
     <div class="field">
-      <label>Đặt cọc (VNĐ)</label>
-      <input type="number" id="datCoc" value="100000000" step="1000000">
+      <label>Tiền đặt cọc (VNĐ)</label>
+      <input type="number" id="datcoc" value="100000000" step="1000000">
     </div>
 
-    <div class="section-label">Chính sách chiết khấu</div>
-    <div class="field">
-      <label>Early Bird</label>
-      <select id="earlyBird">
-        <option value="1">Được áp dụng (5%)</option>
-        <option value="0">Không áp dụng</option>
-      </select>
+    <div class="sec">Chính sách chiết khấu</div>
+
+    <!-- Early Bird -->
+    <div class="field"><label>Early Bird (5%)</label></div>
+    <div class="toggle-row">
+      <button class="tog on" id="eb_yes" onclick="tog('eb','yes')">Được áp dụng (5%)</button>
+      <button class="tog" id="eb_no" onclick="tog('eb','no')">Không áp dụng</button>
     </div>
 
-    <div class="field">
-      <label>Chiết khấu từ chối bảo lãnh NH (tại HĐMB)</label>
-      <div class="toggle-row">
-        <button class="toggle-btn" id="blnh_no" onclick="setToggle('blnh','no')">Không áp dụng</button>
-        <button class="toggle-btn active" id="blnh_yes" onclick="setToggle('blnh','yes')">Áp dụng</button>
-      </div>
-      <div id="blnh_rate_wrap" class="field" style="margin-top:4px">
-        <label>Mức CK từ chối BL (tại HĐMB)</label>
-        <input type="number" id="blnh_rate" value="1" step="0.1" min="0" max="10"> <span style="font-size:11px;color:var(--muted)">%</span>
-      </div>
+    <!-- BLNH -->
+    <div class="field"><label>CK Từ chối bảo lãnh ngân hàng (tại HĐMB)</label></div>
+    <div class="toggle-row">
+      <button class="tog" id="blnh_no" onclick="tog('blnh','no')">Không áp dụng</button>
+      <button class="tog on" id="blnh_yes" onclick="tog('blnh','yes')">Được áp dụng</button>
+    </div>
+    <div id="blnh_wrap" class="sub-field">
+      <label>Mức chiết khấu BLNH (%)</label>
+      <input type="number" id="blnh_rate" value="1" step="0.1" min="0" max="20">
+      <span>%</span>
     </div>
 
-    <div class="field">
-      <label>Chiết khấu KH thân thiết (căn mua thứ 2, tại HĐMB)</label>
-      <div class="toggle-row">
-        <button class="toggle-btn active" id="canthu2_no" onclick="setToggle('canthu2','no')">Chưa kích hoạt</button>
-        <button class="toggle-btn" id="canthu2_yes" onclick="setToggle('canthu2','yes')">Đã kích hoạt</button>
-      </div>
+    <!-- KH thân thiết -->
+    <div class="field"><label>CK KH thân thiết – căn mua thứ 2 (tại HĐMB)</label></div>
+    <div class="toggle-row">
+      <button class="tog on" id="ct2_no" onclick="tog('ct2','no')">Chưa kích hoạt</button>
+      <button class="tog" id="ct2_yes" onclick="tog('ct2','yes')">Đã kích hoạt</button>
     </div>
-    <div id="rank_wrap">
-      <label style="font-size:11px;color:var(--muted);display:block;margin-bottom:6px">Hạng thành viên (tại HĐMB)</label>
-      <div class="rank-select" id="rankSelect">
-        <button class="rank-btn" onclick="setRank('BRONZE')">BRONZE</button>
-        <button class="rank-btn active" onclick="setRank('SILVER')">SILVER</button>
-        <button class="rank-btn" onclick="setRank('GOLD')">GOLD</button>
-        <button class="rank-btn" onclick="setRank('PLATINUM')">PLATINUM</button>
-        <button class="rank-btn" onclick="setRank('DIAMOND')">DIAMOND</button>
-      </div>
-    </div>
-
-    <div class="section-label">Phương thức thanh toán</div>
-    <div class="method-tabs" id="methodTabs">
-      <div class="method-tab active" onclick="setMethod('ko_vay')" id="tab_ko_vay">
-        <div class="radio-dot"></div>
-        <div class="method-info">
-          <div class="method-name">I.1 – Không vay · Tiến độ chuẩn</div>
-          <div class="method-ck">CK không vay: 5% · ~18 đợt</div>
-        </div>
-      </div>
-      <div class="method-tab" onclick="setMethod('co_vay')" id="tab_co_vay">
-        <div class="radio-dot"></div>
-        <div class="method-info">
-          <div class="method-name">I.2 – Có vay ngân hàng</div>
-          <div class="method-ck">CK vay: 0% · NH giải ngân 70%</div>
-        </div>
-      </div>
-      <div class="method-tab" onclick="setMethod('tts95')" id="tab_tts95">
-        <div class="radio-dot"></div>
-        <div class="method-info">
-          <div class="method-name">III.2 – Thanh toán sớm 95%</div>
-          <div class="method-ck">CK TTS 95%: 16.5% · 3 đợt</div>
-        </div>
-      </div>
-      <div class="method-tab" onclick="setMethod('tts70')" id="tab_tts70">
-        <div class="radio-dot"></div>
-        <div class="method-info">
-          <div class="method-name">III.3 – Thanh toán sớm 70%</div>
-          <div class="method-ck">CK TTS 70%: 9% · 9 đợt</div>
-        </div>
-      </div>
-      <div class="method-tab" onclick="setMethod('tts50')" id="tab_tts50">
-        <div class="radio-dot"></div>
-        <div class="method-info">
-          <div class="method-name">III.4 – Thanh toán sớm 50%</div>
-          <div class="method-ck">CK TTS 50%: 5.5% · 13 đợt</div>
-        </div>
+    <div id="ct2_wrap">
+      <label style="font-size:11px;color:var(--muted);display:block;margin-bottom:6px">Hạng thành viên tại HĐMB</label>
+      <div class="rank-row" id="rankRow">
+        <button class="rank-btn" onclick="setRank('BRONZE')">BRONZE<br><small>1%</small></button>
+        <button class="rank-btn on" onclick="setRank('SILVER')">SILVER<br><small>1%</small></button>
+        <button class="rank-btn" onclick="setRank('GOLD')">GOLD<br><small>1%</small></button>
+        <button class="rank-btn" onclick="setRank('PLATINUM')">PLATINUM<br><small>1.3%</small></button>
+        <button class="rank-btn" onclick="setRank('DIAMOND')">DIAMOND<br><small>1.5%</small></button>
       </div>
     </div>
 
-    <button class="btn-confirm" onclick="generateQuote()">XÁC NHẬN – HIỂN THỊ BÁO GIÁ</button>
+    <div class="sec">Phương thức thanh toán</div>
+    <div class="method-tabs" id="mTabs">
+      <div class="mtab on" id="tab_ko_vay" onclick="setM('ko_vay')">
+        <div class="rdot"></div>
+        <div><div class="mname">I.1 – Không vay · Tiến độ chuẩn</div><div class="mck">CK không vay: 5% · 18 đợt</div></div>
+      </div>
+      <div class="mtab" id="tab_co_vay" onclick="setM('co_vay')">
+        <div class="rdot"></div>
+        <div><div class="mname">I.2 – Có vay ngân hàng</div><div class="mck">CK vay: 0% · NH giải ngân 70%</div></div>
+      </div>
+      <div class="mtab" id="tab_tts95" onclick="setM('tts95')">
+        <div class="rdot"></div>
+        <div><div class="mname">III.2 – Thanh toán sớm 95%</div><div class="mck">CK TTS: 16.5% · 3 đợt</div></div>
+      </div>
+      <div class="mtab" id="tab_tts70" onclick="setM('tts70')">
+        <div class="rdot"></div>
+        <div><div class="mname">III.3 – Thanh toán sớm 70%</div><div class="mck">CK TTS: 9% · 9 đợt</div></div>
+      </div>
+      <div class="mtab" id="tab_tts50" onclick="setM('tts50')">
+        <div class="rdot"></div>
+        <div><div class="mname">III.4 – Thanh toán sớm 50%</div><div class="mck">CK TTS: 5.5% · 13 đợt</div></div>
+      </div>
+    </div>
+
+    <button class="btn-ok" onclick="gen()">XÁC NHẬN – HIỂN THỊ BÁO GIÁ</button>
   </aside>
 
-  <!-- ══ QUOTE OUTPUT ══ -->
+  <!-- ══ QUOTE ══ -->
   <section class="quote-panel">
-    <div class="quote-placeholder" id="quotePlaceholder">
-      <div class="ico">⬛</div>
+    <div class="placeholder" id="ph">
+      <div class="ico">◼</div>
       <p>Điền thông tin & chọn phương thức<br>thanh toán, sau đó nhấn <strong>Xác nhận</strong></p>
     </div>
-
-    <div class="quote-card" id="quoteCard"></div>
+    <div class="qcard" id="qc"></div>
   </section>
 </div>
 
 <script>
-// ─── STATE ───
-let state = {
-  method: 'ko_vay',
-  blnh: 'yes',
-  canthu2: 'no',
-  rank: 'SILVER'
+// ── STATE ──
+const S = { method:'ko_vay', eb:'yes', blnh:'yes', ct2:'no', rank:'SILVER' };
+
+const RANK_RATE = { BRONZE:0.01, SILVER:0.01, GOLD:0.01, PLATINUM:0.013, DIAMOND:0.015 };
+
+const M_LABEL = {
+  ko_vay:'I.1 – Không vay · Tiến độ chuẩn',
+  co_vay:'I.2 – Có vay ngân hàng',
+  tts95:'III.2 – Thanh toán sớm 95%',
+  tts70:'III.3 – Thanh toán sớm 70%',
+  tts50:'III.4 – Thanh toán sớm 50%'
+};
+const M_CSBH = {
+  ko_vay:'CSBH 01 – Không vay – I.1.Tiến độ chuẩn',
+  co_vay:'CSBH 02 – I.2.Có vay',
+  tts95:'CSBH 01 – III.2.TTS 95%',
+  tts70:'CSBH 01 – III.3.TTS 70%',
+  tts50:'CSBH 01 – III.4.TTS 50%'
 };
 
-const RANK_RATES = { BRONZE:0.01, SILVER:0.01, GOLD:0.01, PLATINUM:0.013, DIAMOND:0.015 };
-const RANK_CK = { BRONZE:1, SILVER:1, GOLD:1, PLATINUM:1.3, DIAMOND:1.5 };
-
-const METHOD_LABELS = {
-  ko_vay: 'I.1 – Không vay · Tiến độ chuẩn',
-  co_vay: 'I.2 – Có vay ngân hàng',
-  tts95:  'III.2 – Thanh toán sớm 95%',
-  tts70:  'III.3 – Thanh toán sớm 70%',
-  tts50:  'III.4 – Thanh toán sớm 50%',
-};
-const METHOD_CSBH = {
-  ko_vay: 'CSBH 01 – Không vay – I.1.Tiến độ chuẩn',
-  co_vay: 'CSBH 02 – I.2.Có vay',
-  tts95:  'CSBH 01 – III.2.TTS 95%',
-  tts70:  'CSBH 01 – III.3.TTS 70%',
-  tts50:  'CSBH 01 – III.4.TTS 50%',
-};
-
-// ─── UI HELPERS ───
-function setToggle(key, val) {
-  state[key] = val;
+// ── UI ──
+function tog(key, val) {
+  S[key] = val;
   ['yes','no'].forEach(v => {
-    const btn = document.getElementById(key+'_'+v);
-    if(btn) btn.classList.toggle('active', v===val);
+    const b = document.getElementById(key+'_'+v);
+    if(b) b.className = 'tog' + (v===val?' on':'');
   });
-  if(key==='blnh') {
-    document.getElementById('blnh_rate_wrap').style.display = val==='yes'?'block':'none';
-  }
+  if(key==='blnh') document.getElementById('blnh_wrap').style.display = val==='yes'?'block':'none';
 }
-function setMethod(m) {
-  state.method = m;
-  document.querySelectorAll('.method-tab').forEach(t => t.classList.remove('active'));
-  document.getElementById('tab_'+m).classList.add('active');
+function setM(m) {
+  S.method = m;
+  document.querySelectorAll('.mtab').forEach(t => t.classList.remove('on'));
+  document.getElementById('tab_'+m).classList.add('on');
 }
 function setRank(r) {
-  state.rank = r;
-  document.querySelectorAll('.rank-btn').forEach(b => b.classList.toggle('active', b.textContent===r));
+  S.rank = r;
+  document.querySelectorAll('.rank-btn').forEach(b => b.classList.toggle('on', b.textContent.includes(r)));
 }
-function updateDienTich() {
-  // Optional: auto-fill typical areas
-}
-
-// Update mã căn hộ live
-function updateMaCanHo() {
+function updateMa() {
   const toa = document.getElementById('toa').value;
-  const tang = document.getElementById('tang').value.toString().padStart(2,'0');
-  const can = document.getElementById('can').value.toString().padStart(2,'0');
-  document.getElementById('maCanHo').value = toa.replace('F','F') + tang + can;
+  const tang = String(document.getElementById('tang').value).padStart(2,'0');
+  const can = String(document.getElementById('can').value).padStart(2,'0');
+  document.getElementById('ma').value = toa + tang + can;
 }
-document.getElementById('toa').addEventListener('input', updateMaCanHo);
-document.getElementById('tang').addEventListener('input', updateMaCanHo);
-document.getElementById('can').addEventListener('input', updateMaCanHo);
-updateMaCanHo();
-setToggle('blnh','yes');
+['toa','tang','can'].forEach(id => document.getElementById(id).addEventListener('input', updateMa));
+updateMa();
+tog('eb','yes');
+tog('blnh','yes');
+tog('ct2','no');
 
-// ─── FORMAT HELPERS ───
-function fmt(n) {
-  if(n===0) return '–';
-  return Math.round(n).toLocaleString('vi-VN') + ' đ';
+// ── FORMAT ──
+const VND = n => Math.round(n).toLocaleString('vi-VN') + ' đ';
+const PCT = n => (n*100).toFixed(1).replace(/\.0$/,'') + '%';
+const FMT_D = d => {
+  if(!d) return '–';
+  const dd = String(d.getDate()).padStart(2,'0');
+  const mm = String(d.getMonth()+1).padStart(2,'0');
+  return `${dd}/${mm}/${d.getFullYear()}`;
+};
+
+// REAL DATES from Excel (data_only values)
+const D = {
+  hdthnv: new Date(2026,3,15),   // 15/04/2026
+  hdmb:   new Date(2026,8,30),   // 30/09/2026
+  bg:     new Date(2028,2,31),   // 31/03/2028
+  // I.1 schedule dates
+  i1_d2:  new Date(2026,3,29),   // lan2
+  i1_d3:  new Date(2026,6,13),   // lan3
+  i1_d4:  new Date(2026,8,26),   // lan4
+  i1_d5:  new Date(2026,10,25),
+  i1_d6:  new Date(2027,0,24),
+  i1_d7:  new Date(2027,2,25),
+  i1_d8:  new Date(2027,4,24),
+  i1_d9:  new Date(2027,6,23),
+  i1_d10: new Date(2027,8,21),
+  i1_d11: new Date(2027,10,20),
+  i1_d12: new Date(2028,0,19),
+  i1_d13: new Date(2028,2,19),
+  i1_d14: new Date(2028,6,17),
+  i1_d15: new Date(2028,10,14),
+  i1_d16: new Date(2029,2,14),
+  i1_d17: new Date(2029,6,12),
+  i1_d18: new Date(2029,10,9),
+  i1_d19: new Date(2030,2,31),
+  // I.2
+  i2_d5:  new Date(2026,9,14),
+  // TTS early dates
+  tts_d2: new Date(2026,3,25),   // 25/04/2026
+  // TTS 70% 5% dates
+  tts70_d4: new Date(2028,6,17),
+  tts70_d5: new Date(2028,10,14),
+  tts70_d6: new Date(2029,2,14),
+  tts70_d7: new Date(2029,6,12),
+  tts70_d8: new Date(2029,10,9),
+  tts70_d9: new Date(2030,2,31),
+  // TTS 50% 5% dates
+  tts50_d4: new Date(2027,8,21),
+  tts50_d5: new Date(2027,10,20),
+  tts50_d6: new Date(2028,0,19),
+  tts50_d7: new Date(2028,2,19),
+  tts50_d8: new Date(2028,6,17),
+  tts50_d9: new Date(2028,10,14),
+  tts50_d10: new Date(2029,2,14),
+  tts50_d11: new Date(2029,6,12),
+  tts50_d12: new Date(2029,10,9),
+  tts50_d13: new Date(2030,2,31),
+};
+
+// ── CORE CALC ──
+// Công thức đúng từ Excel (đã verify từng ô):
+// gia_truoc_ck = round(NY / 1.12)
+// ck_eb        = round(gia_truoc_ck * 0.05)  [nếu áp dụng]
+// ck_tc        = round((gia_truoc_ck - ck_eb) * tc_rate)  [0.05 ko vay, 0 co vay]
+// ck_tts       = round((gia_truoc_ck - ck_eb - ck_tc) * tts_rate)  [TTS methods]
+// net          = gia_truoc_ck - ck_eb - ck_tc - ck_tts  [net tại HĐTHNV]
+// [HĐMB]:
+// ck_blnh      = round(net * blnh_rate)
+// ck_ct2       = round(net * rank_rate)
+// net_final    = net - ck_blnh - ck_ct2
+// VAT = round(net_final * 0.10), KPBT = round(net_final * 0.02)
+// Tong gia = net_final * 1.12
+
+function calc() {
+  const NY     = parseFloat(document.getElementById('ny').value) || 3000000000;
+  const datCoc = parseFloat(document.getElementById('datcoc').value) || 100000000;
+  const m      = S.method;
+
+  // Step 1: gia_truoc_ck
+  const gtck = Math.round(NY / 1.12);
+
+  // Step 2: Early Bird
+  const ckEB = S.eb === 'yes' ? Math.round(gtck * 0.05) : 0;
+
+  // Step 3: CS tài chính
+  const tc_rate = m === 'co_vay' ? 0 : 0.05;
+  const ckTC = Math.round((gtck - ckEB) * tc_rate);
+
+  // Step 4: TTS
+  let tts_rate = 0, tts_lbl = '';
+  if(m === 'tts95') { tts_rate = 0.165; tts_lbl = 'TTS 95%'; }
+  if(m === 'tts70') { tts_rate = 0.09;  tts_lbl = 'TTS 70%'; }
+  if(m === 'tts50') { tts_rate = 0.055; tts_lbl = 'TTS 50%'; }
+  const ckTTS = Math.round((gtck - ckEB - ckTC) * tts_rate);
+
+  // NET tại HĐTHNV
+  const netHDTHNV = gtck - ckEB - ckTC - ckTTS;
+
+  // Step 5: HĐMB discounts (applied on same net base)
+  const blnh_rate = (S.blnh === 'yes' && m !== 'co_vay') ? (parseFloat(document.getElementById('blnh_rate').value)||0)/100 : 0;
+  const ckBLNH = Math.round(netHDTHNV * blnh_rate);
+  const ct2_rate = S.ct2 === 'yes' ? (RANK_RATE[S.rank]||0.01) : 0;
+  const ckCT2 = Math.round(netHDTHNV * ct2_rate);
+
+  // NET FINAL (sau tất cả CK)
+  const net = netHDTHNV - ckBLNH - ckCT2;
+
+  const VAT  = Math.round(net * 0.10);
+  const KPBT = Math.round(net * 0.02);
+  const tong = net + VAT + KPBT; // = net * 1.12
+
+  return { NY, datCoc, gtck, ckEB, ckTC, tc_rate, ckTTS, tts_rate, tts_lbl,
+           netHDTHNV, blnh_rate, ckBLNH, ct2_rate, ckCT2, net, VAT, KPBT, tong, m };
 }
-function fmtPct(n) {
-  return (n*100).toFixed(1).replace(/\.0$/,'') + '%';
-}
-// Serial date → readable
-function excelDateToStr(serial) {
-  if(!serial || serial < 40000) return '–';
-  const d = new Date((serial - 25569)*86400*1000);
-  const dd = String(d.getUTCDate()).padStart(2,'0');
-  const mm = String(d.getUTCMonth()+1).padStart(2,'0');
-  const yy = d.getUTCFullYear();
-  return `${dd}/${mm}/${yy}`;
-}
 
-// ─── CORE CALCULATION ───
-function calculate() {
-  const giaNiemYet = parseFloat(document.getElementById('giaNiemYet').value) || 3000000000;
-  const datCoc = parseFloat(document.getElementById('datCoc').value) || 100000000;
-  const earlyBird = parseInt(document.getElementById('earlyBird').value);
-  const loai = document.getElementById('loaiCanHo').value;
-  const m = state.method;
+// ── SCHEDULE ──
+// Formulas từ Excel (verified):
+// lan2   = round(net * 0.15 * 1.1) - datCoc        [net * 15% + 10% VAT, trừ đặt cọc]
+// lan3.. = round(net * 0.05 * 1.1)                  [mỗi đợt 5% của net + 10% VAT]
+// lan_cuoi = round(net * 0.025)                      [= KPBT(2%) + VAT của 5%(0.5%) = 2.5% * net]
+// deferred  = round(net * 0.05)                      [5% gốc – trả lãi, hiển thị tham khảo]
+// I.2 NH giải ngân: round(net * 0.70) + round(round(net*0.70)*0.10) = round(net*0.70)*1.1
 
-  const VAT = 0.10;
-  const KPBT = 0.02;
-  // Chia ngược: giá niêm yết = gốc * (1+VAT+KPBT) => gốc = NY / 1.12
-  const giaTruocCK = giaNiemYet / (1 + VAT + KPBT);
+function buildSchedule(c) {
+  const { net, datCoc, m } = c;
+  const R = [];
+  const ms = (lbl, date) => ({ ms:true, lbl, date });
+  const row = (stt, lbl, pct, date, val) => ({ stt, lbl, pct, date, val });
+  const note = (lbl, val) => ({ note:true, lbl, val });
 
-  // CK Early Bird
-  const ckEB_rate = earlyBird ? 0.05 : 0;
-  const ckEB_val = giaTruocCK * ckEB_rate;
+  const lan2  = Math.round(net * 0.15 * 1.1) - datCoc;
+  const lan5p = Math.round(net * 0.05 * 1.1);
+  const lanCuoi = Math.round(net * 0.025);       // KPBT + VAT của 5%
+  const defer   = Math.round(net * 0.05);         // 5% gốc hoãn
 
-  // CK Tài chính
-  let ckTC_rate = 0, ckTC_label = '', ckTC_time = 'HĐTHNV';
-  if(m==='ko_vay') { ckTC_rate=0.05; ckTC_label='Không Vay'; }
-  else if(m==='co_vay') { ckTC_rate=0; ckTC_label='Vay'; }
-  else { ckTC_rate=0.05; ckTC_label='Không Vay'; } // TTS đều là Không Vay base
-  const ckTC_val = giaTruocCK * ckTC_rate;
+  if(m === 'ko_vay') {
+    R.push(row(1, 'Ký HĐTHNV – Thanh toán lần 1', 'Đặt cọc', D.hdthnv, datCoc));
+    R.push(row(2, 'Thanh toán lần 2', '15%', D.i1_d2, lan2));
+    R.push(row(3, 'Thanh toán lần 3', '5%', D.i1_d3, lan5p));
+    R.push(row(4, 'Thanh toán lần 4', '5%', D.i1_d4, lan5p));
+    R.push(ms('Ký HĐMB', D.hdmb));
+    R.push(row(5,  'Thanh toán lần 5',  '5%', D.i1_d5, lan5p));
+    R.push(row(6,  'Thanh toán lần 6',  '5%', D.i1_d6, lan5p));
+    R.push(row(7,  'Thanh toán lần 7',  '5%', D.i1_d7, lan5p));
+    R.push(row(8,  'Thanh toán lần 8',  '5%', D.i1_d8, lan5p));
+    R.push(row(9,  'Thanh toán lần 9',  '5%', D.i1_d9, lan5p));
+    R.push(row(10, 'Thanh toán lần 10', '5%', D.i1_d10, lan5p));
+    R.push(row(11, 'Thanh toán lần 11', '5%', D.i1_d11, lan5p));
+    R.push(row(12, 'Thanh toán lần 12', '5%', D.i1_d12, lan5p));
+    R.push(row(13, 'Thanh toán lần 13', '5%', D.i1_d13, lan5p));
+    R.push(ms('Nhận "Bàn giao sử dụng" – Sun Early Key', D.bg));
+    R.push(row(14, 'Thanh toán lần 14', '5%', D.i1_d14, lan5p));
+    R.push(row(15, 'Thanh toán lần 15', '5%', D.i1_d15, lan5p));
+    R.push(row(16, 'Thanh toán lần 16', '5%', D.i1_d16, lan5p));
+    R.push(row(17, 'Thanh toán lần 17', '5%', D.i1_d17, lan5p));
+    R.push(row(18, 'Thanh toán lần 18', '5%', D.i1_d18, lan5p));
+    R.push(row(19, 'Thanh toán lần 19 (Theo TB Bàn Giao Căn Hộ chính thức)', '100% KPBT + Thuế của 5%', D.i1_d19, lanCuoi));
+    R.push(note('5% (Trả lãi TTS 8%/năm từ bàn giao đến khi nhận GCN)', defer));
 
-  // CK Thanh toán sớm
-  let ckTTS_rate = 0, ckTTS_label = '', ckTTS_pct = 0;
-  if(m==='tts95') { ckTTS_rate=0.165; ckTTS_label='TTS 95%'; ckTTS_pct=0.95; }
-  else if(m==='tts70') { ckTTS_rate=0.09; ckTTS_label='TTS 70%'; ckTTS_pct=0.70; }
-  else if(m==='tts50') { ckTTS_rate=0.055; ckTTS_label='TTS 50%'; ckTTS_pct=0.50; }
-  const ckTTS_val = giaTruocCK * ckTTS_rate;
+  } else if(m === 'co_vay') {
+    // NH giai ngan: round(net*0.70) + round(round(net*0.70)*0.10)
+    const nh70base = Math.round(net * 0.70);
+    const lan5_nh  = nh70base + Math.round(nh70base * 0.10);
+    R.push(row(1, 'Ký HĐTHNV – Thanh toán lần 1', 'Đặt cọc', D.hdthnv, datCoc));
+    R.push(row(2, 'Thanh toán lần 2', '15%', D.i1_d2, lan2));
+    R.push(row(3, 'Thanh toán lần 3', '5%',  D.i1_d3, lan5p));
+    R.push(row(4, 'Thanh toán lần 4', '5%',  D.i1_d4, lan5p));
+    R.push(ms('Ký HĐMB', D.hdmb));
+    R.push(row(5, 'Thanh toán lần 5 – Ngân hàng giải ngân', '70%', D.i2_d5, lan5_nh));
+    R.push(row(6, 'Thanh toán lần 6 (Theo TB Bàn Giao Căn Hộ)', '100% KPBT + Thuế của 5%', D.bg, lanCuoi));
+    R.push(note('5% (Trả lãi TTS 8%/năm từ bàn giao đến khi nhận GCN)', defer));
 
-  // CK Từ chối BLNH (áp dụng tại HĐMB, chỉ khi ko_vay hoặc TTS)
-  let ckBLNH_rate = 0, ckBLNH_status = 'Không được áp dụng';
-  if(state.blnh==='yes' && m!=='co_vay') {
-    ckBLNH_rate = (parseFloat(document.getElementById('blnh_rate').value)||1)/100;
-    ckBLNH_status = 'Được áp dụng';
+  } else if(m === 'tts95') {
+    const lan3_80 = Math.round(net * 0.80 * 1.1);
+    R.push(row(1, 'Ký HĐTHNV – Thanh toán lần 1', 'Đặt cọc', D.hdthnv, datCoc));
+    R.push(row(2, 'Thanh toán lần 2', '15%', D.tts_d2, lan2));
+    R.push(row(3, 'Thanh toán lần 3', '80%', D.tts_d2, lan3_80));
+    R.push(ms('Ký HĐMB', D.hdmb));
+    R.push(row(4, 'Thanh toán lần 4 (Theo TB Bàn Giao Căn Hộ)', '100% KPBT + Thuế của 5%', D.bg, lanCuoi));
+    R.push(note('5% (Trả lãi TTS 8%/năm từ bàn giao đến khi nhận GCN)', defer));
+
+  } else if(m === 'tts70') {
+    const lan3_55 = Math.round(net * 0.55 * 1.1);
+    R.push(row(1, 'Ký HĐTHNV – Thanh toán lần 1', 'Đặt cọc', D.hdthnv, datCoc));
+    R.push(row(2, 'Thanh toán lần 2', '15%', D.tts_d2, lan2));
+    R.push(row(3, 'Thanh toán lần 3', '55%', D.tts_d2, lan3_55));
+    R.push(ms('Ký HĐMB', D.hdmb));
+    R.push(ms('Nhận "Bàn giao sử dụng" – Sun Early Key', D.bg));
+    R.push(row(4, 'Thanh toán lần 4', '5%', D.tts70_d4, lan5p));
+    R.push(row(5, 'Thanh toán lần 5', '5%', D.tts70_d5, lan5p));
+    R.push(row(6, 'Thanh toán lần 6', '5%', D.tts70_d6, lan5p));
+    R.push(row(7, 'Thanh toán lần 7', '5%', D.tts70_d7, lan5p));
+    R.push(row(8, 'Thanh toán lần 8', '5%', D.tts70_d8, lan5p));
+    R.push(row(9, 'Thanh toán lần 9 (Theo TB Bàn Giao Căn Hộ)', '100% KPBT + Thuế của 5%', D.tts70_d9, lanCuoi));
+    R.push(note('5% (Trả lãi TTS 8%/năm từ bàn giao đến khi nhận GCN)', defer));
+
+  } else if(m === 'tts50') {
+    const lan3_35 = Math.round(net * 0.35 * 1.1);
+    R.push(row(1, 'Ký HĐTHNV – Thanh toán lần 1', 'Đặt cọc', D.hdthnv, datCoc));
+    R.push(row(2, 'Thanh toán lần 2', '15%', D.tts_d2, lan2));
+    R.push(row(3, 'Thanh toán lần 3', '35%', D.tts_d2, lan3_35));
+    R.push(ms('Ký HĐMB', D.hdmb));
+    R.push(row(4,  'Thanh toán lần 4',  '5%', D.tts50_d4, lan5p));
+    R.push(row(5,  'Thanh toán lần 5',  '5%', D.tts50_d5, lan5p));
+    R.push(row(6,  'Thanh toán lần 6',  '5%', D.tts50_d6, lan5p));
+    R.push(row(7,  'Thanh toán lần 7',  '5%', D.tts50_d7, lan5p));
+    R.push(ms('Nhận "Bàn giao sử dụng" – Sun Early Key', D.bg));
+    R.push(row(8,  'Thanh toán lần 8',  '5%', D.tts50_d8, lan5p));
+    R.push(row(9,  'Thanh toán lần 9',  '5%', D.tts50_d9, lan5p));
+    R.push(row(10, 'Thanh toán lần 10', '5%', D.tts50_d10, lan5p));
+    R.push(row(11, 'Thanh toán lần 11', '5%', D.tts50_d11, lan5p));
+    R.push(row(12, 'Thanh toán lần 12', '5%', D.tts50_d12, lan5p));
+    R.push(row(13, 'Thanh toán lần 13 (100% KPBT + Thuế của 5%)', '100% KPBT+Thuế', D.tts50_d13, lanCuoi));
+    R.push(note('5% (Trả lãi TTS 10%/năm từ bàn giao đến khi nhận GCN)', defer));
   }
-  const ckBLNH_val = giaTruocCK * ckBLNH_rate;
-
-  // CK KH thân thiết (căn thứ 2, HĐMB)
-  let ckCT2_rate = 0, ckCT2_status = 'Chưa kích hoạt';
-  if(state.canthu2==='yes') {
-    ckCT2_rate = RANK_RATES[state.rank] || 0.01;
-    ckCT2_status = 'Đã kích hoạt';
-  }
-  const ckCT2_val = giaTruocCK * ckCT2_rate;
-
-  // Tổng CK
-  const tongCK = ckEB_val + ckTC_val + ckTTS_val + ckBLNH_val + ckCT2_val;
-  const giaAfterCK = giaTruocCK - tongCK;
-  const vatVal = giaAfterCK * VAT;
-  const kpbtVal = giaAfterCK * KPBT;
-  const tongGia = giaAfterCK + vatVal + kpbtVal;
-
-  // Lãi TTS (5% cuối, lãi 8%/năm trừ TTS50 là 10%/năm)
-  const laiPct = m==='tts50' ? 0.10 : 0.08;
-  const gia5pct_truocThue = giaTruocCK * 0.05;
-
-  return {
-    giaNiemYet, datCoc, giaTruocCK,
-    ckEB_rate, ckEB_val, earlyBird,
-    ckTC_rate, ckTC_val, ckTC_label,
-    ckTTS_rate, ckTTS_val, ckTTS_label, ckTTS_pct,
-    ckBLNH_rate, ckBLNH_val, ckBLNH_status,
-    ckCT2_rate, ckCT2_val, ckCT2_status,
-    tongCK, giaAfterCK, vatVal, kpbtVal, tongGia,
-    laiPct, gia5pct_truocThue, loai
-  };
+  return R;
 }
 
-// ─── SCHEDULE ───
-function buildSchedule(c, datCoc) {
-  const m = state.method;
-  const g = c.tongGia;
-  const g_net = c.giaAfterCK; // sau CK, chưa thuế/KPBT
+// ── GENERATE ──
+function gen() {
+  const c = calc();
+  const { NY, gtck, ckEB, ckTC, tc_rate, ckTTS, tts_rate, tts_lbl,
+          netHDTHNV, blnh_rate, ckBLNH, ct2_rate, ckCT2, net, VAT, KPBT, tong, datCoc, m } = c;
 
-  // các mốc ngày (dựa theo Excel: 46127=HĐTHNV, 46295=HĐMB, 46843=bàn giao)
-  const dHDTHNV = excelDateToStr(46127);
-  const dHDMB   = excelDateToStr(46295);
-  const dBG     = excelDateToStr(46843);
+  const tenKH   = document.getElementById('tenKH').value || '(Chưa điền)';
+  const toa     = document.getElementById('toa').value;
+  const tang    = document.getElementById('tang').value;
+  const can     = String(document.getElementById('can').value).padStart(2,'0');
+  const loai    = document.getElementById('loai').value;
+  const dt      = document.getElementById('dt').value;
+  const maCanHo = document.getElementById('ma').value;
 
-  // 5% cuối
-  const pct5_vat = g_net * 0.05 * 0.10;
-  const pct5_kpbt = g_net * 0.05 * 0.02;
-  const pct5_base = g_net * 0.05;
-  const lan_cuoi_val = pct5_base * 0.10 + pct5_base * 0.02; // 100% KPBT+Thuế của 5%
-  const lai5pct = g_net * 0.05 * c.laiPct; // lãi TTS
+  const sched   = buildSchedule(c);
+  // Tổng giá trị thanh toán = Tổng giá trị khách hàng phải thanh toán (= net * 1.12)
+  // Bao gồm cả phần 5% trả sau (lãi TTS), nên dùng c.tong thay vì cộng từng dòng
+  const tongTT  = tong;
 
-  // Phần gốc không gồm 5% cuối
-  const g_minus5pct = g - pct5_base*(1+0.10+0.02);
+  // ── Policy rows ──
+  const policyRows = [];
 
-  let rows = [];
+  // Row 8: Gia niem yet
+  policyRows.push(`<tr><td class="stt">8</td><td colspan="4">Tổng giá bán căn hộ (đã VAT & KPBT) trước chiết khấu – <em>Giá niêm yết</em></td><td><strong>${VND(NY)}</strong></td></tr>`);
+  // Row 9: Gia truoc CK
+  policyRows.push(`<tr><td class="stt">9</td><td colspan="4">Tổng giá bán căn hộ (chưa VAT & KPBT) trước chiết khấu</td><td>${VND(gtck)}</td></tr>`);
 
-  if(m==='ko_vay') {
-    // 18 đợt thanh toán theo tiến độ chuẩn
-    // Đợt 1: đặt cọc
-    // Đợt 2: 15%
-    // Đợt 3-18: mỗi đợt 5%, tổng 80%, sau đó lần 19 là 5% cuối
-    const base = g_minus5pct - datCoc;
-    const pct15 = (base * 0.15/0.80);
-    const pct5each = (base * 0.05/0.80);
+  // Row 10: Early Bird
+  const eb_status = S.eb==='yes' ? '<span class="ok">Được áp dụng</span>' : '<span class="no">Không áp dụng</span>';
+  policyRows.push(`<tr><td class="stt">10</td><td>Chiết khấu Early Bird<br><small style="color:var(--muted)">Có thời hạn</small></td><td>${eb_status}</td><td><span class="tbadge t-hdthnv">HĐTHNV</span></td><td>${PCT(0.05)}</td><td>${ckEB ? VND(ckEB) : '–'}</td></tr>`);
 
-    rows.push({stt:1, label:'Ký HĐTHNV – Thanh toán lần 1', pct:'Đặt cọc', date:dHDTHNV, val:datCoc});
-    rows.push({stt:2, label:'Thanh toán lần 2', pct:'15%', date:excelDateToStr(46141), val:pct15});
-    rows.push({stt:'', label:'Ký HĐMB', pct:'Dự kiến', date:dHDMB, val:null, milestone:true});
-    for(let i=3;i<=18;i++){
-      const ds = [46216,46291,46351,46411,46471,46531,46591,46651,46711,46771,46831,46951,47071,47191,47311,47431];
-      rows.push({stt:i, label:`Thanh toán lần ${i}`, pct:'5%', date:excelDateToStr(ds[i-3]), val:pct5each});
-    }
-    rows.push({stt:'', label:'Nhận "Bàn giao sử dụng" – Sun Early Key', pct:'Dự kiến', date:dBG, val:null, milestone:true});
-    rows.push({stt:19, label:'Thanh toán lần 19 (Theo TB Bàn Giao Căn Hộ chính thức)', pct:'100% KPBT + Thuế của 5%', date:excelDateToStr(47573), val:lan_cuoi_val});
-    rows.push({stt:'', label:'5% (Trả lãi TTS 8%/năm từ bàn giao đến khi nhận GCN)', pct:'', date:'', val:lai5pct, note:true});
+  // Row 11: CS tai chinh
+  const tc_lbl = m==='co_vay' ? 'Vay' : 'Không Vay';
+  const tc_status = tc_rate>0 ? `<span class="ok">${tc_lbl}</span>` : `<span class="no">${tc_lbl}</span>`;
+  policyRows.push(`<tr><td class="stt">11</td><td>Chính sách tài chính (Vay / Không vay)</td><td>${tc_status}</td><td><span class="tbadge t-hdthnv">HĐTHNV</span></td><td>${PCT(tc_rate)}</td><td>${ckTC ? VND(ckTC) : '–'}</td></tr>`);
 
-  } else if(m==='co_vay') {
-    const base = g_minus5pct - datCoc;
-    const pct15 = base * 0.15/0.85;
-    const pct5each = base * 0.05/0.85;
-    const nh70 = g * 0.70;
-
-    rows.push({stt:1, label:'Ký HĐTHNV – Thanh toán lần 1', pct:'Đặt cọc', date:dHDTHNV, val:datCoc});
-    rows.push({stt:2, label:'Thanh toán lần 2', pct:'15%', date:excelDateToStr(46141), val:pct15});
-    rows.push({stt:3, label:'Thanh toán lần 3', pct:'5%', date:excelDateToStr(46216), val:pct5each});
-    rows.push({stt:4, label:'Thanh toán lần 4', pct:'5%', date:excelDateToStr(46291), val:pct5each});
-    rows.push({stt:'', label:'Ký HĐMB', pct:'Dự kiến', date:dHDMB, val:null, milestone:true});
-    rows.push({stt:5, label:'Thanh toán lần 5 – Ngân hàng giải ngân', pct:'70%', date:excelDateToStr(46309), val:nh70});
-    rows.push({stt:6, label:'Thanh toán lần 6 (Theo TB Bàn Giao Căn Hộ)', pct:'100% KPBT + Thuế của 5%', date:dBG, val:lan_cuoi_val});
-    rows.push({stt:'', label:'5% (Trả lãi TTS 8%/năm từ bàn giao đến khi nhận GCN)', pct:'', date:'', val:lai5pct, note:true});
-
-  } else if(m==='tts95') {
-    const remain = g_minus5pct - datCoc;
-    const pct15 = remain * 0.15/0.95;
-    const pct80 = remain * 0.80/0.95;
-    rows.push({stt:1, label:'Ký HĐTHNV – Thanh toán lần 1', pct:'Đặt cọc', date:dHDTHNV, val:datCoc});
-    rows.push({stt:2, label:'Thanh toán lần 2', pct:'15%', date:excelDateToStr(46137), val:pct15});
-    rows.push({stt:3, label:'Thanh toán lần 3', pct:'80%', date:excelDateToStr(46137), val:pct80});
-    rows.push({stt:'', label:'Ký HĐMB', pct:'Dự kiến', date:dHDMB, val:null, milestone:true});
-    rows.push({stt:4, label:'Thanh toán lần 4 (Theo TB Bàn Giao Căn Hộ)', pct:'100% KPBT + Thuế của 5%', date:dBG, val:lan_cuoi_val});
-    rows.push({stt:'', label:'5% (Trả lãi TTS 8%/năm từ bàn giao đến khi nhận GCN)', pct:'', date:'', val:lai5pct, note:true});
-
-  } else if(m==='tts70') {
-    const remain = g_minus5pct - datCoc;
-    const pct15 = remain * 0.15/0.70;
-    const pct55 = remain * 0.55/0.70;
-    rows.push({stt:1, label:'Ký HĐTHNV – Thanh toán lần 1', pct:'Đặt cọc', date:dHDTHNV, val:datCoc});
-    rows.push({stt:2, label:'Thanh toán lần 2', pct:'15%', date:excelDateToStr(46137), val:pct15});
-    rows.push({stt:3, label:'Thanh toán lần 3', pct:'55%', date:excelDateToStr(46137), val:pct55});
-    rows.push({stt:'', label:'Ký HĐMB', pct:'Dự kiến', date:dHDMB, val:null, milestone:true});
-    rows.push({stt:'', label:'Nhận "Bàn giao sử dụng" – Sun Early Key', pct:'Dự kiến', date:dBG, val:null, milestone:true});
-    const pct5each = remain * 0.05/0.70;
-    for(let i=4;i<=8;i++){
-      const ds=[46951,47071,47191,47311,47431];
-      rows.push({stt:i, label:`Thanh toán lần ${i}`, pct:'5%', date:excelDateToStr(ds[i-4]), val:pct5each});
-    }
-    rows.push({stt:9, label:'Thanh toán lần 9 (Theo TB Bàn Giao Căn Hộ)', pct:'100% KPBT + Thuế của 5%', date:excelDateToStr(47573), val:lan_cuoi_val});
-    rows.push({stt:'', label:'5% (Trả lãi TTS 8%/năm từ bàn giao đến khi nhận GCN)', pct:'', date:'', val:lai5pct, note:true});
-
-  } else if(m==='tts50') {
-    const remain = g_minus5pct - datCoc;
-    const pct15 = remain * 0.15/0.50;
-    const pct35 = remain * 0.35/0.50;
-    rows.push({stt:1, label:'Ký HĐTHNV – Thanh toán lần 1', pct:'Đặt cọc', date:dHDTHNV, val:datCoc});
-    rows.push({stt:2, label:'Thanh toán lần 2', pct:'15%', date:excelDateToStr(46137), val:pct15});
-    rows.push({stt:3, label:'Thanh toán lần 3', pct:'35%', date:excelDateToStr(46137), val:pct35});
-    rows.push({stt:'', label:'Ký HĐMB', pct:'Dự kiến', date:dHDMB, val:null, milestone:true});
-    const pct5each = remain * 0.05/0.50;
-    for(let i=4;i<=12;i++){
-      const ds=[46651,46711,46771,46831,46951,47071,47191,47311,47431];
-      if(i===8){
-        rows.push({stt:'', label:'Nhận "Bàn giao sử dụng" – Sun Early Key', pct:'Dự kiến', date:dBG, val:null, milestone:true});
-      }
-      rows.push({stt:i, label:`Thanh toán lần ${i}`, pct:'5%', date:excelDateToStr(ds[i-4]), val:pct5each});
-    }
-    rows.push({stt:13, label:'Thanh toán lần 13 (100% KPBT + Thuế của 5%)', pct:'100% KPBT+Thuế', date:excelDateToStr(47573), val:lan_cuoi_val});
-    rows.push({stt:'', label:'5% (Trả lãi TTS 10%/năm từ bàn giao đến khi nhận GCN)', pct:'', date:'', val:lai5pct, note:true});
+  // Row 14 (TTS): chỉ hiện nếu có TTS
+  if(tts_rate > 0) {
+    policyRows.push(`<tr><td class="stt">14</td><td>Chiết khấu thanh toán sớm – ${tts_lbl}<br><small style="color:var(--muted)">Căn cứ theo mốc thời gian TT sớm muộn nhất</small></td><td><span class="ok">${tts_lbl}</span></td><td><span class="tbadge t-hdthnv">HĐTHNV</span></td><td>${PCT(tts_rate)}</td><td>${VND(ckTTS)}</td></tr>`);
   }
 
-  return rows;
-}
+  // Row 12: BLNH
+  const blnh_ok = blnh_rate > 0;
+  const blnh_status = blnh_ok ? '<span class="ok">Được áp dụng</span>' : '<span class="no">Không được áp dụng</span>';
+  policyRows.push(`<tr><td class="stt">12</td><td>Chiết khấu từ chối bảo lãnh ngân hàng<br><small style="color:var(--muted)">(áp dụng tại HĐMB)</small></td><td>${blnh_status}</td><td><span class="tbadge t-hdmb">HĐMB</span></td><td>${blnh_rate ? PCT(blnh_rate) : '–'}</td><td>${ckBLNH ? VND(ckBLNH) : '–'}</td></tr>`);
 
-// ─── GENERATE QUOTE ───
-function generateQuote() {
-  const c = calculate();
-  const tenKH = document.getElementById('tenKH').value || '(Chưa điền)';
-  const toa = document.getElementById('toa').value;
-  const tang = document.getElementById('tang').value;
-  const can = document.getElementById('can').value;
-  const maCanHo = document.getElementById('maCanHo').value;
-  const dienTich = document.getElementById('dienTich').value;
-  const loai = document.getElementById('loaiCanHo').value;
-  const m = state.method;
-  const datCoc = parseFloat(document.getElementById('datCoc').value)||100000000;
+  // Row 13: KH than thiet
+  const ct2_ok = ct2_rate > 0;
+  const ct2_status = ct2_ok ? `<span class="ok">Đã kích hoạt – ${S.rank}</span>` : '<span class="no">Chưa kích hoạt</span>';
+  policyRows.push(`<tr><td class="stt">13</td><td>Chiết khấu KH thân thiết (căn mua thứ 2)<br><small style="color:var(--muted)">Hạng thành viên tại HĐMB: ${S.rank}</small></td><td>${ct2_status}</td><td><span class="tbadge t-hdmb">HĐMB</span></td><td>${ct2_rate ? PCT(ct2_rate) : '–'}</td><td>${ckCT2 ? VND(ckCT2) : '–'}</td></tr>`);
 
-  const schedule = buildSchedule(c, datCoc);
-  const tongThanhToan = schedule.filter(r=>r.val && !r.note).reduce((s,r)=>s+r.val,0);
+  // Row: net sau CK
+  const netRowNum = tts_rate > 0 ? 15 : 14;
+  policyRows.push(`<tr class="hl"><td class="stt">${netRowNum}</td><td colspan="4"><strong>Tổng giá bán căn hộ (chưa VAT & KPBT) sau chiết khấu</strong></td><td><strong>${VND(net)}</strong></td></tr>`);
 
-  // Policy rows
-  const policies = [];
-  // Early Bird
-  policies.push({
-    stt:10,
-    label: 'Chiết khấu Early Bird',
-    sub: 'Có thời hạn',
-    status: c.earlyBird ? '<span class="applied">Được áp dụng</span>' : '<span class="not-applied">Không áp dụng</span>',
-    time: '<span class="timing-badge timing-hdthnv">HĐTHNV</span>',
-    rate: c.ckEB_rate ? fmtPct(c.ckEB_rate) : '–',
-    val: c.ckEB_val ? fmt(c.ckEB_val) : '–'
-  });
-  policies.push({
-    stt:11,
-    label: 'Chính sách tài chính (Vay / Không vay)',
-    sub: '',
-    status: `<span class="${c.ckTC_rate>0?'applied':'not-applied'}">${c.ckTC_label}</span>`,
-    time: '<span class="timing-badge timing-hdthnv">HĐTHNV</span>',
-    rate: fmtPct(c.ckTC_rate),
-    val: c.ckTC_val ? fmt(c.ckTC_val) : '–'
-  });
-  if(m==='tts95'||m==='tts70'||m==='tts50') {
-    policies.push({
-      stt:14,
-      label: `Chiết khấu thanh toán sớm ${c.ckTTS_pct*100}%`,
-      sub: c.ckTTS_label,
-      status: `<span class="applied">${c.ckTTS_label}</span>`,
-      time: '<span class="timing-badge timing-hdthnv">HĐTHNV</span>',
-      rate: fmtPct(c.ckTTS_rate),
-      val: fmt(c.ckTTS_val)
-    });
-  }
-  policies.push({
-    stt:12,
-    label: 'Chiết khấu từ chối bảo lãnh ngân hàng',
-    sub: '(áp dụng tại HĐMB)',
-    status: `<span class="${c.ckBLNH_rate>0?'applied':'not-applied'}">${c.ckBLNH_status}</span>`,
-    time: '<span class="timing-badge timing-hdmb">HĐMB</span>',
-    rate: c.ckBLNH_rate ? fmtPct(c.ckBLNH_rate) : '–',
-    val: c.ckBLNH_val ? fmt(c.ckBLNH_val) : '–'
-  });
-  policies.push({
-    stt:13,
-    label: 'Chiết khấu KH thân thiết (căn mua thứ 2)',
-    sub: `Hạng: ${state.rank}`,
-    status: `<span class="${c.ckCT2_rate>0?'applied':'not-applied'}">${c.ckCT2_status}</span>`,
-    time: '<span class="timing-badge timing-hdmb">HĐMB</span>',
-    rate: c.ckCT2_rate ? fmtPct(c.ckCT2_rate) : '–',
-    val: c.ckCT2_val ? fmt(c.ckCT2_val) : '–'
-  });
+  // VAT / KPBT rows
+  const vatRowNum = netRowNum+1, kpbtRowNum = netRowNum+2;
+  policyRows.push(`<tr><td class="stt">${vatRowNum}</td><td colspan="3">Thuế VAT (tạm tính)</td><td style="text-align:right">10%</td><td>${VND(VAT)}</td></tr>`);
+  policyRows.push(`<tr><td class="stt">${kpbtRowNum}</td><td colspan="3">Kinh phí bảo trì (tạm tính)</td><td style="text-align:right">2%</td><td>${VND(KPBT)}</td></tr>`);
 
-  let policyRows = policies.map(p => `
-    <tr>
-      <td class="stt">${p.stt}</td>
-      <td>${p.label}<br><small style="color:var(--muted)">${p.sub}</small></td>
-      <td>${p.status}</td>
-      <td>${p.time}</td>
-      <td>${p.rate}</td>
-      <td>${p.val}</td>
-    </tr>`).join('');
-
-  let scheduleRows = schedule.map(r => {
-    if(r.milestone) return `<tr class="milestone"><td colspan="4">&nbsp;&nbsp;▸ ${r.label} – ${r.date}</td></tr>`;
-    if(r.note) return `<tr class="note-row"><td></td><td colspan="3">${r.label}</td></tr>`;
+  // ── Schedule rows ──
+  const schedRows = sched.map(r => {
+    if(r.ms) return `<tr class="ms"><td colspan="4">&nbsp;▸&nbsp;${r.lbl} &nbsp;–&nbsp; ${FMT_D(r.date)}</td></tr>`;
+    if(r.note) return `<tr class="note-r"><td></td><td colspan="3">${r.lbl} &nbsp;&nbsp; <strong>${VND(r.val)}</strong></td></tr>`;
     return `<tr>
       <td>${r.stt}</td>
-      <td>${r.label}</td>
+      <td>${r.lbl}</td>
       <td>${r.pct}</td>
-      <td>${fmt(r.val)}</td>
+      <td>${FMT_D(r.date)}</td>
+      <td>${VND(r.val)}</td>
     </tr>`;
   }).join('');
 
+  // ── Tong CK ──
+  const tongCK = ckEB + ckTC + ckTTS + ckBLNH + ckCT2;
+
   const html = `
-    <div class="qc-header">
-      <div class="qc-brand">
-        <h2>FOURS TOWER</h2>
-        <p>PHIẾU TÍNH GIÁ (TẠM TÍNH)</p>
-      </div>
-      <div class="qc-type">
-        <div class="method-badge">${m.toUpperCase().replace('_',' ')}</div>
-        <div class="csbh-label">${METHOD_CSBH[m]}</div>
+    <div class="qh">
+      <div class="qh-brand"><h2>FOURS TOWER</h2><p>PHIẾU TÍNH GIÁ (TẠM TÍNH)</p></div>
+      <div class="qh-right">
+        <div class="badge">${m.replace('_',' ').toUpperCase()}</div>
+        <div class="csbh-txt">${M_CSBH[m]}</div>
       </div>
     </div>
 
-    <div class="qc-property">
-      <div class="qc-prop-item"><div class="plabel">Khách hàng</div><div class="pval">${tenKH}</div></div>
-      <div class="qc-prop-item"><div class="plabel">Mã căn hộ</div><div class="pval">${maCanHo}</div></div>
-      <div class="qc-prop-item"><div class="plabel">Tòa / Tầng / Căn</div><div class="pval">${toa} – Tầng ${tang} – Căn ${can.padStart(2,'0')}</div></div>
-      <div class="qc-prop-item"><div class="plabel">Loại hình</div><div class="pval">${loai}</div></div>
-      <div class="qc-prop-item"><div class="plabel">Diện tích TT</div><div class="pval">${dienTich} m²</div></div>
+    <div class="qprop">
+      <div class="qpi"><div class="pl">Khách hàng</div><div class="pv">${tenKH}</div></div>
+      <div class="qpi"><div class="pl">Mã căn hộ</div><div class="pv">${maCanHo}</div></div>
+      <div class="qpi"><div class="pl">Tòa / Tầng / Căn</div><div class="pv">${toa} – Tầng ${tang} – Căn ${can}</div></div>
+      <div class="qpi"><div class="pl">Loại hình</div><div class="pv">${loai}</div></div>
+      <div class="qpi"><div class="pl">Diện tích TT</div><div class="pv">${dt} m²</div></div>
+      <div class="qpi"><div class="pl">Ngày ký HĐTHNV</div><div class="pv">${FMT_D(D.hdthnv)}</div></div>
+      <div class="qpi"><div class="pl">Ngày ký HĐMB dự kiến</div><div class="pv">${FMT_D(D.hdmb)}</div></div>
+      <div class="qpi"><div class="pl">Ngày bàn giao dự kiến</div><div class="pv">${FMT_D(D.bg)}</div></div>
     </div>
 
-    <div class="qc-body">
-      <table class="policy-table">
+    <div class="qbody">
+
+      <table class="ptbl">
         <thead>
           <tr>
             <th>STT</th>
             <th>Thông tin giá & chính sách</th>
             <th>Trạng thái</th>
-            <th>Thời điểm áp dụng</th>
+            <th>Thời điểm</th>
             <th>Mức CK</th>
             <th>Giá trị</th>
           </tr>
         </thead>
-        <tbody>
-          <tr>
-            <td class="stt">8</td>
-            <td colspan="4">Tổng giá bán căn hộ (đã gồm VAT & KPBT) trước CK – <em>Giá niêm yết</em></td>
-            <td><strong>${fmt(c.giaNiemYet)}</strong></td>
-          </tr>
-          <tr>
-            <td class="stt">9</td>
-            <td colspan="4">Tổng giá bán căn hộ (chưa gồm VAT & KPBT) trước CK</td>
-            <td>${fmt(c.giaTruocCK)}</td>
-          </tr>
-          ${policyRows}
-          <tr class="highlight-row">
-            <td class="stt">${m==='ko_vay'||m==='co_vay'?14:15}</td>
-            <td colspan="4"><strong>Tổng giá bán căn hộ (chưa gồm VAT & KPBT) sau chiết khấu</strong></td>
-            <td><strong>${fmt(c.giaAfterCK)}</strong></td>
-          </tr>
-          <tr>
-            <td class="stt">${m==='ko_vay'||m==='co_vay'?15:16}</td>
-            <td colspan="3">Thuế VAT (tạm tính)</td>
-            <td>10%</td>
-            <td>${fmt(c.vatVal)}</td>
-          </tr>
-          <tr>
-            <td class="stt">${m==='ko_vay'||m==='co_vay'?16:17}</td>
-            <td colspan="3">Kinh phí bảo trì (tạm tính)</td>
-            <td>2%</td>
-            <td>${fmt(c.kpbtVal)}</td>
-          </tr>
-        </tbody>
+        <tbody>${policyRows.join('')}</tbody>
       </table>
 
-      <div class="price-summary">
-        <div class="ps-row">
-          <span class="ps-label">Giá niêm yết (đã VAT + KPBT)</span>
-          <span class="ps-val">${fmt(c.giaNiemYet)}</span>
-        </div>
-        <div class="ps-row deduct">
-          <span class="ps-label">– Tổng chiết khấu (chưa VAT)</span>
-          <span class="ps-val">– ${fmt(c.tongCK)}</span>
-        </div>
-        <div class="ps-row separator">
-          <span class="ps-label">Giá sau CK (chưa VAT + KPBT)</span>
-          <span class="ps-val">${fmt(c.giaAfterCK)}</span>
-        </div>
-        <div class="ps-row">
-          <span class="ps-label">+ VAT 10%</span>
-          <span class="ps-val">${fmt(c.vatVal)}</span>
-        </div>
-        <div class="ps-row">
-          <span class="ps-label">+ KPBT 2%</span>
-          <span class="ps-val">${fmt(c.kpbtVal)}</span>
-        </div>
-        <div class="ps-row total">
-          <span class="ps-label">TỔNG GIÁ TRỊ KHÁCH HÀNG PHẢI THANH TOÁN</span>
-          <span class="ps-val">${fmt(c.tongGia)}</span>
-        </div>
+      <div class="psum">
+        <div class="pr"><span class="lbl">Giá niêm yết (đã VAT + KPBT)</span><span class="val">${VND(NY)}</span></div>
+        <div class="pr"><span class="lbl">Giá trước chiết khấu (chưa VAT & KPBT)</span><span class="val">${VND(gtck)}</span></div>
+        ${tongCK ? `<div class="pr ded"><span class="lbl">– Tổng chiết khấu (chưa VAT)</span><span class="val">− ${VND(tongCK)}</span></div>` : ''}
+        <div class="pr sep"><span class="lbl">Giá sau CK (chưa VAT & KPBT)</span><span class="val">${VND(net)}</span></div>
+        <div class="pr"><span class="lbl">+ VAT 10%</span><span class="val">${VND(VAT)}</span></div>
+        <div class="pr"><span class="lbl">+ KPBT 2%</span><span class="val">${VND(KPBT)}</span></div>
+        <div class="pr tot"><span class="lbl">TỔNG GIÁ TRỊ KHÁCH HÀNG PHẢI THANH TOÁN</span><span class="val">${VND(tong)}</span></div>
       </div>
 
-      <div class="schedule-title">Tiến độ thanh toán</div>
-      <table class="schedule-table">
+      <div class="stit">Tiến độ thanh toán</div>
+      <table class="stbl">
         <thead>
           <tr>
             <th style="width:36px">STT</th>
             <th>Tiến độ thanh toán</th>
-            <th style="width:90px">% TT</th>
+            <th style="width:80px">% TT</th>
+            <th style="width:110px">Ngày</th>
             <th style="width:140px">Số tiền</th>
           </tr>
         </thead>
-        <tbody>${scheduleRows}</tbody>
+        <tbody>${schedRows}</tbody>
         <tfoot>
           <tr>
-            <td colspan="3">TỔNG GIÁ TRỊ THANH TOÁN</td>
-            <td>${fmt(tongThanhToan)}</td>
+            <td colspan="4">TỔNG GIÁ TRỊ THANH TOÁN</td>
+            <td>${VND(tongTT)}</td>
           </tr>
         </tfoot>
       </table>
     </div>
 
-    <div class="disclaimer-note">
-      * Phiếu tính giá này chỉ mang tính chất tạm tính, các giá trị có thể thay đổi tại thời điểm ký kết hợp đồng chính thức.<br>
-      * Lãi suất TTS 8%/năm (10%/năm đối với TTS 50%) tính từ ngày bàn giao sử dụng đến khi nhận Giấy Chứng Nhận (GCN).<br>
-      * Chiết khấu BLNH và KH thân thiết áp dụng tại thời điểm ký HĐMB.
+    <div class="qnote">
+      * Phiếu tính giá chỉ mang tính tạm tính, có thể thay đổi tại thời điểm ký kết hợp đồng chính thức.<br>
+      * Lãi suất TTS: 8%/năm (riêng TTS 50% là 10%/năm), tính từ ngày bàn giao đến khi nhận GCN.<br>
+      * Chiết khấu BLNH và KH thân thiết (căn thứ 2) áp dụng tại thời điểm ký HĐMB.<br>
+      * VAT & KPBT trong tiến độ: các đợt thanh toán gồm phần gốc + 10% VAT (trừ đợt cuối tách riêng KPBT+thuế 5%).
     </div>
 
-    <div class="qc-footer">
-      <p>FOURS TOWER – PHIẾU TÍNH GIÁ (TẠM TÍNH) · ${new Date().toLocaleDateString('vi-VN')}</p>
-      <p class="qc-disclaimer">Chỉ được điều chỉnh tại ô màu vàng</p>
+    <div class="qfooter">
+      <p>FOURS TOWER – PHIẾU TÍNH GIÁ (TẠM TÍNH) · In ngày ${new Date().toLocaleDateString('vi-VN')}</p>
+      <p>Chỉ được điều chỉnh tại ô màu vàng</p>
     </div>
   `;
 
-  document.getElementById('quotePlaceholder').style.display = 'none';
-  const card = document.getElementById('quoteCard');
-  card.innerHTML = html;
-  card.classList.add('visible');
-  card.scrollIntoView({behavior:'smooth', block:'start'});
+  document.getElementById('ph').style.display = 'none';
+  const qc = document.getElementById('qc');
+  qc.innerHTML = html;
+  qc.className = 'qcard show';
+  qc.scrollIntoView({ behavior:'smooth', block:'start' });
 }
-
-// init toggle
-setToggle('blnh','yes');
-setToggle('canthu2','no');
 </script>
 </body>
 </html>
