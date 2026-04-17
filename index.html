@@ -4,822 +4,567 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>FOURS TOWER – Phiếu Tính Giá</title>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --gold: #B8953F;
-    --gold-light: #D4AF5C;
-    --gold-pale: #F5EDD6;
-    --dark: #1A1611;
-    --mid: #3A322A;
-    --text: #2E2820;
-    --muted: #7A6E62;
-    --line: #DDD0BB;
-    --bg: #FAF7F2;
-    --white: #FFFFFF;
-    --red: #B33A3A;
-    --green: #2E6B3E;
-  }
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); font-size: 14px; min-height: 100vh; }
+:root{
+  --gold:#A8832A;--gold-lt:#C9A84C;--gold-pale:#F7F0E0;--gold-rule:#D4B86A;
+  --dark:#13110E;--ink:#1E1B16;--body:#333028;--muted:#7A7060;
+  --line:#E2D9C8;--bg:#F9F6F0;--white:#FFFFFF;
+  --red:#A0362A;--green:#2A6040;
+  --serif:'Playfair Display',Georgia,serif;
+  --sans:'IBM Plex Sans',sans-serif;
+  --mono:'IBM Plex Mono',monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:var(--sans);background:var(--bg);color:var(--body);font-size:13.5px;min-height:100vh;}
 
-  /* HEADER */
-  .site-header { background: var(--dark); padding: 16px 40px; display: flex; align-items: center; gap: 16px; }
-  .logo-mark { width: 40px; height: 40px; border: 1.5px solid var(--gold); display: flex; align-items: center; justify-content: center; font-family: 'Cormorant Garamond', serif; font-size: 18px; color: var(--gold); }
-  .brand h1 { font-family: 'Cormorant Garamond', serif; font-size: 21px; font-weight: 300; letter-spacing: 3px; color: var(--white); }
-  .brand p { font-size: 10px; letter-spacing: 2px; color: var(--gold); text-transform: uppercase; margin-top: 1px; }
+/* ── APP SHELL ── */
+.shell-hdr{background:var(--dark);padding:13px 36px;display:flex;align-items:center;gap:14px;border-bottom:2px solid var(--gold);}
+.shell-hdr img{height:34px;object-fit:contain;filter:brightness(0) invert(1);}
+.shell-hdr .sdiv{width:1px;height:26px;background:rgba(255,255,255,.15);margin:0 4px;}
+.shell-hdr .ssub{color:rgba(255,255,255,.4);font-size:10px;letter-spacing:2px;text-transform:uppercase;}
 
-  /* LAYOUT */
-  .main-wrap { max-width: 1120px; margin: 0 auto; padding: 36px 20px; display: grid; grid-template-columns: 370px 1fr; gap: 28px; }
+.app{max-width:1180px;margin:0 auto;padding:30px 20px;display:grid;grid-template-columns:352px 1fr;gap:26px;}
 
-  /* FORM PANEL */
-  .form-panel { background: var(--white); border: 1px solid var(--line); border-top: 3px solid var(--gold); padding: 28px 24px; align-self: start; position: sticky; top: 16px; }
-  .panel-title { font-family: 'Cormorant Garamond', serif; font-size: 19px; color: var(--dark); letter-spacing: 1px; }
-  .panel-sub { font-size: 11px; color: var(--muted); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 22px; margin-top: 2px; }
+/* ── FORM ── */
+.fp{background:var(--white);border:1px solid var(--line);border-top:3px solid var(--gold);padding:24px 20px;align-self:start;position:sticky;top:14px;}
+.fp-t{font-family:var(--serif);font-size:17px;color:var(--ink);}
+.fp-s{font-size:9.5px;color:var(--muted);letter-spacing:1.5px;text-transform:uppercase;margin-top:2px;margin-bottom:18px;}
+.sl{font-size:9px;font-weight:600;text-transform:uppercase;letter-spacing:1.8px;color:var(--gold);margin:16px 0 8px;display:flex;align-items:center;gap:7px;}
+.sl::after{content:'';flex:1;height:1px;background:var(--gold-pale);}
+.fi{margin-bottom:9px;}
+.fi label{display:block;font-size:10px;color:var(--muted);margin-bottom:3px;}
+.fi input,.fi select{width:100%;padding:7px 9px;border:1px solid var(--line);background:var(--bg);font-family:var(--sans);font-size:12px;color:var(--ink);outline:none;transition:border-color .15s;-webkit-appearance:none;}
+.fi select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath fill='%237A7060' d='M5 6L0 0h10z'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 9px center;padding-right:24px;}
+.fi input:focus,.fi select:focus{border-color:var(--gold);}
+.fi input[readonly]{background:#F0EBE0;color:var(--muted);cursor:default;}
+.r2{display:grid;grid-template-columns:1fr 1fr;gap:7px;}
+.tr{display:flex;gap:5px;margin-bottom:9px;}
+.tb{flex:1;padding:7px 4px;border:1px solid var(--line);background:var(--bg);font-family:var(--sans);font-size:10.5px;color:var(--muted);cursor:pointer;text-align:center;transition:all .12s;}
+.tb.on{background:var(--ink);border-color:var(--ink);color:var(--white);}
+.rr{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:9px;}
+.rb{padding:4px 7px;border:1px solid var(--line);background:var(--bg);font-size:10px;cursor:pointer;color:var(--muted);transition:all .12s;}
+.rb .rp{display:block;font-size:8.5px;color:var(--muted);margin-top:1px;}
+.rb.on{background:var(--gold);border-color:var(--gold);color:var(--white);}
+.rb.on .rp{color:rgba(255,255,255,.7);}
+.sf{margin-bottom:9px;padding:7px 9px;background:var(--gold-pale);border-left:2px solid var(--gold-rule);}
+.sf label{font-size:10px;color:var(--muted);display:block;margin-bottom:3px;}
+.sf-r{display:flex;align-items:center;gap:6px;}
+.sf input{width:65px;padding:5px 7px;border:1px solid var(--line);background:var(--white);font-family:var(--sans);font-size:12px;color:var(--ink);outline:none;}
+.sf input:focus{border-color:var(--gold);}
+.sf span{font-size:11px;color:var(--muted);}
+.mts{display:flex;flex-direction:column;gap:4px;margin-bottom:9px;}
+.mt{display:flex;align-items:center;gap:8px;padding:7px 9px;border:1px solid var(--line);background:var(--bg);cursor:pointer;transition:all .12s;}
+.mt:hover{border-color:var(--gold-lt);}
+.mt.on{border-color:var(--gold);background:var(--gold-pale);}
+.rd{width:11px;height:11px;border-radius:50%;border:2px solid var(--line);flex-shrink:0;transition:all .12s;}
+.mt.on .rd{border-color:var(--gold);background:var(--gold);}
+.mn{font-size:11px;font-weight:500;color:var(--ink);}
+.mc{font-size:9.5px;color:var(--muted);margin-top:1px;}
+.bok{width:100%;padding:11px;background:var(--ink);color:var(--white);border:none;cursor:pointer;font-family:var(--sans);font-size:10.5px;font-weight:500;letter-spacing:2px;text-transform:uppercase;margin-top:18px;transition:background .15s;}
+.bok:hover{background:var(--gold);}
 
-  .sec { font-size: 10px; font-weight: 500; text-transform: uppercase; letter-spacing: 1.5px; color: var(--gold); margin: 20px 0 10px; display: flex; align-items: center; gap: 8px; }
-  .sec::after { content: ''; flex: 1; height: 1px; background: var(--gold-pale); }
+/* ── OUTPUT PANEL ── */
+.qp{align-self:start;}
+.ph{border:1.5px dashed var(--line);padding:60px 40px;text-align:center;color:var(--muted);}
+.ph .ico{font-size:24px;opacity:.2;margin-bottom:9px;}
+.ph p{font-size:12px;line-height:1.7;}
 
-  .field { margin-bottom: 12px; }
-  .field label { display: block; font-size: 11px; color: var(--muted); margin-bottom: 4px; }
-  .field input, .field select { width: 100%; padding: 8px 11px; border: 1px solid var(--line); background: var(--bg); font-family: 'DM Sans', sans-serif; font-size: 13px; color: var(--text); outline: none; transition: border-color .2s; appearance: none; }
-  .field select { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='7' viewBox='0 0 10 7'%3E%3Cpath fill='%237A6E62' d='M5 7L0 0h10z'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 11px center; padding-right: 28px; }
-  .field input:focus, .field select:focus { border-color: var(--gold); }
-  .field input[readonly] { background: #F0EBE2; color: var(--muted); cursor: default; }
-  .row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+/* export bar */
+.ebar{display:none;align-items:center;gap:10px;margin-bottom:11px;padding:9px 13px;background:var(--white);border:1px solid var(--line);}
+.ebar .ef{font-size:11px;color:var(--ink);flex:1;font-family:var(--mono);}
+.bexp{padding:8px 16px;background:var(--ink);color:var(--white);border:none;cursor:pointer;font-family:var(--sans);font-size:10px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;transition:background .15s;white-space:nowrap;}
+.bexp:hover{background:var(--gold);}
+.bexp:disabled{opacity:.5;cursor:default;}
 
-  .toggle-row { display: flex; gap: 6px; margin-bottom: 12px; }
-  .tog { flex: 1; padding: 8px 4px; border: 1px solid var(--line); background: var(--bg); font-family: 'DM Sans', sans-serif; font-size: 12px; color: var(--muted); cursor: pointer; text-align: center; transition: all .15s; }
-  .tog.on { background: var(--dark); border-color: var(--dark); color: var(--white); }
+/* ══ DOCUMENT #doc ══ A4 = 794px ══ */
+#doc{width:794px;background:var(--white);display:none;font-family:var(--sans);color:var(--ink);}
+#doc.rdy{display:block;}
 
-  .rank-row { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 12px; }
-  .rank-btn { padding: 5px 9px; border: 1px solid var(--line); background: var(--bg); font-size: 11px; cursor: pointer; color: var(--muted); transition: all .15s; }
-  .rank-btn.on { background: var(--gold); border-color: var(--gold); color: var(--white); font-weight: 500; }
+/* doc header */
+.dh{padding:24px 32px 18px;display:flex;justify-content:space-between;align-items:flex-start;border-bottom:3px solid var(--dark);}
+.dh-logo img{height:42px;object-fit:contain;}
+.dh-logo .tag{font-size:8px;letter-spacing:2.5px;text-transform:uppercase;color:var(--muted);margin-top:5px;}
+.dh-right{text-align:right;}
+.dh-pill{display:inline-block;background:var(--dark);color:var(--white);font-size:8.5px;letter-spacing:2px;text-transform:uppercase;padding:3px 11px;margin-bottom:4px;}
+.dh-title{font-family:var(--serif);font-size:17px;color:var(--ink);display:block;letter-spacing:.5px;}
+.dh-sub{font-size:8.5px;color:var(--muted);letter-spacing:.8px;text-transform:uppercase;display:block;margin-top:3px;}
 
-  .sub-field { margin-bottom: 12px; padding-left: 12px; border-left: 2px solid var(--gold-pale); }
-  .sub-field label { font-size: 11px; color: var(--muted); display: block; margin-bottom: 4px; }
-  .sub-field input { width: 80px; padding: 6px 10px; border: 1px solid var(--line); background: var(--bg); font-family: 'DM Sans', sans-serif; font-size: 13px; color: var(--text); outline: none; }
-  .sub-field input:focus { border-color: var(--gold); }
-  .sub-field span { font-size: 12px; color: var(--muted); margin-left: 4px; }
+/* gold rule */
+.gr{height:2px;background:linear-gradient(90deg,var(--gold) 0%,var(--gold-lt) 50%,var(--gold) 100%);}
 
-  .method-tabs { display: flex; flex-direction: column; gap: 5px; margin-bottom: 12px; }
-  .mtab { display: flex; align-items: center; gap: 10px; padding: 9px 11px; border: 1px solid var(--line); background: var(--bg); cursor: pointer; transition: all .15s; }
-  .mtab:hover { border-color: var(--gold-light); }
-  .mtab.on { border-color: var(--gold); background: var(--gold-pale); }
-  .rdot { width: 13px; height: 13px; border-radius: 50%; border: 2px solid var(--line); flex-shrink: 0; transition: all .15s; }
-  .mtab.on .rdot { border-color: var(--gold); background: var(--gold); }
-  .mname { font-size: 12px; font-weight: 500; color: var(--text); }
-  .mck { font-size: 11px; color: var(--muted); margin-top: 1px; }
-  .mtab.on .mname { color: var(--mid); }
+/* prop strip */
+.ps{background:var(--dark);padding:12px 32px;display:flex;gap:0;}
+.pi{flex:1;padding-right:16px;}
+.pi:last-child{padding-right:0;}
+.pi .pl{font-size:7.5px;color:rgba(255,255,255,.4);text-transform:uppercase;letter-spacing:1.5px;}
+.pi .pv{font-size:11.5px;color:var(--white);font-weight:500;margin-top:3px;}
 
-  .btn-ok { width: 100%; padding: 13px; background: var(--dark); color: var(--white); border: none; cursor: pointer; font-family: 'DM Sans', sans-serif; font-size: 12px; letter-spacing: 2px; text-transform: uppercase; margin-top: 22px; transition: background .2s; }
-  .btn-ok:hover { background: var(--gold); }
+/* section header */
+.sh{padding:8px 32px 6px;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:9px;margin-top:0;}
+.sh-n{width:18px;height:18px;background:var(--gold);display:flex;align-items:center;justify-content:center;font-size:8.5px;font-weight:600;color:var(--white);flex-shrink:0;}
+.sh-t{font-family:var(--serif);font-size:12.5px;color:var(--ink);font-weight:400;}
+.sh-r{flex:1;height:1px;background:var(--line);}
 
-  /* QUOTE */
-  .quote-panel { align-self: start; }
-  .placeholder { border: 1px dashed var(--line); padding: 70px 40px; text-align: center; color: var(--muted); }
-  .placeholder .ico { font-size: 32px; margin-bottom: 10px; opacity: .3; }
-  .placeholder p { font-size: 13px; }
+/* policy table */
+.wp{padding:6px 32px 4px;}
+.pt{width:100%;border-collapse:collapse;}
+.pt thead tr{border-bottom:1.5px solid var(--gold-rule);}
+.pt thead th{padding:6px 5px 5px;font-size:8px;text-transform:uppercase;letter-spacing:1.2px;color:var(--gold);font-weight:600;text-align:left;}
+.pt thead th.ar{text-align:right;}
+.pt tbody tr{border-bottom:1px solid var(--line);}
+.pt tbody td{padding:6px 5px;font-size:11px;vertical-align:middle;}
+.pt tbody td.ar{text-align:right;font-family:var(--mono);font-size:10.5px;}
+.pt td.sn{color:var(--muted);font-size:9.5px;width:18px;}
+.ok{color:var(--green);font-size:9.5px;font-weight:600;}
+.no{color:var(--muted);font-size:9.5px;}
+.hlr td{background:#FDFAF3;}
+.hlr td:first-child{border-left:3px solid var(--gold);}
+.tbg{display:inline-block;padding:2px 6px;font-size:8px;border:1px solid;letter-spacing:.5px;font-weight:500;}
+.th{color:#2A4A6A;border-color:#6A9ABE;background:#EAF1F8;}
+.tm{color:#7A5010;border-color:#C8A050;background:#FBF3E4;}
 
-  .qcard { background: var(--white); border: 1px solid var(--line); display: none; }
-  .qcard.show { display: block; animation: fi .35s ease; }
-  @keyframes fi { from { opacity:0; transform:translateY(6px); } to { opacity:1; transform:translateY(0); } }
+/* price box */
+.wp2{padding:12px 32px;}
+.pb{display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--line);}
+.pb-l{padding:16px 18px;border-right:1px solid var(--line);}
+.pb-r{padding:16px 18px;background:var(--dark);display:flex;flex-direction:column;justify-content:center;}
+.pbl{font-size:8px;text-transform:uppercase;letter-spacing:1.5px;color:var(--muted);margin-bottom:10px;}
+.pbr-lbl{font-size:8px;text-transform:uppercase;letter-spacing:1.5px;color:rgba(255,255,255,.4);margin-bottom:10px;}
+.pr{display:flex;justify-content:space-between;align-items:baseline;padding:2.5px 0;}
+.pr .rl{font-size:10.5px;color:var(--body);}
+.pr .rv{font-size:10.5px;color:var(--body);font-family:var(--mono);}
+.pr.ded .rv{color:var(--red);}
+.pr.ded .rl{color:var(--muted);}
+.pr.sep{border-top:1px solid var(--line);margin-top:4px;padding-top:7px;}
+.tot-lbl{font-size:9px;text-transform:uppercase;letter-spacing:1px;color:rgba(255,255,255,.5);margin-bottom:4px;}
+.tot-val{font-family:var(--serif);font-size:20px;color:var(--gold-lt);line-height:1.2;word-break:break-all;}
+.tot-sub{font-size:8.5px;color:rgba(255,255,255,.4);margin-top:8px;line-height:1.7;}
 
-  /* Quote header */
-  .qh { background: var(--dark); padding: 22px 26px; display: flex; justify-content: space-between; align-items: flex-end; }
-  .qh-brand h2 { font-family: 'Cormorant Garamond', serif; font-size: 21px; font-weight: 300; letter-spacing: 3px; color: var(--white); }
-  .qh-brand p { font-size: 11px; color: var(--gold); letter-spacing: 2px; margin-top: 2px; }
-  .qh-right { text-align: right; }
-  .badge { display: inline-block; padding: 3px 10px; background: var(--gold); color: var(--white); font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 3px; }
-  .csbh-txt { color: #aaa; font-size: 11px; letter-spacing: .5px; }
+/* schedule */
+.ws{padding:6px 32px 18px;}
+.st{width:100%;border-collapse:collapse;}
+.st thead tr{background:var(--dark);}
+.st thead th{padding:7px 6px;font-size:8px;text-transform:uppercase;letter-spacing:1.2px;color:rgba(168,131,42,.9);font-weight:500;text-align:left;}
+.st thead th.ar{text-align:right;}
+.st tbody tr{border-bottom:1px solid var(--line);}
+.st tbody tr:nth-child(even){background:#FDFAF3;}
+.st tbody td{padding:6px 6px;font-size:11px;vertical-align:middle;}
+.st tbody td.ar{text-align:right;font-family:var(--mono);font-size:10.5px;}
+.st td.sn{color:var(--muted);font-size:9.5px;width:22px;}
+.st tr.msr{background:var(--gold-pale)!important;}
+.st tr.msr td{padding:4px 6px;font-size:9.5px;color:var(--gold);font-style:italic;}
+.st tr.msr td::before{content:'▸ ';opacity:.6;}
+/* deferred row – inline with value on right */
+.st tr.dfr{background:#EEF5EE!important;}
+.st tr.dfr td{padding:5px 6px;font-size:10px;color:var(--green);font-style:italic;}
+.st tr.dfr td.ar{font-family:var(--mono);font-style:normal;font-weight:600;color:var(--green);font-size:10.5px;}
+.st tfoot tr{background:var(--dark);}
+.st tfoot td{padding:9px 6px;font-size:10.5px;font-weight:500;color:rgba(255,255,255,.8);}
+.st tfoot td.ar{text-align:right;font-family:var(--mono);color:var(--gold-lt);font-size:12.5px;}
 
-  /* Property strip */
-  .qprop { background: var(--gold-pale); padding: 14px 26px; display: flex; gap: 24px; flex-wrap: wrap; border-bottom: 1px solid var(--line); }
-  .qpi .pl { font-size: 10px; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; }
-  .qpi .pv { font-size: 13px; font-weight: 500; color: var(--dark); margin-top: 1px; }
+/* disclaimer */
+.disc{padding:12px 32px;border-top:1px solid var(--line);background:var(--bg);}
+.disc p{font-size:8.5px;color:var(--muted);line-height:1.8;}
 
-  /* Body */
-  .qbody { padding: 24px 26px; }
+/* footer */
+.df{padding:10px 32px;background:var(--dark);display:flex;justify-content:space-between;align-items:center;}
+.df .dl{font-size:8.5px;color:rgba(255,255,255,.3);letter-spacing:.5px;}
+.df .dr{font-size:8.5px;color:var(--gold);letter-spacing:1px;text-transform:uppercase;}
 
-  /* Policy table */
-  .ptbl { width: 100%; border-collapse: collapse; margin-bottom: 20px; }
-  .ptbl thead tr { border-bottom: 2px solid var(--gold); }
-  .ptbl thead th { padding: 7px 9px; font-size: 10px; text-transform: uppercase; letter-spacing: 1px; color: var(--gold); font-weight: 500; text-align: left; }
-  .ptbl thead th:last-child, .ptbl thead th:nth-child(4), .ptbl thead th:nth-child(5) { text-align: right; }
-  .ptbl tbody tr { border-bottom: 1px solid var(--line); }
-  .ptbl tbody tr:last-child { border-bottom: none; }
-  .ptbl tbody td { padding: 8px 9px; font-size: 12.5px; vertical-align: top; }
-  .ptbl tbody td:last-child, .ptbl tbody td:nth-child(4), .ptbl tbody td:nth-child(5) { text-align: right; }
-  .stt { color: var(--muted); width: 22px; }
-  .ok { color: var(--green); font-size: 11px; font-weight: 500; }
-  .no { color: var(--muted); font-size: 11px; }
-  .hl td { background: #F9F5EC; }
-  .tbadge { display: inline-block; padding: 2px 6px; font-size: 10px; border: 1px solid; }
-  .t-hdthnv { color: #5A6E8A; border-color: #A8BDD0; background: #EDF3FA; }
-  .t-hdmb { color: #7A5A2A; border-color: #C9A86C; background: #FBF5E8; }
-  .divider-row td { background: var(--bg); font-size: 11px; color: var(--muted); font-style: italic; padding: 4px 9px !important; }
-
-  /* Price summary */
-  .psum { background: var(--bg); padding: 18px 22px; margin-bottom: 22px; border: 1px solid var(--line); }
-  .pr { display: flex; justify-content: space-between; align-items: baseline; padding: 4px 0; }
-  .pr .lbl { font-size: 12.5px; color: var(--text); }
-  .pr .val { font-size: 13px; color: var(--text); font-variant-numeric: tabular-nums; }
-  .pr.ded .val { color: var(--red); }
-  .pr.ded .lbl { color: var(--muted); }
-  .pr.sep { border-top: 1px solid var(--line); margin-top: 4px; padding-top: 9px; }
-  .pr.tot { border-top: 2px solid var(--gold); margin-top: 6px; padding-top: 10px; }
-  .pr.tot .lbl { font-size: 13px; font-weight: 500; color: var(--dark); }
-  .pr.tot .val { font-size: 16px; font-weight: 500; color: var(--gold); }
-
-  /* Schedule */
-  .stit { font-family: 'Cormorant Garamond', serif; font-size: 16px; color: var(--dark); margin-bottom: 12px; letter-spacing: 1px; }
-  .stbl { width: 100%; border-collapse: collapse; }
-  .stbl thead tr { background: var(--dark); }
-  .stbl thead th { padding: 8px 9px; font-size: 10px; text-transform: uppercase; letter-spacing: 1px; color: var(--gold); font-weight: 400; text-align: left; }
-  .stbl thead th:nth-child(3), .stbl thead th:nth-child(4) { text-align: right; }
-  .stbl tbody tr { border-bottom: 1px solid var(--line); }
-  .stbl tbody tr:nth-child(even) { background: var(--bg); }
-  .stbl tbody tr.ms { background: var(--gold-pale) !important; }
-  .stbl tbody tr.ms td { font-size: 11px; color: #8A6B2A; font-style: italic; padding: 5px 9px; }
-  .stbl tbody td { padding: 8px 9px; font-size: 12.5px; vertical-align: top; }
-  .stbl tbody td:nth-child(3), .stbl tbody td:nth-child(4) { text-align: right; }
-  .stbl tbody tr.note-r td { font-size: 11px; color: var(--muted); font-style: italic; padding: 4px 9px 8px !important; background: var(--white) !important; border-bottom: 1px solid var(--line); }
-  .stbl tfoot tr { border-top: 2px solid var(--gold); background: var(--gold-pale); }
-  .stbl tfoot td { padding: 10px 9px; font-weight: 500; font-size: 13px; }
-  .stbl tfoot td:last-child { text-align: right; color: var(--gold); font-size: 14px; }
-
-  /* Footer */
-  .qfooter { padding: 14px 26px; border-top: 1px solid var(--line); display: flex; justify-content: space-between; align-items: center; }
-  .qfooter p { font-size: 11px; color: var(--muted); font-style: italic; }
-  .qnote { font-size: 11px; color: var(--muted); font-style: italic; padding: 0 26px 18px; line-height: 1.8; }
-
-  @media(max-width:780px) { .main-wrap { grid-template-columns: 1fr; } .form-panel { position: static; } }
-  @media print { .form-panel { display: none; } .main-wrap { grid-template-columns: 1fr; padding: 0; } }
+@media(max-width:820px){.app{grid-template-columns:1fr;}.fp{position:static;}}
 </style>
 </head>
 <body>
 
-<header class="site-header">
-  <div class="logo-mark">F</div>
-  <div class="brand">
-    <h1>FOURS TOWER</h1>
-    <p>Phiếu Tính Giá Tạm Tính – CSBH01 / HĐTHNV</p>
-  </div>
+<header class="shell-hdr">
+  <img src="https://res.cloudinary.com/ds6czij1k/image/upload/v1776438027/Logo_FourS_bfvt9q.png" alt="FourS">
+  <div class="sdiv"></div>
+  <span class="ssub">Công cụ tạo phiếu tính giá – CSBH01</span>
 </header>
 
-<div class="main-wrap">
+<div class="app">
+  <!-- FORM -->
+  <aside class="fp">
+    <div class="fp-t">Phiếu Tính Giá</div>
+    <div class="fp-s">Nhập thông tin & chính sách chiết khấu</div>
 
-  <!-- ══ FORM ══ -->
-  <aside class="form-panel">
-    <div class="panel-title">Thông tin báo giá</div>
-    <div class="panel-sub">Nhập thông tin & chọn chính sách</div>
+    <div class="sl">Khách hàng</div>
+    <div class="fi"><label>Họ và tên</label><input type="text" id="tenKH" placeholder="Nguyễn Văn A"></div>
 
-    <div class="sec">Thông tin khách hàng</div>
-    <div class="field">
-      <label>Họ và tên khách hàng</label>
-      <input type="text" id="tenKH" placeholder="Nguyễn Văn A">
+    <div class="sl">Thông tin căn hộ</div>
+    <div class="r2">
+      <div class="fi"><label>Tòa</label><select id="toa"><option>F1</option><option>F2</option><option>F3</option><option>F4</option></select></div>
+      <div class="fi"><label>Tầng</label><input type="number" id="tang" value="15" min="1" max="50"></div>
     </div>
-
-    <div class="sec">Thông tin căn hộ</div>
-    <div class="row2">
-      <div class="field">
-        <label>Tòa</label>
-        <select id="toa"><option>F1</option><option>F2</option><option>F3</option><option>F4</option></select>
-      </div>
-      <div class="field">
-        <label>Tầng</label>
-        <input type="number" id="tang" value="15" min="1" max="50">
+    <div class="r2">
+      <div class="fi"><label>Căn số</label><input type="text" id="can" value="01"></div>
+      <div class="fi"><label>Loại hình</label>
+        <select id="loai"><option value="STU">Studio</option><option value="1BR" selected>1BR</option><option value="1BR+">1BR+</option><option value="2BR">2BR</option><option value="3BR">3BR</option></select>
       </div>
     </div>
-    <div class="row2">
-      <div class="field">
-        <label>Căn số</label>
-        <input type="text" id="can" value="01">
-      </div>
-      <div class="field">
-        <label>Loại căn hộ</label>
-        <select id="loai">
-          <option value="STU">Studio (STU)</option>
-          <option value="1BR" selected>1 Phòng ngủ (1BR)</option>
-          <option value="1BR+">1 Phòng ngủ+ (1BR+)</option>
-          <option value="2BR">2 Phòng ngủ (2BR)</option>
-          <option value="3BR">3 Phòng ngủ (3BR)</option>
-        </select>
-      </div>
-    </div>
-    <div class="row2">
-      <div class="field">
-        <label>Diện tích thông thủy (m²)</label>
-        <input type="number" id="dt" value="50" step="0.01">
-      </div>
-      <div class="field">
-        <label>Mã căn hộ</label>
-        <input type="text" id="ma" readonly>
-      </div>
+    <div class="r2">
+      <div class="fi"><label>Diện tích thông thủy (m²)</label><input type="number" id="dt" value="50" step="0.01"></div>
+      <div class="fi"><label>Mã căn hộ</label><input type="text" id="ma" readonly></div>
     </div>
 
-    <div class="sec">Giá bán</div>
-    <div class="field">
-      <label>Tổng giá niêm yết (đã VAT + KPBT) (VNĐ)</label>
-      <input type="number" id="ny" value="3000000000" step="1000000">
-    </div>
-    <div class="field">
-      <label>Tiền đặt cọc (VNĐ)</label>
-      <input type="number" id="datcoc" value="100000000" step="1000000">
+    <div class="sl">Giá bán</div>
+    <div class="fi"><label>Tổng giá niêm yết (đã VAT + KPBT) – VNĐ</label><input type="number" id="ny" value="3000000000" step="1000000"></div>
+    <div class="fi"><label>Tiền đặt cọc – VNĐ</label><input type="number" id="datcoc" value="100000000" step="1000000"></div>
+
+    <div class="sl">Chiết khấu</div>
+
+    <div class="fi"><label>Early Bird (5%)</label></div>
+    <div class="tr">
+      <button class="tb on" id="eb_yes" onclick="tog('eb','yes')">Được áp dụng (5%)</button>
+      <button class="tb" id="eb_no" onclick="tog('eb','no')">Không áp dụng</button>
     </div>
 
-    <div class="sec">Chính sách chiết khấu</div>
-
-    <!-- Early Bird -->
-    <div class="field"><label>Early Bird (5%)</label></div>
-    <div class="toggle-row">
-      <button class="tog on" id="eb_yes" onclick="tog('eb','yes')">Được áp dụng (5%)</button>
-      <button class="tog" id="eb_no" onclick="tog('eb','no')">Không áp dụng</button>
+    <div class="fi"><label>CK Từ chối bảo lãnh NH (tại HĐMB)</label></div>
+    <div class="tr">
+      <button class="tb" id="blnh_no" onclick="tog('blnh','no')">Không áp dụng</button>
+      <button class="tb on" id="blnh_yes" onclick="tog('blnh','yes')">Được áp dụng</button>
+    </div>
+    <div id="blnh_wrap" class="sf">
+      <label>Mức chiết khấu BLNH</label>
+      <div class="sf-r"><input type="number" id="blnh_rate" value="1" step="0.1" min="0" max="20"><span>%</span></div>
     </div>
 
-    <!-- BLNH -->
-    <div class="field"><label>CK Từ chối bảo lãnh ngân hàng (tại HĐMB)</label></div>
-    <div class="toggle-row">
-      <button class="tog" id="blnh_no" onclick="tog('blnh','no')">Không áp dụng</button>
-      <button class="tog on" id="blnh_yes" onclick="tog('blnh','yes')">Được áp dụng</button>
-    </div>
-    <div id="blnh_wrap" class="sub-field">
-      <label>Mức chiết khấu BLNH (%)</label>
-      <input type="number" id="blnh_rate" value="1" step="0.1" min="0" max="20">
-      <span>%</span>
-    </div>
-
-    <!-- KH thân thiết -->
-    <div class="field"><label>CK KH thân thiết – căn mua thứ 2 (tại HĐMB)</label></div>
-    <div class="toggle-row">
-      <button class="tog on" id="ct2_no" onclick="tog('ct2','no')">Chưa kích hoạt</button>
-      <button class="tog" id="ct2_yes" onclick="tog('ct2','yes')">Đã kích hoạt</button>
+    <div class="fi"><label>CK KH thân thiết – căn mua thứ 2 (tại HĐMB)</label></div>
+    <div class="tr">
+      <button class="tb on" id="ct2_no" onclick="tog('ct2','no')">Chưa kích hoạt</button>
+      <button class="tb" id="ct2_yes" onclick="tog('ct2','yes')">Đã kích hoạt</button>
     </div>
     <div id="ct2_wrap">
-      <label style="font-size:11px;color:var(--muted);display:block;margin-bottom:6px">Hạng thành viên tại HĐMB</label>
-      <div class="rank-row" id="rankRow">
-        <button class="rank-btn" onclick="setRank('BRONZE')">BRONZE<br><small>1%</small></button>
-        <button class="rank-btn on" onclick="setRank('SILVER')">SILVER<br><small>1%</small></button>
-        <button class="rank-btn" onclick="setRank('GOLD')">GOLD<br><small>1%</small></button>
-        <button class="rank-btn" onclick="setRank('PLATINUM')">PLATINUM<br><small>1.3%</small></button>
-        <button class="rank-btn" onclick="setRank('DIAMOND')">DIAMOND<br><small>1.5%</small></button>
+      <div class="fi"><label>Hạng thành viên tại HĐMB</label></div>
+      <div class="rr">
+        <button class="rb" onclick="setRank('BRONZE')">BRONZE<span class="rp">1%</span></button>
+        <button class="rb on" onclick="setRank('SILVER')">SILVER<span class="rp">1%</span></button>
+        <button class="rb" onclick="setRank('GOLD')">GOLD<span class="rp">1%</span></button>
+        <button class="rb" onclick="setRank('PLATINUM')">PLATINUM<span class="rp">1.3%</span></button>
+        <button class="rb" onclick="setRank('DIAMOND')">DIAMOND<span class="rp">1.5%</span></button>
       </div>
     </div>
 
-    <div class="sec">Phương thức thanh toán</div>
-    <div class="method-tabs" id="mTabs">
-      <div class="mtab on" id="tab_ko_vay" onclick="setM('ko_vay')">
-        <div class="rdot"></div>
-        <div><div class="mname">I.1 – Không vay · Tiến độ chuẩn</div><div class="mck">CK không vay: 5% · 18 đợt</div></div>
-      </div>
-      <div class="mtab" id="tab_co_vay" onclick="setM('co_vay')">
-        <div class="rdot"></div>
-        <div><div class="mname">I.2 – Có vay ngân hàng</div><div class="mck">CK vay: 0% · NH giải ngân 70%</div></div>
-      </div>
-      <div class="mtab" id="tab_tts95" onclick="setM('tts95')">
-        <div class="rdot"></div>
-        <div><div class="mname">III.2 – Thanh toán sớm 95%</div><div class="mck">CK TTS: 16.5% · 3 đợt</div></div>
-      </div>
-      <div class="mtab" id="tab_tts70" onclick="setM('tts70')">
-        <div class="rdot"></div>
-        <div><div class="mname">III.3 – Thanh toán sớm 70%</div><div class="mck">CK TTS: 9% · 9 đợt</div></div>
-      </div>
-      <div class="mtab" id="tab_tts50" onclick="setM('tts50')">
-        <div class="rdot"></div>
-        <div><div class="mname">III.4 – Thanh toán sớm 50%</div><div class="mck">CK TTS: 5.5% · 13 đợt</div></div>
-      </div>
+    <div class="sl">Phương thức thanh toán</div>
+    <div class="mts">
+      <div class="mt on" id="tab_ko_vay" onclick="setM('ko_vay')"><div class="rd"></div><div><div class="mn">I.1 – Không vay · Tiến độ chuẩn</div><div class="mc">CK không vay 5% · 18 đợt</div></div></div>
+      <div class="mt" id="tab_co_vay" onclick="setM('co_vay')"><div class="rd"></div><div><div class="mn">I.2 – Có vay ngân hàng</div><div class="mc">CK vay 0% · NH giải ngân 70%</div></div></div>
+      <div class="mt" id="tab_tts95" onclick="setM('tts95')"><div class="rd"></div><div><div class="mn">III.2 – Thanh toán sớm 95%</div><div class="mc">CK TTS 16.5% · 3 đợt</div></div></div>
+      <div class="mt" id="tab_tts70" onclick="setM('tts70')"><div class="rd"></div><div><div class="mn">III.3 – Thanh toán sớm 70%</div><div class="mc">CK TTS 9% · 9 đợt</div></div></div>
+      <div class="mt" id="tab_tts50" onclick="setM('tts50')"><div class="rd"></div><div><div class="mn">III.4 – Thanh toán sớm 50%</div><div class="mc">CK TTS 5.5% · 13 đợt</div></div></div>
     </div>
-
-    <button class="btn-ok" onclick="gen()">XÁC NHẬN – HIỂN THỊ BÁO GIÁ</button>
+    <button class="bok" onclick="gen()">XÁC NHẬN – TẠO PHIẾU TÍNH GIÁ</button>
   </aside>
 
-  <!-- ══ QUOTE ══ -->
-  <section class="quote-panel">
-    <div class="placeholder" id="ph">
-      <div class="ico">◼</div>
+  <!-- OUTPUT -->
+  <section class="qp">
+    <div class="ph" id="ph">
+      <div class="ico">▣</div>
       <p>Điền thông tin & chọn phương thức<br>thanh toán, sau đó nhấn <strong>Xác nhận</strong></p>
     </div>
-    <div class="qcard" id="qc"></div>
-    <!-- Export bar -->
-    <div id="exportBar" style="display:none; align-items:center; gap:12px; margin-bottom:14px; padding:12px 16px; background:#fff; border:1px solid #DDD0BB; border-top:3px solid #B8953F;">
-      <span style="font-size:11px;color:#7A6E62;letter-spacing:.5px;">Tên file:</span>
-      <span class="exp-name" style="font-size:12px;font-weight:500;color:#2E2820;flex:1"></span>
-      <button id="btnExport" onclick="exportPNG()" style="padding:9px 20px;background:#1A1611;color:#fff;border:none;cursor:pointer;font-family:'DM Sans',sans-serif;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;transition:background .2s;" onmouseover="this.style.background='#B8953F'" onmouseout="this.style.background='#1A1611'">🖼 Xuất ảnh PNG (A4)</button>
+    <div class="ebar" id="ebar">
+      <span class="ef" id="ef"></span>
+      <button class="bexp" id="bexp" onclick="exportPNG()">⬇ Xuất ảnh PNG · A4</button>
     </div>
-    <div class="qcard" id="qc"></div>
+    <div id="doc"></div>
   </section>
 </div>
 
 <script>
-// ── STATE ──
-const S = { method:'ko_vay', eb:'yes', blnh:'yes', ct2:'no', rank:'SILVER' };
+const S={method:'ko_vay',eb:'yes',blnh:'yes',ct2:'no',rank:'SILVER'};
+const RANK_RATE={BRONZE:.01,SILVER:.01,GOLD:.01,PLATINUM:.013,DIAMOND:.015};
+const M_CSBH={ko_vay:'CSBH 01 – Không vay – I.1 Tiến độ chuẩn',co_vay:'CSBH 02 – I.2 Có vay ngân hàng',tts95:'CSBH 01 – III.2 TTS 95%',tts70:'CSBH 01 – III.3 TTS 70%',tts50:'CSBH 01 – III.4 TTS 50%'};
+const M_SH={ko_vay:'I.1 – Không vay',co_vay:'I.2 – Có vay',tts95:'III.2 – TTS 95%',tts70:'III.3 – TTS 70%',tts50:'III.4 – TTS 50%'};
 
-const RANK_RATE = { BRONZE:0.01, SILVER:0.01, GOLD:0.01, PLATINUM:0.013, DIAMOND:0.015 };
+function tog(k,v){S[k]=v;['yes','no'].forEach(x=>{const b=document.getElementById(k+'_'+x);if(b)b.className='tb'+(x===v?' on':'');});if(k==='blnh')document.getElementById('blnh_wrap').style.display=v==='yes'?'block':'none';}
+function setM(m){S.method=m;document.querySelectorAll('.mt').forEach(t=>t.classList.remove('on'));document.getElementById('tab_'+m).classList.add('on');}
+function setRank(r){S.rank=r;document.querySelectorAll('.rb').forEach(b=>b.classList.toggle('on',b.textContent.trim().startsWith(r)));}
+function updateMa(){const t=document.getElementById('toa').value,f=String(document.getElementById('tang').value).padStart(2,'0'),c=String(document.getElementById('can').value).padStart(2,'0');document.getElementById('ma').value=t+f+c;}
+['toa','tang','can'].forEach(id=>document.getElementById(id).addEventListener('input',updateMa));
+updateMa();tog('eb','yes');tog('blnh','yes');tog('ct2','no');
 
-const M_LABEL = {
-  ko_vay:'I.1 – Không vay · Tiến độ chuẩn',
-  co_vay:'I.2 – Có vay ngân hàng',
-  tts95:'III.2 – Thanh toán sớm 95%',
-  tts70:'III.3 – Thanh toán sớm 70%',
-  tts50:'III.4 – Thanh toán sớm 50%'
-};
-const M_CSBH = {
-  ko_vay:'CSBH 01 – Không vay – I.1.Tiến độ chuẩn',
-  co_vay:'CSBH 02 – I.2.Có vay',
-  tts95:'CSBH 01 – III.2.TTS 95%',
-  tts70:'CSBH 01 – III.3.TTS 70%',
-  tts50:'CSBH 01 – III.4.TTS 50%'
-};
+const VND=n=>Math.round(n).toLocaleString('vi-VN')+' đ';
+const PCT=n=>(n*100).toFixed(1).replace(/\.0$/,'')+' %';
+const FD=d=>d?`${String(d.getDate()).padStart(2,'0')}/${String(d.getMonth()+1).padStart(2,'0')}/${d.getFullYear()}`:'–';
 
-// ── UI ──
-function tog(key, val) {
-  S[key] = val;
-  ['yes','no'].forEach(v => {
-    const b = document.getElementById(key+'_'+v);
-    if(b) b.className = 'tog' + (v===val?' on':'');
-  });
-  if(key==='blnh') document.getElementById('blnh_wrap').style.display = val==='yes'?'block':'none';
-}
-function setM(m) {
-  S.method = m;
-  document.querySelectorAll('.mtab').forEach(t => t.classList.remove('on'));
-  document.getElementById('tab_'+m).classList.add('on');
-}
-function setRank(r) {
-  S.rank = r;
-  document.querySelectorAll('.rank-btn').forEach(b => b.classList.toggle('on', b.textContent.includes(r)));
-}
-function updateMa() {
-  const toa = document.getElementById('toa').value;
-  const tang = String(document.getElementById('tang').value).padStart(2,'0');
-  const can = String(document.getElementById('can').value).padStart(2,'0');
-  document.getElementById('ma').value = toa + tang + can;
-}
-['toa','tang','can'].forEach(id => document.getElementById(id).addEventListener('input', updateMa));
-updateMa();
-tog('eb','yes');
-tog('blnh','yes');
-tog('ct2','no');
-
-// ── FORMAT ──
-const VND = n => Math.round(n).toLocaleString('vi-VN') + ' đ';
-const PCT = n => (n*100).toFixed(1).replace(/\.0$/,'') + '%';
-const FMT_D = d => {
-  if(!d) return '–';
-  const dd = String(d.getDate()).padStart(2,'0');
-  const mm = String(d.getMonth()+1).padStart(2,'0');
-  return `${dd}/${mm}/${d.getFullYear()}`;
+const D={
+  hdthnv:new Date(2026,3,15),hdmb:new Date(2026,8,30),bg:new Date(2028,2,31),
+  i1_d2:new Date(2026,3,29),i1_d3:new Date(2026,6,13),i1_d4:new Date(2026,8,26),
+  i1_d5:new Date(2026,10,25),i1_d6:new Date(2027,0,24),i1_d7:new Date(2027,2,25),
+  i1_d8:new Date(2027,4,24),i1_d9:new Date(2027,6,23),i1_d10:new Date(2027,8,21),
+  i1_d11:new Date(2027,10,20),i1_d12:new Date(2028,0,19),i1_d13:new Date(2028,2,19),
+  i1_d14:new Date(2028,6,17),i1_d15:new Date(2028,10,14),i1_d16:new Date(2029,2,14),
+  i1_d17:new Date(2029,6,12),i1_d18:new Date(2029,10,9),i1_d19:new Date(2030,2,31),
+  i2_d5:new Date(2026,9,14),tts_d2:new Date(2026,3,25),
+  tts70_d4:new Date(2028,6,17),tts70_d5:new Date(2028,10,14),tts70_d6:new Date(2029,2,14),
+  tts70_d7:new Date(2029,6,12),tts70_d8:new Date(2029,10,9),tts70_d9:new Date(2030,2,31),
+  tts50_d4:new Date(2027,8,21),tts50_d5:new Date(2027,10,20),tts50_d6:new Date(2028,0,19),
+  tts50_d7:new Date(2028,2,19),tts50_d8:new Date(2028,6,17),tts50_d9:new Date(2028,10,14),
+  tts50_d10:new Date(2029,2,14),tts50_d11:new Date(2029,6,12),tts50_d12:new Date(2029,10,9),
+  tts50_d13:new Date(2030,2,31),
 };
 
-// REAL DATES from Excel (data_only values)
-const D = {
-  hdthnv: new Date(2026,3,15),   // 15/04/2026
-  hdmb:   new Date(2026,8,30),   // 30/09/2026
-  bg:     new Date(2028,2,31),   // 31/03/2028
-  // I.1 schedule dates
-  i1_d2:  new Date(2026,3,29),   // lan2
-  i1_d3:  new Date(2026,6,13),   // lan3
-  i1_d4:  new Date(2026,8,26),   // lan4
-  i1_d5:  new Date(2026,10,25),
-  i1_d6:  new Date(2027,0,24),
-  i1_d7:  new Date(2027,2,25),
-  i1_d8:  new Date(2027,4,24),
-  i1_d9:  new Date(2027,6,23),
-  i1_d10: new Date(2027,8,21),
-  i1_d11: new Date(2027,10,20),
-  i1_d12: new Date(2028,0,19),
-  i1_d13: new Date(2028,2,19),
-  i1_d14: new Date(2028,6,17),
-  i1_d15: new Date(2028,10,14),
-  i1_d16: new Date(2029,2,14),
-  i1_d17: new Date(2029,6,12),
-  i1_d18: new Date(2029,10,9),
-  i1_d19: new Date(2030,2,31),
-  // I.2
-  i2_d5:  new Date(2026,9,14),
-  // TTS early dates
-  tts_d2: new Date(2026,3,25),   // 25/04/2026
-  // TTS 70% 5% dates
-  tts70_d4: new Date(2028,6,17),
-  tts70_d5: new Date(2028,10,14),
-  tts70_d6: new Date(2029,2,14),
-  tts70_d7: new Date(2029,6,12),
-  tts70_d8: new Date(2029,10,9),
-  tts70_d9: new Date(2030,2,31),
-  // TTS 50% 5% dates
-  tts50_d4: new Date(2027,8,21),
-  tts50_d5: new Date(2027,10,20),
-  tts50_d6: new Date(2028,0,19),
-  tts50_d7: new Date(2028,2,19),
-  tts50_d8: new Date(2028,6,17),
-  tts50_d9: new Date(2028,10,14),
-  tts50_d10: new Date(2029,2,14),
-  tts50_d11: new Date(2029,6,12),
-  tts50_d12: new Date(2029,10,9),
-  tts50_d13: new Date(2030,2,31),
-};
-
-// ── CORE CALC ──
-// Công thức đúng từ Excel (đã verify từng ô):
-// gia_truoc_ck = round(NY / 1.12)
-// ck_eb        = round(gia_truoc_ck * 0.05)  [nếu áp dụng]
-// ck_tc        = round((gia_truoc_ck - ck_eb) * tc_rate)  [0.05 ko vay, 0 co vay]
-// ck_tts       = round((gia_truoc_ck - ck_eb - ck_tc) * tts_rate)  [TTS methods]
-// net          = gia_truoc_ck - ck_eb - ck_tc - ck_tts  [net tại HĐTHNV]
-// [HĐMB]:
-// ck_blnh      = round(net * blnh_rate)
-// ck_ct2       = round(net * rank_rate)
-// net_final    = net - ck_blnh - ck_ct2
-// VAT = round(net_final * 0.10), KPBT = round(net_final * 0.02)
-// Tong gia = net_final * 1.12
-
-function calc() {
-  const NY     = parseFloat(document.getElementById('ny').value) || 3000000000;
-  const datCoc = parseFloat(document.getElementById('datcoc').value) || 100000000;
-  const m      = S.method;
-
-  // Step 1: gia_truoc_ck
-  const gtck = Math.round(NY / 1.12);
-
-  // Step 2: Early Bird
-  const ckEB = S.eb === 'yes' ? Math.round(gtck * 0.05) : 0;
-
-  // Step 3: CS tài chính
-  const tc_rate = m === 'co_vay' ? 0 : 0.05;
-  const ckTC = Math.round((gtck - ckEB) * tc_rate);
-
-  // Step 4: TTS
-  let tts_rate = 0, tts_lbl = '';
-  if(m === 'tts95') { tts_rate = 0.165; tts_lbl = 'TTS 95%'; }
-  if(m === 'tts70') { tts_rate = 0.09;  tts_lbl = 'TTS 70%'; }
-  if(m === 'tts50') { tts_rate = 0.055; tts_lbl = 'TTS 50%'; }
-  const ckTTS = Math.round((gtck - ckEB - ckTC) * tts_rate);
-
-  // NET tại HĐTHNV
-  const netHDTHNV = gtck - ckEB - ckTC - ckTTS;
-
-  // Step 5: HĐMB discounts (applied on same net base)
-  const blnh_rate = (S.blnh === 'yes' && m !== 'co_vay') ? (parseFloat(document.getElementById('blnh_rate').value)||0)/100 : 0;
-  const ckBLNH = Math.round(netHDTHNV * blnh_rate);
-  const ct2_rate = S.ct2 === 'yes' ? (RANK_RATE[S.rank]||0.01) : 0;
-  const ckCT2 = Math.round(netHDTHNV * ct2_rate);
-
-  // NET FINAL (sau tất cả CK)
-  const net = netHDTHNV - ckBLNH - ckCT2;
-
-  const VAT  = Math.round(net * 0.10);
-  const KPBT = Math.round(net * 0.02);
-  const tong = net + VAT + KPBT; // = net * 1.12
-
-  return { NY, datCoc, gtck, ckEB, ckTC, tc_rate, ckTTS, tts_rate, tts_lbl,
-           netHDTHNV, blnh_rate, ckBLNH, ct2_rate, ckCT2, net, VAT, KPBT, tong, m };
+function calc(){
+  const NY=parseFloat(document.getElementById('ny').value)||3000000000;
+  const datCoc=parseFloat(document.getElementById('datcoc').value)||100000000;
+  const m=S.method;
+  const gtck=Math.round(NY/1.12);
+  const ckEB=S.eb==='yes'?Math.round(gtck*0.05):0;
+  const tc_rate=m==='co_vay'?0:0.05;
+  const ckTC=Math.round((gtck-ckEB)*tc_rate);
+  let tts_rate=0,tts_lbl='';
+  if(m==='tts95'){tts_rate=0.165;tts_lbl='TTS 95%';}
+  if(m==='tts70'){tts_rate=0.09;tts_lbl='TTS 70%';}
+  if(m==='tts50'){tts_rate=0.055;tts_lbl='TTS 50%';}
+  const ckTTS=Math.round((gtck-ckEB-ckTC)*tts_rate);
+  const netH=gtck-ckEB-ckTC-ckTTS;
+  const blnh_rate=(S.blnh==='yes'&&m!=='co_vay')?(parseFloat(document.getElementById('blnh_rate').value)||0)/100:0;
+  const ckBLNH=Math.round(netH*blnh_rate);
+  const ct2_rate=S.ct2==='yes'?(RANK_RATE[S.rank]||0.01):0;
+  const ckCT2=Math.round(netH*ct2_rate);
+  const net=netH-ckBLNH-ckCT2;
+  const VAT=Math.round(net*0.10);
+  const KPBT=Math.round(net*0.02);
+  const tong=net+VAT+KPBT;
+  return{NY,datCoc,gtck,ckEB,ckTC,tc_rate,ckTTS,tts_rate,tts_lbl,netH,blnh_rate,ckBLNH,ct2_rate,ckCT2,net,VAT,KPBT,tong,m};
 }
 
-// ── SCHEDULE ──
-// Formulas từ Excel (verified):
-// lan2   = round(net * 0.15 * 1.1) - datCoc        [net * 15% + 10% VAT, trừ đặt cọc]
-// lan3.. = round(net * 0.05 * 1.1)                  [mỗi đợt 5% của net + 10% VAT]
-// lan_cuoi = round(net * 0.025)                      [= KPBT(2%) + VAT của 5%(0.5%) = 2.5% * net]
-// deferred  = round(net * 0.05)                      [5% gốc – trả lãi, hiển thị tham khảo]
-// I.2 NH giải ngân: round(net * 0.70) + round(round(net*0.70)*0.10) = round(net*0.70)*1.1
-
-function buildSchedule(c) {
-  const { net, datCoc, m } = c;
-  const R = [];
-  const ms = (lbl, date) => ({ ms:true, lbl, date });
-  const row = (stt, lbl, pct, date, val) => ({ stt, lbl, pct, date, val });
-  const note = (lbl, val) => ({ note:true, lbl, val });
-
-  const lan2  = Math.round(net * 0.15 * 1.1) - datCoc;
-  const lan5p = Math.round(net * 0.05 * 1.1);
-  const lanCuoi = Math.round(net * 0.025);       // KPBT + VAT của 5%
-  const defer   = Math.round(net * 0.05);         // 5% gốc hoãn
-
-  if(m === 'ko_vay') {
-    R.push(row(1, 'Ký HĐTHNV – Thanh toán lần 1', 'Đặt cọc', D.hdthnv, datCoc));
-    R.push(row(2, 'Thanh toán lần 2', '15%', D.i1_d2, lan2));
-    R.push(row(3, 'Thanh toán lần 3', '5%', D.i1_d3, lan5p));
-    R.push(row(4, 'Thanh toán lần 4', '5%', D.i1_d4, lan5p));
-    R.push(ms('Ký HĐMB', D.hdmb));
-    R.push(row(5,  'Thanh toán lần 5',  '5%', D.i1_d5, lan5p));
-    R.push(row(6,  'Thanh toán lần 6',  '5%', D.i1_d6, lan5p));
-    R.push(row(7,  'Thanh toán lần 7',  '5%', D.i1_d7, lan5p));
-    R.push(row(8,  'Thanh toán lần 8',  '5%', D.i1_d8, lan5p));
-    R.push(row(9,  'Thanh toán lần 9',  '5%', D.i1_d9, lan5p));
-    R.push(row(10, 'Thanh toán lần 10', '5%', D.i1_d10, lan5p));
-    R.push(row(11, 'Thanh toán lần 11', '5%', D.i1_d11, lan5p));
-    R.push(row(12, 'Thanh toán lần 12', '5%', D.i1_d12, lan5p));
-    R.push(row(13, 'Thanh toán lần 13', '5%', D.i1_d13, lan5p));
-    R.push(ms('Nhận "Bàn giao sử dụng" – Sun Early Key', D.bg));
-    R.push(row(14, 'Thanh toán lần 14', '5%', D.i1_d14, lan5p));
-    R.push(row(15, 'Thanh toán lần 15', '5%', D.i1_d15, lan5p));
-    R.push(row(16, 'Thanh toán lần 16', '5%', D.i1_d16, lan5p));
-    R.push(row(17, 'Thanh toán lần 17', '5%', D.i1_d17, lan5p));
-    R.push(row(18, 'Thanh toán lần 18', '5%', D.i1_d18, lan5p));
-    R.push(row(19, 'Thanh toán lần 19 (Theo TB Bàn Giao Căn Hộ chính thức)', '100% KPBT + Thuế của 5%', D.i1_d19, lanCuoi));
-    R.push(note('5% (Trả lãi TTS 8%/năm từ bàn giao đến khi nhận GCN)', defer));
-
-  } else if(m === 'co_vay') {
-    // NH giai ngan: round(net*0.70) + round(round(net*0.70)*0.10)
-    const nh70base = Math.round(net * 0.70);
-    const lan5_nh  = nh70base + Math.round(nh70base * 0.10);
-    R.push(row(1, 'Ký HĐTHNV – Thanh toán lần 1', 'Đặt cọc', D.hdthnv, datCoc));
-    R.push(row(2, 'Thanh toán lần 2', '15%', D.i1_d2, lan2));
-    R.push(row(3, 'Thanh toán lần 3', '5%',  D.i1_d3, lan5p));
-    R.push(row(4, 'Thanh toán lần 4', '5%',  D.i1_d4, lan5p));
-    R.push(ms('Ký HĐMB', D.hdmb));
-    R.push(row(5, 'Thanh toán lần 5 – Ngân hàng giải ngân', '70%', D.i2_d5, lan5_nh));
-    R.push(row(6, 'Thanh toán lần 6 (Theo TB Bàn Giao Căn Hộ)', '100% KPBT + Thuế của 5%', D.bg, lanCuoi));
-    R.push(note('5% (Trả lãi TTS 8%/năm từ bàn giao đến khi nhận GCN)', defer));
-
-  } else if(m === 'tts95') {
-    const lan3_80 = Math.round(net * 0.80 * 1.1);
-    R.push(row(1, 'Ký HĐTHNV – Thanh toán lần 1', 'Đặt cọc', D.hdthnv, datCoc));
-    R.push(row(2, 'Thanh toán lần 2', '15%', D.tts_d2, lan2));
-    R.push(row(3, 'Thanh toán lần 3', '80%', D.tts_d2, lan3_80));
-    R.push(ms('Ký HĐMB', D.hdmb));
-    R.push(row(4, 'Thanh toán lần 4 (Theo TB Bàn Giao Căn Hộ)', '100% KPBT + Thuế của 5%', D.bg, lanCuoi));
-    R.push(note('5% (Trả lãi TTS 8%/năm từ bàn giao đến khi nhận GCN)', defer));
-
-  } else if(m === 'tts70') {
-    const lan3_55 = Math.round(net * 0.55 * 1.1);
-    R.push(row(1, 'Ký HĐTHNV – Thanh toán lần 1', 'Đặt cọc', D.hdthnv, datCoc));
-    R.push(row(2, 'Thanh toán lần 2', '15%', D.tts_d2, lan2));
-    R.push(row(3, 'Thanh toán lần 3', '55%', D.tts_d2, lan3_55));
-    R.push(ms('Ký HĐMB', D.hdmb));
-    R.push(ms('Nhận "Bàn giao sử dụng" – Sun Early Key', D.bg));
-    R.push(row(4, 'Thanh toán lần 4', '5%', D.tts70_d4, lan5p));
-    R.push(row(5, 'Thanh toán lần 5', '5%', D.tts70_d5, lan5p));
-    R.push(row(6, 'Thanh toán lần 6', '5%', D.tts70_d6, lan5p));
-    R.push(row(7, 'Thanh toán lần 7', '5%', D.tts70_d7, lan5p));
-    R.push(row(8, 'Thanh toán lần 8', '5%', D.tts70_d8, lan5p));
-    R.push(row(9, 'Thanh toán lần 9 (Theo TB Bàn Giao Căn Hộ)', '100% KPBT + Thuế của 5%', D.tts70_d9, lanCuoi));
-    R.push(note('5% (Trả lãi TTS 8%/năm từ bàn giao đến khi nhận GCN)', defer));
-
-  } else if(m === 'tts50') {
-    const lan3_35 = Math.round(net * 0.35 * 1.1);
-    R.push(row(1, 'Ký HĐTHNV – Thanh toán lần 1', 'Đặt cọc', D.hdthnv, datCoc));
-    R.push(row(2, 'Thanh toán lần 2', '15%', D.tts_d2, lan2));
-    R.push(row(3, 'Thanh toán lần 3', '35%', D.tts_d2, lan3_35));
-    R.push(ms('Ký HĐMB', D.hdmb));
-    R.push(row(4,  'Thanh toán lần 4',  '5%', D.tts50_d4, lan5p));
-    R.push(row(5,  'Thanh toán lần 5',  '5%', D.tts50_d5, lan5p));
-    R.push(row(6,  'Thanh toán lần 6',  '5%', D.tts50_d6, lan5p));
-    R.push(row(7,  'Thanh toán lần 7',  '5%', D.tts50_d7, lan5p));
-    R.push(ms('Nhận "Bàn giao sử dụng" – Sun Early Key', D.bg));
-    R.push(row(8,  'Thanh toán lần 8',  '5%', D.tts50_d8, lan5p));
-    R.push(row(9,  'Thanh toán lần 9',  '5%', D.tts50_d9, lan5p));
-    R.push(row(10, 'Thanh toán lần 10', '5%', D.tts50_d10, lan5p));
-    R.push(row(11, 'Thanh toán lần 11', '5%', D.tts50_d11, lan5p));
-    R.push(row(12, 'Thanh toán lần 12', '5%', D.tts50_d12, lan5p));
-    R.push(row(13, 'Thanh toán lần 13 (100% KPBT + Thuế của 5%)', '100% KPBT+Thuế', D.tts50_d13, lanCuoi));
-    R.push(note('5% (Trả lãi TTS 10%/năm từ bàn giao đến khi nhận GCN)', defer));
+function buildSched(c){
+  const{net,datCoc,m}=c;
+  const R=[];
+  const ms=(lbl,d)=>({ms:true,lbl,d});
+  const row=(stt,lbl,pct,d,val)=>({stt,lbl,pct,d,val});
+  const dfr=(lbl,val)=>({dfr:true,lbl,val});
+  const lan2=Math.round(net*0.15*1.1)-datCoc;
+  const lan5p=Math.round(net*0.05*1.1);
+  const lc=Math.round(net*0.025);
+  const d5=Math.round(net*0.05);
+  const ln=m==='tts50'?'5% (Trả lãi TTS 10%/năm từ bàn giao đến khi nhận GCN)':'5% (Trả lãi TTS 8%/năm từ bàn giao đến khi nhận GCN)';
+  if(m==='ko_vay'){
+    R.push(row(1,'Ký HĐTHNV – Thanh toán lần 1','Đặt cọc',D.hdthnv,datCoc));
+    R.push(row(2,'Thanh toán lần 2','15%',D.i1_d2,lan2));
+    R.push(row(3,'Thanh toán lần 3','5%',D.i1_d3,lan5p));
+    R.push(row(4,'Thanh toán lần 4','5%',D.i1_d4,lan5p));
+    R.push(ms('Ký HĐMB',D.hdmb));
+    for(let i=5;i<=13;i++)R.push(row(i,`Thanh toán lần ${i}`,'5%',D['i1_d'+i],lan5p));
+    R.push(ms('Nhận "Bàn giao sử dụng" – Sun Early Key',D.bg));
+    for(let i=14;i<=18;i++)R.push(row(i,`Thanh toán lần ${i}`,'5%',D['i1_d'+i],lan5p));
+    R.push(row(19,'Thanh toán lần 19 (Theo TB Bàn Giao Căn Hộ chính thức)','100% KPBT + Thuế của 5%',D.i1_d19,lc));
+    R.push(dfr(ln,d5));
+  }else if(m==='co_vay'){
+    const nh70b=Math.round(net*0.70);const lan5nh=nh70b+Math.round(nh70b*0.10);
+    R.push(row(1,'Ký HĐTHNV – Thanh toán lần 1','Đặt cọc',D.hdthnv,datCoc));
+    R.push(row(2,'Thanh toán lần 2','15%',D.i1_d2,lan2));
+    R.push(row(3,'Thanh toán lần 3','5%',D.i1_d3,lan5p));
+    R.push(row(4,'Thanh toán lần 4','5%',D.i1_d4,lan5p));
+    R.push(ms('Ký HĐMB',D.hdmb));
+    R.push(row(5,'Thanh toán lần 5 – Ngân hàng giải ngân','70%',D.i2_d5,lan5nh));
+    R.push(row(6,'Thanh toán lần 6 (Theo TB Bàn Giao Căn Hộ)','100% KPBT + Thuế của 5%',D.bg,lc));
+    R.push(dfr(ln,d5));
+  }else if(m==='tts95'){
+    const l80=Math.round(net*0.80*1.1);
+    R.push(row(1,'Ký HĐTHNV – Thanh toán lần 1','Đặt cọc',D.hdthnv,datCoc));
+    R.push(row(2,'Thanh toán lần 2','15%',D.tts_d2,lan2));
+    R.push(row(3,'Thanh toán lần 3','80%',D.tts_d2,l80));
+    R.push(ms('Ký HĐMB',D.hdmb));
+    R.push(row(4,'Thanh toán lần 4 (Theo TB Bàn Giao Căn Hộ)','100% KPBT + Thuế của 5%',D.bg,lc));
+    R.push(dfr(ln,d5));
+  }else if(m==='tts70'){
+    const l55=Math.round(net*0.55*1.1);
+    R.push(row(1,'Ký HĐTHNV – Thanh toán lần 1','Đặt cọc',D.hdthnv,datCoc));
+    R.push(row(2,'Thanh toán lần 2','15%',D.tts_d2,lan2));
+    R.push(row(3,'Thanh toán lần 3','55%',D.tts_d2,l55));
+    R.push(ms('Ký HĐMB',D.hdmb));
+    R.push(ms('Nhận "Bàn giao sử dụng" – Sun Early Key',D.bg));
+    for(let i=4;i<=8;i++)R.push(row(i,`Thanh toán lần ${i}`,'5%',D['tts70_d'+i],lan5p));
+    R.push(row(9,'Thanh toán lần 9 (Theo TB Bàn Giao Căn Hộ)','100% KPBT + Thuế của 5%',D.tts70_d9,lc));
+    R.push(dfr(ln,d5));
+  }else if(m==='tts50'){
+    const l35=Math.round(net*0.35*1.1);
+    R.push(row(1,'Ký HĐTHNV – Thanh toán lần 1','Đặt cọc',D.hdthnv,datCoc));
+    R.push(row(2,'Thanh toán lần 2','15%',D.tts_d2,lan2));
+    R.push(row(3,'Thanh toán lần 3','35%',D.tts_d2,l35));
+    R.push(ms('Ký HĐMB',D.hdmb));
+    for(let i=4;i<=7;i++)R.push(row(i,`Thanh toán lần ${i}`,'5%',D['tts50_d'+i],lan5p));
+    R.push(ms('Nhận "Bàn giao sử dụng" – Sun Early Key',D.bg));
+    for(let i=8;i<=12;i++)R.push(row(i,`Thanh toán lần ${i}`,'5%',D['tts50_d'+i],lan5p));
+    R.push(row(13,'Thanh toán lần 13 (Theo TB Bàn Giao Căn Hộ)','100% KPBT + Thuế của 5%',D.tts50_d13,lc));
+    R.push(dfr(ln,d5));
   }
   return R;
 }
 
-// ── GENERATE ──
-function gen() {
-  const c = calc();
-  const { NY, gtck, ckEB, ckTC, tc_rate, ckTTS, tts_rate, tts_lbl,
-          netHDTHNV, blnh_rate, ckBLNH, ct2_rate, ckCT2, net, VAT, KPBT, tong, datCoc, m } = c;
+function gen(){
+  const c=calc();
+  const{NY,gtck,ckEB,ckTC,tc_rate,ckTTS,tts_rate,tts_lbl,netH,blnh_rate,ckBLNH,ct2_rate,ckCT2,net,VAT,KPBT,tong,datCoc,m}=c;
+  const tenKH=document.getElementById('tenKH').value||'(Chưa điền)';
+  const toa=document.getElementById('toa').value;
+  const tang=document.getElementById('tang').value;
+  const can=String(document.getElementById('can').value).padStart(2,'0');
+  const loai=document.getElementById('loai').value;
+  const dt=document.getElementById('dt').value;
+  const ma=document.getElementById('ma').value;
+  const sched=buildSched(c);
+  const tongCK=ckEB+ckTC+ckTTS+ckBLNH+ckCT2;
+  const today=new Date().toLocaleDateString('vi-VN');
 
-  const tenKH   = document.getElementById('tenKH').value || '(Chưa điền)';
-  const toa     = document.getElementById('toa').value;
-  const tang    = document.getElementById('tang').value;
-  const can     = String(document.getElementById('can').value).padStart(2,'0');
-  const loai    = document.getElementById('loai').value;
-  const dt      = document.getElementById('dt').value;
-  const maCanHo = document.getElementById('ma').value;
+  // Policy rows
+  const pR=[];
+  pR.push(`<tr><td class="sn">8</td><td colspan="3">Tổng giá bán (đã VAT &amp; KPBT) trước chiết khấu – <em>Giá niêm yết</em></td><td class="ar"></td><td class="ar"><strong>${VND(NY)}</strong></td></tr>`);
+  pR.push(`<tr><td class="sn">9</td><td colspan="3">Tổng giá bán (chưa VAT &amp; KPBT) trước chiết khấu</td><td class="ar"></td><td class="ar">${VND(gtck)}</td></tr>`);
+  const eb_s=S.eb==='yes'?'<span class="ok">Được áp dụng</span>':'<span class="no">Không áp dụng</span>';
+  pR.push(`<tr><td class="sn">10</td><td>Chiết khấu Early Bird</td><td>${eb_s}</td><td><span class="tbg th">HĐTHNV</span></td><td class="ar">${PCT(0.05)}</td><td class="ar">${ckEB?VND(ckEB):'–'}</td></tr>`);
+  const tc_s=tc_rate>0?'<span class="ok">Không Vay</span>':'<span class="no">Vay</span>';
+  pR.push(`<tr><td class="sn">11</td><td>Chiết khấu CS tài chính (Vay / Không vay)</td><td>${tc_s}</td><td><span class="tbg th">HĐTHNV</span></td><td class="ar">${PCT(tc_rate)}</td><td class="ar">${ckTC?VND(ckTC):'–'}</td></tr>`);
+  if(tts_rate>0)pR.push(`<tr><td class="sn">14</td><td>Chiết khấu thanh toán sớm – ${tts_lbl}</td><td><span class="ok">${tts_lbl}</span></td><td><span class="tbg th">HĐTHNV</span></td><td class="ar">${PCT(tts_rate)}</td><td class="ar">${VND(ckTTS)}</td></tr>`);
+  const blnh_s=blnh_rate>0?'<span class="ok">Được áp dụng</span>':'<span class="no">Không được áp dụng</span>';
+  pR.push(`<tr><td class="sn">12</td><td>Chiết khấu từ chối bảo lãnh NH (tại HĐMB)</td><td>${blnh_s}</td><td><span class="tbg tm">HĐMB</span></td><td class="ar">${blnh_rate?PCT(blnh_rate):'–'}</td><td class="ar">${ckBLNH?VND(ckBLNH):'–'}</td></tr>`);
+  const ct2_s=ct2_rate>0?`<span class="ok">Kích hoạt – ${S.rank}</span>`:'<span class="no">Chưa kích hoạt</span>';
+  pR.push(`<tr><td class="sn">13</td><td>Chiết khấu KH thân thiết (căn thứ 2 – ${S.rank})</td><td>${ct2_s}</td><td><span class="tbg tm">HĐMB</span></td><td class="ar">${ct2_rate?PCT(ct2_rate):'–'}</td><td class="ar">${ckCT2?VND(ckCT2):'–'}</td></tr>`);
+  const nr=tts_rate>0?15:14;
+  pR.push(`<tr class="hlr"><td class="sn">${nr}</td><td colspan="3"><strong>Tổng giá bán (chưa VAT &amp; KPBT) sau chiết khấu</strong></td><td class="ar"></td><td class="ar"><strong>${VND(net)}</strong></td></tr>`);
+  pR.push(`<tr><td class="sn">${nr+1}</td><td colspan="3">Thuế VAT (tạm tính)</td><td class="ar">10 %</td><td class="ar">${VND(VAT)}</td></tr>`);
+  pR.push(`<tr><td class="sn">${nr+2}</td><td colspan="3">Kinh phí bảo trì (tạm tính)</td><td class="ar">2 %</td><td class="ar">${VND(KPBT)}</td></tr>`);
 
-  const sched   = buildSchedule(c);
-  // Tổng giá trị thanh toán = Tổng giá trị khách hàng phải thanh toán (= net * 1.12)
-  // Bao gồm cả phần 5% trả sau (lãi TTS), nên dùng c.tong thay vì cộng từng dòng
-  const tongTT  = tong;
-
-  // ── Policy rows ──
-  const policyRows = [];
-
-  // Row 8: Gia niem yet
-  policyRows.push(`<tr><td class="stt">8</td><td colspan="4">Tổng giá bán căn hộ (đã VAT & KPBT) trước chiết khấu – <em>Giá niêm yết</em></td><td><strong>${VND(NY)}</strong></td></tr>`);
-  // Row 9: Gia truoc CK
-  policyRows.push(`<tr><td class="stt">9</td><td colspan="4">Tổng giá bán căn hộ (chưa VAT & KPBT) trước chiết khấu</td><td>${VND(gtck)}</td></tr>`);
-
-  // Row 10: Early Bird
-  const eb_status = S.eb==='yes' ? '<span class="ok">Được áp dụng</span>' : '<span class="no">Không áp dụng</span>';
-  policyRows.push(`<tr><td class="stt">10</td><td>Chiết khấu Early Bird<br><small style="color:var(--muted)">Có thời hạn</small></td><td>${eb_status}</td><td><span class="tbadge t-hdthnv">HĐTHNV</span></td><td>${PCT(0.05)}</td><td>${ckEB ? VND(ckEB) : '–'}</td></tr>`);
-
-  // Row 11: CS tai chinh
-  const tc_lbl = m==='co_vay' ? 'Vay' : 'Không Vay';
-  const tc_status = tc_rate>0 ? `<span class="ok">${tc_lbl}</span>` : `<span class="no">${tc_lbl}</span>`;
-  policyRows.push(`<tr><td class="stt">11</td><td>Chính sách tài chính (Vay / Không vay)</td><td>${tc_status}</td><td><span class="tbadge t-hdthnv">HĐTHNV</span></td><td>${PCT(tc_rate)}</td><td>${ckTC ? VND(ckTC) : '–'}</td></tr>`);
-
-  // Row 14 (TTS): chỉ hiện nếu có TTS
-  if(tts_rate > 0) {
-    policyRows.push(`<tr><td class="stt">14</td><td>Chiết khấu thanh toán sớm – ${tts_lbl}<br><small style="color:var(--muted)">Căn cứ theo mốc thời gian TT sớm muộn nhất</small></td><td><span class="ok">${tts_lbl}</span></td><td><span class="tbadge t-hdthnv">HĐTHNV</span></td><td>${PCT(tts_rate)}</td><td>${VND(ckTTS)}</td></tr>`);
-  }
-
-  // Row 12: BLNH
-  const blnh_ok = blnh_rate > 0;
-  const blnh_status = blnh_ok ? '<span class="ok">Được áp dụng</span>' : '<span class="no">Không được áp dụng</span>';
-  policyRows.push(`<tr><td class="stt">12</td><td>Chiết khấu từ chối bảo lãnh ngân hàng<br><small style="color:var(--muted)">(áp dụng tại HĐMB)</small></td><td>${blnh_status}</td><td><span class="tbadge t-hdmb">HĐMB</span></td><td>${blnh_rate ? PCT(blnh_rate) : '–'}</td><td>${ckBLNH ? VND(ckBLNH) : '–'}</td></tr>`);
-
-  // Row 13: KH than thiet
-  const ct2_ok = ct2_rate > 0;
-  const ct2_status = ct2_ok ? `<span class="ok">Đã kích hoạt – ${S.rank}</span>` : '<span class="no">Chưa kích hoạt</span>';
-  policyRows.push(`<tr><td class="stt">13</td><td>Chiết khấu KH thân thiết (căn mua thứ 2)<br><small style="color:var(--muted)">Hạng thành viên tại HĐMB: ${S.rank}</small></td><td>${ct2_status}</td><td><span class="tbadge t-hdmb">HĐMB</span></td><td>${ct2_rate ? PCT(ct2_rate) : '–'}</td><td>${ckCT2 ? VND(ckCT2) : '–'}</td></tr>`);
-
-  // Row: net sau CK
-  const netRowNum = tts_rate > 0 ? 15 : 14;
-  policyRows.push(`<tr class="hl"><td class="stt">${netRowNum}</td><td colspan="4"><strong>Tổng giá bán căn hộ (chưa VAT & KPBT) sau chiết khấu</strong></td><td><strong>${VND(net)}</strong></td></tr>`);
-
-  // VAT / KPBT rows
-  const vatRowNum = netRowNum+1, kpbtRowNum = netRowNum+2;
-  policyRows.push(`<tr><td class="stt">${vatRowNum}</td><td colspan="3">Thuế VAT (tạm tính)</td><td style="text-align:right">10%</td><td>${VND(VAT)}</td></tr>`);
-  policyRows.push(`<tr><td class="stt">${kpbtRowNum}</td><td colspan="3">Kinh phí bảo trì (tạm tính)</td><td style="text-align:right">2%</td><td>${VND(KPBT)}</td></tr>`);
-
-  // ── Schedule rows ──
-  const schedRows = sched.map(r => {
-    if(r.ms) return `<tr class="ms"><td colspan="4">&nbsp;▸&nbsp;${r.lbl} &nbsp;–&nbsp; ${FMT_D(r.date)}</td></tr>`;
-    if(r.note) return `<tr class="note-r"><td></td><td colspan="3">${r.lbl} &nbsp;&nbsp; <strong>${VND(r.val)}</strong></td></tr>`;
-    return `<tr>
-      <td>${r.stt}</td>
-      <td>${r.lbl}</td>
-      <td>${r.pct}</td>
-      <td>${FMT_D(r.date)}</td>
-      <td>${VND(r.val)}</td>
-    </tr>`;
+  // Schedule rows
+  const sR=sched.map(r=>{
+    if(r.ms)return`<tr class="msr"><td colspan="5">${r.lbl}&ensp;–&ensp;${FD(r.d)}</td></tr>`;
+    // deferred row: label left, value right – fully inline
+    if(r.dfr)return`<tr class="dfr"><td></td><td colspan="2">${r.lbl}</td><td></td><td class="ar">${VND(r.val)}</td></tr>`;
+    return`<tr><td class="sn">${r.stt}</td><td>${r.lbl}</td><td>${r.pct}</td><td class="ar">${FD(r.d)}</td><td class="ar">${VND(r.val)}</td></tr>`;
   }).join('');
 
-  // ── Tong CK ──
-  const tongCK = ckEB + ckTC + ckTTS + ckBLNH + ckCT2;
+  // CK lines for price box
+  const ckL=[];
+  if(ckEB)ckL.push(`<div class="pr ded"><span class="rl">– Early Bird (5%)</span><span class="rv">− ${VND(ckEB)}</span></div>`);
+  if(ckTC)ckL.push(`<div class="pr ded"><span class="rl">– CS Tài chính (${PCT(tc_rate)})</span><span class="rv">− ${VND(ckTC)}</span></div>`);
+  if(ckTTS)ckL.push(`<div class="pr ded"><span class="rl">– TTS ${tts_lbl} (${PCT(tts_rate)})</span><span class="rv">− ${VND(ckTTS)}</span></div>`);
+  if(ckBLNH)ckL.push(`<div class="pr ded"><span class="rl">– BLNH (${PCT(blnh_rate)})</span><span class="rv">− ${VND(ckBLNH)}</span></div>`);
+  if(ckCT2)ckL.push(`<div class="pr ded"><span class="rl">– KH thân thiết ${S.rank} (${PCT(ct2_rate)})</span><span class="rv">− ${VND(ckCT2)}</span></div>`);
 
-  const html = `
-    <div class="qh">
-      <div class="qh-brand"><h2>FOURS TOWER</h2><p>PHIẾU TÍNH GIÁ (TẠM TÍNH)</p></div>
-      <div class="qh-right">
-        <div class="badge">${m.replace('_',' ').toUpperCase()}</div>
-        <div class="csbh-txt">${M_CSBH[m]}</div>
+  document.getElementById('ph').style.display='none';
+  const doc=document.getElementById('doc');
+  doc.className='rdy';
+  doc.innerHTML=`
+  <div class="dh">
+    <div class="dh-logo">
+      <img src="https://res.cloudinary.com/ds6czij1k/image/upload/v1776438027/Logo_FourS_bfvt9q.png" alt="FourS" crossorigin="anonymous">
+      <div class="tag">Premium Residential · Ho Chi Minh City</div>
+    </div>
+    <div class="dh-right">
+      <span class="dh-pill">${M_SH[m]}</span>
+      <span class="dh-title">Phiếu Tính Giá</span>
+      <span class="dh-sub">${M_CSBH[m]} &nbsp;·&nbsp; Ngày lập: ${today}</span>
+    </div>
+  </div>
+  <div class="gr"></div>
+  <div class="ps">
+    <div class="pi"><div class="pl">Khách hàng</div><div class="pv">${tenKH}</div></div>
+    <div class="pi"><div class="pl">Mã căn hộ</div><div class="pv">${ma}</div></div>
+    <div class="pi"><div class="pl">Tòa / Tầng / Căn</div><div class="pv">${toa} – T.${tang} – Căn ${can}</div></div>
+    <div class="pi"><div class="pl">Loại hình</div><div class="pv">${loai}</div></div>
+    <div class="pi"><div class="pl">Diện tích TT</div><div class="pv">${dt} m²</div></div>
+    <div class="pi"><div class="pl">HĐMB dự kiến</div><div class="pv">${FD(D.hdmb)}</div></div>
+  </div>
+
+  <div class="sh" style="margin-top:12px"><div class="sh-n">1</div><div class="sh-t">Thông tin giá &amp; chính sách chiết khấu</div><div class="sh-r"></div></div>
+  <div class="wp">
+    <table class="pt">
+      <thead><tr>
+        <th style="width:20px">STT</th><th>Nội dung</th>
+        <th style="width:110px">Trạng thái</th>
+        <th style="width:72px">Thời điểm</th>
+        <th class="ar" style="width:52px">Mức CK</th>
+        <th class="ar" style="width:118px">Giá trị (VNĐ)</th>
+      </tr></thead>
+      <tbody>${pR.join('')}</tbody>
+    </table>
+  </div>
+
+  <div class="sh" style="margin-top:8px"><div class="sh-n">2</div><div class="sh-t">Tổng hợp giá bán</div><div class="sh-r"></div></div>
+  <div class="wp2">
+    <div class="pb">
+      <div class="pb-l">
+        <div class="pbl">Chi tiết chiết khấu</div>
+        <div class="pr"><span class="rl">Giá niêm yết (đã VAT + KPBT)</span><span class="rv">${VND(NY)}</span></div>
+        <div class="pr"><span class="rl">Giá trước CK (chưa VAT &amp; KPBT)</span><span class="rv">${VND(gtck)}</span></div>
+        ${ckL.join('')}
+        <div class="pr sep"><span class="rl">Giá sau CK (chưa VAT &amp; KPBT)</span><span class="rv">${VND(net)}</span></div>
+        <div class="pr"><span class="rl">+ VAT 10%</span><span class="rv">${VND(VAT)}</span></div>
+        <div class="pr"><span class="rl">+ KPBT 2%</span><span class="rv">${VND(KPBT)}</span></div>
+      </div>
+      <div class="pb-r">
+        <div class="pbr-lbl">Tổng giá trị khách hàng phải thanh toán</div>
+        <div class="tot-val">${VND(tong)}</div>
+        <div class="tot-sub">Đã bao gồm VAT 10% + KPBT 2%<br>Tổng CK: ${VND(tongCK)} (${tongCK?PCT(tongCK/gtck):'0 %'} so với giá trước CK)</div>
       </div>
     </div>
+  </div>
 
-    <div class="qprop">
-      <div class="qpi"><div class="pl">Khách hàng</div><div class="pv">${tenKH}</div></div>
-      <div class="qpi"><div class="pl">Mã căn hộ</div><div class="pv">${maCanHo}</div></div>
-      <div class="qpi"><div class="pl">Tòa / Tầng / Căn</div><div class="pv">${toa} – Tầng ${tang} – Căn ${can}</div></div>
-      <div class="qpi"><div class="pl">Loại hình</div><div class="pv">${loai}</div></div>
-      <div class="qpi"><div class="pl">Diện tích TT</div><div class="pv">${dt} m²</div></div>
-      <div class="qpi"><div class="pl">Ngày ký HĐTHNV</div><div class="pv">${FMT_D(D.hdthnv)}</div></div>
-      <div class="qpi"><div class="pl">Ngày ký HĐMB dự kiến</div><div class="pv">${FMT_D(D.hdmb)}</div></div>
-      <div class="qpi"><div class="pl">Ngày bàn giao dự kiến</div><div class="pv">${FMT_D(D.bg)}</div></div>
-    </div>
+  <div class="sh" style="margin-top:8px"><div class="sh-n">3</div><div class="sh-t">Tiến độ thanh toán</div><div class="sh-r"></div></div>
+  <div class="ws">
+    <table class="st">
+      <thead><tr>
+        <th style="width:26px">STT</th><th>Nội dung thanh toán</th>
+        <th style="width:85px">Tỷ lệ</th>
+        <th class="ar" style="width:95px">Ngày</th>
+        <th class="ar" style="width:125px">Số tiền (VNĐ)</th>
+      </tr></thead>
+      <tbody>${sR}</tbody>
+      <tfoot><tr><td colspan="4">TỔNG GIÁ TRỊ THANH TOÁN</td><td class="ar">${VND(tong)}</td></tr></tfoot>
+    </table>
+  </div>
 
-    <div class="qbody">
+  <div class="disc">
+    <p>* Phiếu tính giá mang tính tạm tính, có thể thay đổi tại thời điểm ký kết hợp đồng chính thức.<br>
+    * Lãi suất TTS: 8%/năm (riêng III.4 TTS 50% là 10%/năm), tính từ ngày bàn giao đến khi nhận Giấy Chứng Nhận (GCN).<br>
+    * Chiết khấu BLNH và KH thân thiết (căn mua thứ 2) được áp dụng tại thời điểm ký Hợp Đồng Mua Bán (HĐMB).<br>
+    * Dòng màu xanh lá trong tiến độ là khoản 5% gốc trả sau khi nhận GCN (đã tính vào tổng giá trị thanh toán).</p>
+  </div>
+  <div class="df">
+    <span class="dl">FOURS TOWER · PHIẾU TÍNH GIÁ TẠM TÍNH · ${today}</span>
+    <span class="dr">CSBH01 · HĐTHNV</span>
+  </div>`;
 
-      <table class="ptbl">
-        <thead>
-          <tr>
-            <th>STT</th>
-            <th>Thông tin giá & chính sách</th>
-            <th>Trạng thái</th>
-            <th>Thời điểm</th>
-            <th>Mức CK</th>
-            <th>Giá trị</th>
-          </tr>
-        </thead>
-        <tbody>${policyRows.join('')}</tbody>
-      </table>
-
-      <div class="psum">
-        <div class="pr"><span class="lbl">Giá niêm yết (đã VAT + KPBT)</span><span class="val">${VND(NY)}</span></div>
-        <div class="pr"><span class="lbl">Giá trước chiết khấu (chưa VAT & KPBT)</span><span class="val">${VND(gtck)}</span></div>
-        ${tongCK ? `<div class="pr ded"><span class="lbl">– Tổng chiết khấu (chưa VAT)</span><span class="val">− ${VND(tongCK)}</span></div>` : ''}
-        <div class="pr sep"><span class="lbl">Giá sau CK (chưa VAT & KPBT)</span><span class="val">${VND(net)}</span></div>
-        <div class="pr"><span class="lbl">+ VAT 10%</span><span class="val">${VND(VAT)}</span></div>
-        <div class="pr"><span class="lbl">+ KPBT 2%</span><span class="val">${VND(KPBT)}</span></div>
-        <div class="pr tot"><span class="lbl">TỔNG GIÁ TRỊ KHÁCH HÀNG PHẢI THANH TOÁN</span><span class="val">${VND(tong)}</span></div>
-      </div>
-
-      <div class="stit">Tiến độ thanh toán</div>
-      <table class="stbl">
-        <thead>
-          <tr>
-            <th style="width:36px">STT</th>
-            <th>Tiến độ thanh toán</th>
-            <th style="width:80px">% TT</th>
-            <th style="width:110px">Ngày</th>
-            <th style="width:140px">Số tiền</th>
-          </tr>
-        </thead>
-        <tbody>${schedRows}</tbody>
-        <tfoot>
-          <tr>
-            <td colspan="4">TỔNG GIÁ TRỊ THANH TOÁN</td>
-            <td>${VND(tongTT)}</td>
-          </tr>
-        </tfoot>
-      </table>
-    </div>
-
-    <div class="qnote">
-      * Phiếu tính giá chỉ mang tính tạm tính, có thể thay đổi tại thời điểm ký kết hợp đồng chính thức.<br>
-      * Lãi suất TTS: 8%/năm (riêng TTS 50% là 10%/năm), tính từ ngày bàn giao đến khi nhận GCN.<br>
-      * Chiết khấu BLNH và KH thân thiết (căn thứ 2) áp dụng tại thời điểm ký HĐMB.<br>
-      * VAT & KPBT trong tiến độ: các đợt thanh toán gồm phần gốc + 10% VAT (trừ đợt cuối tách riêng KPBT+thuế 5%).
-    </div>
-
-    <div class="qfooter">
-      <p>FOURS TOWER – PHIẾU TÍNH GIÁ (TẠM TÍNH) · In ngày ${new Date().toLocaleDateString('vi-VN')}</p>
-      <p>Chỉ được điều chỉnh tại ô màu vàng</p>
-    </div>
-  `;
-
-  document.getElementById('ph').style.display = 'none';
-  const qc = document.getElementById('qc');
-  qc.innerHTML = html;
-  qc.className = 'qcard show';
-  // Show export bar with filename
-  const exportBar = document.getElementById('exportBar');
-  exportBar.style.display = 'flex';
-  document.querySelector('.exp-name').textContent =
-    `PTG_${maCanHo}_${m.toUpperCase()}`;
-
-  qc.scrollIntoView({ behavior:'smooth', block:'start' });
+  // Export bar
+  document.getElementById('ebar').style.display='flex';
+  document.getElementById('ef').textContent=`PTG_${ma}_${m.toUpperCase()}.png`;
+  doc.scrollIntoView({behavior:'smooth',block:'start'});
 }
 
-// ── EXPORT PNG (A4, 300dpi-equivalent) ──
-async function exportPNG() {
-  const qc = document.getElementById('qc');
-  if(!qc.classList.contains('show')) { alert('Vui lòng bấm Xác nhận trước!'); return; }
+async function exportPNG(){
+  const doc=document.getElementById('doc');
+  if(!doc.classList.contains('rdy')){alert('Vui lòng bấm Xác nhận trước!');return;}
+  const btn=document.getElementById('bexp');
+  btn.textContent='⏳ Đang xuất…';btn.disabled=true;
 
-  const btn = document.getElementById('btnExport');
-  const orig = btn.textContent;
-  btn.textContent = '⏳ Đang xuất…';
-  btn.disabled = true;
+  // Wait for logo image to fully load
+  await Promise.all([...doc.querySelectorAll('img')].map(img=>
+    img.complete?Promise.resolve():new Promise(r=>{img.onload=r;img.onerror=r;})
+  ));
+  await new Promise(r=>setTimeout(r,200));
 
-  // A4 portrait at 96dpi base = 794px wide
-  // We render at scale=3 → 2382px wide ≈ 300dpi print quality
-  const A4_W  = 794;
-  const SCALE = 3;
+  // A4 width = 794px. Scale 3.5x → ~330 dpi, crystal clear
+  const SCALE=3.5,W=794;
+  const pw=doc.style.width,pm=doc.style.maxWidth;
+  doc.style.width=W+'px';doc.style.maxWidth=W+'px';
+  await new Promise(r=>requestAnimationFrame(()=>requestAnimationFrame(r)));
 
-  // Force qcard to A4 width for capture
-  const savedW  = qc.style.width;
-  const savedMW = qc.style.maxWidth;
-  qc.style.width    = A4_W + 'px';
-  qc.style.maxWidth = A4_W + 'px';
-
-  // Wait for reflow
-  await new Promise(r => requestAnimationFrame(() => requestAnimationFrame(r)));
-
-  const canvas = await html2canvas(qc, {
-    scale: SCALE,
-    useCORS: true,
-    allowTaint: true,
-    backgroundColor: '#ffffff',
-    logging: false,
-    width: A4_W,
-    windowWidth: A4_W + 40,
+  const canvas=await html2canvas(doc,{
+    scale:SCALE,useCORS:true,allowTaint:true,
+    backgroundColor:'#ffffff',logging:false,
+    width:W,windowWidth:W,imageTimeout:10000,
   });
+  doc.style.width=pw;doc.style.maxWidth=pm;
 
-  // Restore
-  qc.style.width    = savedW;
-  qc.style.maxWidth = savedMW;
+  const fname=document.getElementById('ef').textContent||'PTG.png';
+  const a=document.createElement('a');
+  a.download=fname;
+  a.href=canvas.toDataURL('image/png',1.0);
+  a.click();
 
-  const expName = document.querySelector('.exp-name').textContent || 'baogia';
-
-  // A4 page height in canvas pixels
-  const A4_H_RATIO = 1.41421356; // sqrt(2)
-  const pageH_canvas = Math.round(A4_W * SCALE * A4_H_RATIO);
-  const totalH = canvas.height;
-  const totalW = canvas.width;
-  const pages  = Math.ceil(totalH / pageH_canvas);
-
-  if(pages === 1) {
-    const link = document.createElement('a');
-    link.download = expName + '.png';
-    link.href = canvas.toDataURL('image/png');
-    link.click();
-  } else {
-    for(let i = 0; i < pages; i++) {
-      const sliceH   = Math.min(pageH_canvas, totalH - i * pageH_canvas);
-      const pg       = document.createElement('canvas');
-      pg.width  = totalW;
-      pg.height = sliceH;
-      const ctx = pg.getContext('2d');
-      ctx.fillStyle = '#ffffff';
-      ctx.fillRect(0, 0, totalW, sliceH);
-      ctx.drawImage(canvas, 0, -i * pageH_canvas);
-      await new Promise(r => setTimeout(r, 80));
-      const link = document.createElement('a');
-      link.download = `${expName}_p${i+1}.png`;
-      link.href = pg.toDataURL('image/png');
-      link.click();
-      await new Promise(r => setTimeout(r, 400));
-    }
-  }
-
-  btn.textContent = orig;
-  btn.disabled = false;
+  btn.textContent='⬇ Xuất ảnh PNG · A4';btn.disabled=false;
 }
 </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
