@@ -97,7 +97,27 @@ body{font-family:var(--sans);background:var(--bg);color:var(--body);font-size:13
 /* ══════════════════════════════════════
    DOCUMENT  #doc  (794px = A4 @ 96dpi)
 ══════════════════════════════════════ */
-#doc{width:794px;background:var(--white);display:none;font-family:var(--sans);color:var(--ink);}
+#doc{
+  width:794px;
+  background:var(--white);
+  display:none;
+  font-family:var(--sans);
+  color:var(--ink);
+  position:relative;
+}
+#doc::before{
+  content:'';
+  position:absolute;
+  inset:0;
+  background-image:url('https://res.cloudinary.com/dn7cvccms/image/upload/v1776851727/Walllll_vo9buc.png');
+  background-size:cover;
+  background-position:center;
+  background-repeat:no-repeat;
+  opacity:0.07;
+  pointer-events:none;
+  z-index:0;
+}
+#doc > *{position:relative;z-index:1;}
 #doc.rdy{display:block;}
 
 /* doc header */
@@ -609,11 +629,11 @@ function gen(){
   document.getElementById('ph').style.display='none';
   const doc=document.getElementById('doc');
   doc.className='rdy';
-  doc.innerHTML=`
+  doc.innerHTML=`<div style="position:absolute;inset:0;background-image:url('https://res.cloudinary.com/dn7cvccms/image/upload/v1776851727/Walllll_vo9buc.png');background-size:cover;background-position:center;background-repeat:no-repeat;opacity:0.07;pointer-events:none;z-index:0;"></div>`+`
   <div class="dh">
     <div class="dh-logo">
       <img src="https://res.cloudinary.com/ds6czij1k/image/upload/v1776438027/Logo_FourS_bfvt9q.png" alt="FourS" crossorigin="anonymous">
-      <div class="dtag">FourS Tower Đà Nẵng</div>
+      <div class="dtag">Premium Residential · Ho Chi Minh City</div>
     </div>
     <div class="dh-right">
       <span class="dh-pill">${M_SH[m]}</span>
@@ -690,6 +710,13 @@ async function exportPNG(){
   if(!doc.classList.contains('rdy')){alert('Vui lòng bấm Xác nhận trước!');return;}
   const btn=document.getElementById('bexp');
   btn.textContent='⏳ Đang xuất…';btn.disabled=true;
+  // Pre-load background image for html2canvas
+  await new Promise(res=>{
+    const img=new Image();
+    img.crossOrigin='anonymous';
+    img.onload=res; img.onerror=res;
+    img.src='https://res.cloudinary.com/dn7cvccms/image/upload/v1776851727/Walllll_vo9buc.png';
+  });
   await Promise.all([...doc.querySelectorAll('img')].map(img=>img.complete?Promise.resolve():new Promise(r=>{img.onload=r;img.onerror=r;})));
   await new Promise(r=>setTimeout(r,200));
   const SCALE=3.5,W=794;
