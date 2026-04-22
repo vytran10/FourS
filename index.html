@@ -4,7 +4,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>FOURS TOWER – Phiếu Tính Giá</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 /* ══ TOKENS – FourS brand green ══ */
 :root{
@@ -32,18 +31,18 @@
   --sched-ms-border:#B8960A;
   --sched-defer:#FBF5DF;
   --sched-total:#1C1814;
-  --serif:'Playfair Display',Georgia,serif;
-  --sans:'IBM Plex Sans',sans-serif;
-  --mono:'IBM Plex Mono',monospace;
+  --serif:'Times New Roman',Times,serif;
+  --sans:'Times New Roman',Times,serif;
+  --mono:'Times New Roman',Times,serif;
 }
 *{box-sizing:border-box;margin:0;padding:0;}
 body{font-family:var(--sans);background:var(--bg);color:var(--body);font-size:13px;min-height:100vh;}
 
 /* ── SHELL ── */
-.shdr{background:var(--g1);padding:12px 36px;display:flex;align-items:center;gap:14px;border-bottom:3px solid var(--gold);}
+.shdr{background:var(--white);padding:12px 36px;display:flex;align-items:center;gap:14px;border-bottom:2px solid var(--line);}
 .shdr img{height:33px;object-fit:contain;}
 .shdr .sdv{width:1px;height:24px;background:rgba(255,255,255,.18);margin:0 4px;}
-.shdr .sst{color:rgba(255,255,255,.45);font-size:9.5px;letter-spacing:2px;text-transform:uppercase;}
+.shdr .sst{color:var(--muted);font-size:9.5px;letter-spacing:2px;text-transform:uppercase;}
 .app{max-width:1180px;margin:0 auto;padding:28px 18px;display:grid;grid-template-columns:348px 1fr;gap:24px;}
 
 /* ── FORM ── */
@@ -61,7 +60,7 @@ body{font-family:var(--sans);background:var(--bg);color:var(--body);font-size:13
 .r2{display:grid;grid-template-columns:1fr 1fr;gap:7px;}
 .tr{display:flex;gap:4px;margin-bottom:8px;}
 .tb{flex:1;padding:6px 3px;border:1px solid var(--line);background:#F9F6F0;font-family:var(--sans);font-size:10px;color:var(--muted);cursor:pointer;text-align:center;transition:all .12s;}
-.tb.on{background:var(--g1);border-color:var(--g1);color:var(--white);}
+.tb.on{background:var(--ink);border-color:var(--ink);color:var(--white);}
 .rr{display:flex;flex-wrap:wrap;gap:3px;margin-bottom:8px;}
 .rb{padding:4px 7px;border:1px solid var(--line);background:#F9F6F0;font-size:9.5px;cursor:pointer;color:var(--muted);transition:all .12s;text-align:center;}
 .rb .rp{display:block;font-size:8px;color:var(--muted);margin-top:1px;}
@@ -75,14 +74,14 @@ body{font-family:var(--sans);background:var(--bg);color:var(--body);font-size:13
 .sf span{font-size:10.5px;color:var(--muted);}
 .mts{display:flex;flex-direction:column;gap:3px;margin-bottom:8px;}
 .mt{display:flex;align-items:center;gap:8px;padding:7px 9px;border:1px solid var(--line);background:#F9F6F0;cursor:pointer;transition:all .12s;}
-.mt:hover{border-color:var(--g3);}
+.mt:hover{border-color:var(--ink);}
 .mt.on{border-color:var(--gold);background:var(--gold-pale);}
 .rd{width:11px;height:11px;border-radius:50%;border:2px solid var(--line);flex-shrink:0;transition:all .12s;}
 .mt.on .rd{border-color:var(--gold);background:var(--gold);}
 .mn{font-size:11px;font-weight:500;color:var(--ink);}
 .mc{font-size:9px;color:var(--muted);margin-top:1px;}
-.bok{width:100%;padding:11px;background:var(--g1);color:var(--white);border:none;cursor:pointer;font-family:var(--sans);font-size:10.5px;font-weight:500;letter-spacing:2px;text-transform:uppercase;margin-top:16px;transition:background .15s;}
-.bok:hover{background:var(--g2);}
+.bok{width:100%;padding:11px;background:var(--ink);color:var(--white);border:none;cursor:pointer;font-family:var(--sans);font-size:10.5px;font-weight:500;letter-spacing:2px;text-transform:uppercase;margin-top:16px;transition:background .15s;}
+.bok:hover{background:#555;}
 
 /* ── OUTPUT ── */
 .qp{align-self:start;}
@@ -91,8 +90,8 @@ body{font-family:var(--sans);background:var(--bg);color:var(--body);font-size:13
 .ph p{font-size:12px;line-height:1.7;}
 .ebar{display:none;align-items:center;gap:10px;margin-bottom:10px;padding:8px 12px;background:var(--white);border:1px solid var(--line);}
 .ebar .ef{font-size:10.5px;color:var(--ink);flex:1;font-family:var(--mono);}
-.bexp{padding:7px 15px;background:var(--g1);color:var(--white);border:none;cursor:pointer;font-family:var(--sans);font-size:10px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;transition:background .15s;white-space:nowrap;}
-.bexp:hover{background:var(--g2);}
+.bexp{padding:7px 15px;background:var(--ink);color:var(--white);border:none;cursor:pointer;font-family:var(--sans);font-size:10px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;transition:background .15s;white-space:nowrap;}
+.bexp:hover{background:#555;}
 .bexp:disabled{opacity:.5;cursor:default;}
 
 /* ══════════════════════════════════════
@@ -102,104 +101,90 @@ body{font-family:var(--sans);background:var(--bg);color:var(--body);font-size:13
 #doc.rdy{display:block;}
 
 /* doc header */
-.dh{padding:22px 30px 16px;display:flex;justify-content:space-between;align-items:center;border-bottom:3px solid var(--g1);}
+.dh{padding:22px 30px 16px;display:flex;justify-content:space-between;align-items:center;border-bottom:2px solid var(--gold);}
 .dh-logo img{height:40px;object-fit:contain;}
 .dh-logo .dtag{font-size:7.5px;letter-spacing:2.5px;text-transform:uppercase;color:var(--muted);margin-top:4px;}
 .dh-right{text-align:right;}
-.dh-pill{display:inline-block;background:var(--g2);color:var(--white);font-size:8px;letter-spacing:2px;text-transform:uppercase;padding:3px 10px;margin-bottom:4px;}
+.dh-pill{display:inline-block;background:var(--white);color:var(--ink);border:1.5px solid var(--ink);font-size:8px;letter-spacing:2px;text-transform:uppercase;padding:2px 9px;margin-bottom:4px;font-weight:700;}
 .dh-title{font-family:var(--serif);font-size:16px;color:var(--ink);display:block;letter-spacing:.4px;}
 .dh-sub{font-size:8px;color:var(--muted);letter-spacing:.8px;text-transform:uppercase;display:block;margin-top:2px;}
 
 /* green rule */
-.gr{height:2px;background:linear-gradient(90deg,var(--g1) 0%,var(--gold-lt) 50%,var(--g1) 100%);}
+.gr{height:1px;background:var(--line);}
 
 /* prop strip */
-.ps{background:var(--g1);padding:11px 30px;display:flex;gap:0;}
+.ps{background:var(--white);padding:11px 30px;display:flex;gap:0;border:1px solid var(--line);border-top:none;}
 .pi{flex:1;padding-right:14px;}
 .pi:last-child{padding-right:0;}
-.pi .pl{font-size:7px;color:rgba(255,255,255,.45);text-transform:uppercase;letter-spacing:1.5px;}
-.pi .pv{font-size:11px;color:var(--white);font-weight:500;margin-top:2px;}
+.pi .pl{font-size:7px;color:var(--muted);text-transform:uppercase;letter-spacing:1.5px;}
+.pi .pv{font-size:11px;color:var(--ink);font-weight:600;margin-top:2px;}
 
 /* section header */
 .sh{padding:7px 30px 5px;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:8px;margin-top:0;}
-.sh-n{width:17px;height:17px;background:var(--gold);display:flex;align-items:center;justify-content:center;font-size:8px;font-weight:600;color:var(--white);flex-shrink:0;}
+.sh-n{width:17px;height:17px;background:var(--white);border:1.5px solid var(--ink);display:flex;align-items:center;justify-content:center;font-size:8px;font-weight:700;color:var(--ink);flex-shrink:0;}
 .sh-t{font-family:var(--serif);font-size:12px;color:var(--ink);}
 .sh-r{flex:1;height:1px;background:var(--line);}
 /* schedule section header special */
-.sh.sched-sh{background:linear-gradient(90deg,var(--gold-pale),var(--white));border-bottom:2px solid var(--gold);padding-top:8px;padding-bottom:6px;}
-.sh.sched-sh .sh-n{background:var(--g1);width:20px;height:20px;font-size:9px;border:1px solid var(--gold);}
-.sh.sched-sh .sh-t{font-size:13px;font-weight:500;color:var(--g1);letter-spacing:.3px;}
+.sh.sched-sh{background:var(--white);border-bottom:2px solid var(--ink);padding-top:8px;padding-bottom:6px;}
+.sh.sched-sh .sh-n{background:var(--white);border:2px solid var(--ink);width:20px;height:20px;font-size:9px;}
+.sh.sched-sh .sh-t{font-size:13px;font-weight:700;color:var(--ink);letter-spacing:.3px;}
 
 /* ── SECTION 1: Policy table ── */
 .wp{padding:5px 30px 3px;}
 .pt{width:100%;border-collapse:collapse;}
-.pt thead tr{border-bottom:1.5px solid var(--gold);}
-.pt thead th{padding:5px 5px 4px;font-size:7.5px;text-transform:uppercase;letter-spacing:1.2px;color:var(--gold);font-weight:600;text-align:left;}
+.pt thead tr{border-bottom:2px solid var(--ink);}
+.pt thead th{padding:5px 5px 4px;font-size:7.5px;text-transform:uppercase;letter-spacing:1.2px;color:var(--ink);font-weight:700;text-align:left;}
 .pt thead th.ar{text-align:right;}
 .pt tbody tr{border-bottom:1px solid var(--line);}
 .pt tbody td{padding:5.5px 5px;font-size:10.5px;vertical-align:middle;}
 .pt tbody td.ar{text-align:right;font-family:var(--mono);font-size:10px;}
 .pt td.sn{color:var(--muted);font-size:9px;width:16px;}
-.ok{color:#7A6010;font-size:9px;font-weight:600;}
+.ok{color:#1A5C2A;font-size:9px;font-weight:600;}
 .no{color:var(--muted);font-size:9px;}
-.hlr td{background:var(--g5);}
-.hlr td:first-child{border-left:3px solid var(--gold);}
+.hlr td{background:#F5F5F5;}
+.hlr td:first-child{border-left:3px solid var(--ink);}
+.total-row td{background:var(--white)!important;border-top:2px solid var(--ink)!important;border-bottom:2px solid var(--ink)!important;padding:9px 5px!important;vertical-align:middle;}
+.total-row td:first-child{border-left:2px solid var(--ink)!important;}
+.total-row td:last-child{border-right:2px solid var(--ink)!important;}
+.total-val{font-size:13px!important;color:var(--ink)!important;font-family:'Times New Roman',Times,serif!important;}
 .tbg{display:inline-block;padding:1.5px 5px;font-size:7.5px;border:1px solid;letter-spacing:.5px;font-weight:500;}
-.th{color:#1A4060;border-color:#4A7AAA;background:#EAF1F8;}
-.tm{color:#704010;border-color:#B08030;background:#FBF3E4;}
-
-/* ── SECTION 2: Price summary – compact ── */
-.wp2{padding:8px 30px;}
-.pb{display:flex;gap:0;border:1px solid var(--line);}
-/* left: slim breakdown list */
-.pb-l{flex:1;padding:10px 14px;border-right:1px solid var(--line);}
-.pb-lhd{font-size:7.5px;text-transform:uppercase;letter-spacing:1.3px;color:var(--muted);margin-bottom:7px;}
-.pb-row{display:flex;justify-content:space-between;align-items:baseline;padding:2px 0;}
-.pb-row .rl{font-size:10px;color:var(--body);}
-.pb-row .rv{font-size:10px;color:var(--body);font-family:var(--mono);}
-.pb-row.ded .rv{color:var(--red);}
-.pb-row.ded .rl{color:var(--muted);font-size:9.5px;}
-.pb-row.sep{border-top:1px solid var(--line);margin-top:3px;padding-top:5px;}
-/* right: total block */
-.pb-r{width:210px;flex-shrink:0;background:var(--g1);padding:10px 14px;display:flex;flex-direction:column;justify-content:center;}
-.pb-rhd{font-size:7px;text-transform:uppercase;letter-spacing:1.3px;color:rgba(255,255,255,.45);margin-bottom:5px;}
-.pb-tot{font-family:var(--serif);font-size:18px;color:var(--gold-lt);line-height:1.2;word-break:break-all;}
-.pb-sub{font-size:8px;color:rgba(255,255,255,.4);margin-top:6px;line-height:1.6;}
+.th{color:#1A4060;border-color:#7AAAD0;background:#F0F6FB;}
+.tm{color:#5A3010;border-color:#C09040;background:#FBF6EC;}
 
 /* ══ SECTION 3: SCHEDULE – HERO ══ */
 .sched-wrap{padding:6px 30px 20px;background:var(--white);}
-.st{width:100%;border-collapse:collapse;border:1px solid var(--gold);}
+.st{width:100%;border-collapse:collapse;border:1px solid var(--ink);}
 /* header */
-.st thead tr{background:var(--g1);}
-.st thead th{padding:9px 7px;font-size:8px;text-transform:uppercase;letter-spacing:1.3px;color:rgba(212,175,58,.9);font-weight:500;text-align:left;}
+.st thead tr{background:var(--white);border-bottom:2px solid var(--ink);}
+.st thead th{padding:9px 7px;font-size:8px;text-transform:uppercase;letter-spacing:1.3px;color:var(--ink);font-weight:700;text-align:left;}
 .st thead th.ar{text-align:right;}
 /* body rows */
-.st tbody tr{border-bottom:1px solid #C8DECE;}
-.st tbody tr:nth-child(even){background:#FAFDF9;}
+.st tbody tr{border-bottom:1px solid #E0E0E0;}
+.st tbody tr:nth-child(even){background:#FAFAFA;}
 .st tbody td{padding:7px 7px;font-size:11px;vertical-align:middle;}
 .st tbody td.ar{text-align:right;font-family:var(--mono);font-size:10.5px;}
 .st td.sn{color:var(--muted);font-size:9.5px;width:22px;font-family:var(--mono);}
 /* milestone */
-.st tr.msr{background:var(--gold-pale)!important;border-bottom:1.5px solid var(--gold)!important;border-top:1.5px solid var(--gold)!important;}
-.st tr.msr td{padding:5px 7px;font-size:9.5px;color:var(--g2);font-weight:600;}
+.st tr.msr{background:#F5F5F5!important;border-bottom:1px solid #CCC!important;border-top:1px solid #CCC!important;}
+.st tr.msr td{padding:5px 7px;font-size:9.5px;color:var(--ink);font-weight:600;}
 .st tr.msr td::before{content:'◆ ';font-size:8px;opacity:.7;}
 /* deferred 5% row – inline, clearly on right */
-.st tr.dfr{background:#FBF5DF!important;border-bottom:1.5px solid #C8A030!important;border-top:1px solid #C8A030!important;}
-.st tr.dfr td{padding:6px 7px;font-size:10px;color:#7A5810;font-style:italic;}
-.st tr.dfr td.ar{font-family:var(--mono);font-style:normal;font-weight:600;font-size:11px;color:#7A5810;}
+.st tr.dfr{background:#F5F5F5!important;border-bottom:1px solid #CCC!important;border-top:1px solid #CCC!important;}
+.st tr.dfr td{padding:6px 7px;font-size:10px;color:var(--ink);font-style:italic;}
+.st tr.dfr td.ar{font-family:"Times New Roman",Times,serif;font-style:normal;font-weight:700;font-size:11px;color:var(--ink);}
 /* total footer */
-.st tfoot tr{background:var(--g1);}
-.st tfoot td{padding:10px 7px;font-size:11px;font-weight:500;color:rgba(255,255,255,.85);}
-.st tfoot td.ar{text-align:right;font-family:var(--mono);color:var(--gold-lt);font-size:14px;font-weight:600;}
+.st tfoot tr{background:var(--white);border-top:2px solid var(--ink);}
+.st tfoot td{padding:10px 7px;font-size:11px;font-weight:700;color:var(--ink);}
+.st tfoot td.ar{text-align:right;font-family:"Times New Roman",Times,serif;color:var(--ink);font-size:14px;font-weight:700;}
 
 /* disclaimer */
 .disc{padding:10px 30px;border-top:1px solid var(--line);}
 .disc p{font-size:8px;color:var(--muted);line-height:1.8;}
 
 /* footer */
-.df{padding:9px 30px;background:var(--g1);display:flex;justify-content:space-between;align-items:center;}
-.df .dl{font-size:8px;color:rgba(255,255,255,.3);letter-spacing:.5px;}
-.df .dr{font-size:8px;color:var(--gold-lt);letter-spacing:1px;text-transform:uppercase;}
+.df{padding:9px 30px;background:var(--white);display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--line);}
+.df .dl{font-size:8px;color:var(--muted);letter-spacing:.5px;}
+.df .dr{font-size:8px;color:var(--ink);letter-spacing:1px;text-transform:uppercase;font-weight:600;}
 
 @media(max-width:820px){.app{grid-template-columns:1fr;}.fp{position:static;}}
 
@@ -209,7 +194,7 @@ body{font-family:var(--sans);background:var(--bg);color:var(--body);font-size:13
 .paste-box textarea{width:100%;height:52px;padding:6px 8px;border:1px solid var(--line);background:var(--white);font-family:var(--mono);font-size:10.5px;color:var(--ink);outline:none;resize:none;line-height:1.5;}
 .paste-box textarea:focus{border-color:var(--gold);}
 .paste-box textarea::placeholder{color:#BBA870;font-family:var(--sans);font-style:italic;font-size:10px;}
-.paste-btn{margin-top:6px;width:100%;padding:6px;background:var(--g1);color:var(--white);border:none;cursor:pointer;font-family:var(--sans);font-size:9.5px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;transition:background .15s;}
+.paste-btn{margin-top:6px;width:100%;padding:6px;background:var(--ink);color:var(--white);border:none;cursor:pointer;font-family:var(--sans);font-size:9.5px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;transition:background .15s;}
 .paste-btn:hover{background:var(--gold);}
 .parse-status{margin-top:5px;font-size:9.5px;min-height:14px;}
 .parse-ok{color:#5A7A30;font-weight:500;}
@@ -219,7 +204,7 @@ body{font-family:var(--sans);background:var(--bg);color:var(--body);font-size:13
 <body>
 
 <header class="shdr">
-  <img src="https://res.cloudinary.com/ds6czij1k/image/upload/v1776438027/Logo_FourS_bfvt9q.png" alt="FourS">
+  <img src="https://res.cloudinary.com/ds6czij1k/image/upload/v1776438027/Logo_FourS_bfvt9q.png" alt="FourS" style="height:32px;">
   <div class="sdv"></div>
   <span class="sst">Công cụ tạo phiếu tính giá – CSBH01</span>
 </header>
@@ -608,6 +593,10 @@ function gen(){
   pR.push(`<tr class="hlr"><td class="sn">${nr}</td><td colspan="3"><strong>Tổng giá bán (chưa VAT &amp; KPBT) sau chiết khấu</strong></td><td class="ar"></td><td class="ar"><strong>${VND(net)}</strong></td></tr>`);
   pR.push(`<tr><td class="sn">${nr+1}</td><td colspan="3">Thuế VAT (tạm tính)</td><td class="ar">10%</td><td class="ar">${VND(VAT)}</td></tr>`);
   pR.push(`<tr><td class="sn">${nr+2}</td><td colspan="3">Kinh phí bảo trì (tạm tính)</td><td class="ar">2%</td><td class="ar">${VND(KPBT)}</td></tr>`);
+  // Tổng % CK = cộng thẳng các mức % (5+5+1=11%)
+  const tongPctCK = (S.eb==='yes'?5:0) + (tc_rate*100) + (tts_rate*100) + (blnh_rate*100) + (ct2_rate*100);
+  const tongPctStr = tongPctCK > 0 ? tongPctCK.toFixed(1).replace(/\.0$/,'') + ' %' : '';
+  pR.push(`<tr class="total-row"><td></td><td colspan="3"><strong>TỔNG GIÁ TRỊ PHẢI THANH TOÁN</strong>&ensp;<small style="font-weight:normal;font-size:9px;color:#666;">Đã gồm VAT 10% + KPBT 2% &nbsp;·&nbsp; Tổng chiết khấu: ${VND(tongCK)}</small></td><td class="ar"><strong>${tongPctStr}</strong></td><td class="ar total-val">${VND(tong)}</td></tr>`);
 
   // ── Schedule rows ──
   const sR=sched.map(r=>{
@@ -616,13 +605,6 @@ function gen(){
     return`<tr><td class="sn">${r.stt}</td><td>${r.lbl}</td><td>${r.pct}</td><td class="ar">${FD(r.d)}</td><td class="ar">${VND(r.val)}</td></tr>`;
   }).join('');
 
-  // ── Price box CK breakdown ──
-  const ckL=[];
-  if(ckEB)ckL.push(`<div class="pb-row ded"><span class="rl">– Early Bird 5%</span><span class="rv">−${VND(ckEB)}</span></div>`);
-  if(ckTC)ckL.push(`<div class="pb-row ded"><span class="rl">– CS Tài chính ${PCT(tc_rate)}</span><span class="rv">−${VND(ckTC)}</span></div>`);
-  if(ckTTS)ckL.push(`<div class="pb-row ded"><span class="rl">– TTS ${tts_lbl} ${PCT(tts_rate)}</span><span class="rv">−${VND(ckTTS)}</span></div>`);
-  if(ckBLNH)ckL.push(`<div class="pb-row ded"><span class="rl">– BLNH ${PCT(blnh_rate)}</span><span class="rv">−${VND(ckBLNH)}</span></div>`);
-  if(ckCT2)ckL.push(`<div class="pb-row ded"><span class="rl">– KH thân thiết ${S.rank} ${PCT(ct2_rate)}</span><span class="rv">−${VND(ckCT2)}</span></div>`);
 
   document.getElementById('ph').style.display='none';
   const doc=document.getElementById('doc');
@@ -631,7 +613,7 @@ function gen(){
   <div class="dh">
     <div class="dh-logo">
       <img src="https://res.cloudinary.com/ds6czij1k/image/upload/v1776438027/Logo_FourS_bfvt9q.png" alt="FourS" crossorigin="anonymous">
-      <div class="dtag">SUN FOURS TOWER · HOÀ XUÂN</div>
+      <div class="dtag">Premium Residential · Ho Chi Minh City</div>
     </div>
     <div class="dh-right">
       <span class="dh-pill">${M_SH[m]}</span>
@@ -665,28 +647,9 @@ function gen(){
     </table>
   </div>
 
-  <!-- 2. Tổng hợp – compact -->
-  <div class="sh" style="margin-top:7px"><div class="sh-n">2</div><div class="sh-t">Tổng hợp giá bán</div><div class="sh-r"></div></div>
-  <div class="wp2">
-    <div class="pb">
-      <div class="pb-l">
-        <div class="pb-lhd">Chiết khấu áp dụng</div>
-        <div class="pb-row"><span class="rl">Giá niêm yết (đã VAT + KPBT)</span><span class="rv">${VND(NY)}</span></div>
-        ${ckL.join('')}
-        <div class="pb-row sep"><span class="rl">Giá sau CK (chưa VAT &amp; KPBT)</span><span class="rv">${VND(net)}</span></div>
-        <div class="pb-row"><span class="rl">VAT 10% + KPBT 2%</span><span class="rv">${VND(VAT+KPBT)}</span></div>
-      </div>
-      <div class="pb-r">
-        <div class="pb-rhd">Tổng giá trị phải thanh toán</div>
-        <div class="pb-tot">${VND(tong)}</div>
-        <div class="pb-sub">Đã bao gồm VAT 10% &amp; KPBT 2%<br>Tổng CK: ${VND(tongCK)}${tongCK?' ('+PCT(tongCK/gtck)+')':''}</div>
-      </div>
-    </div>
-  </div>
-
   <!-- 3. Tiến độ – HERO -->
   <div class="sh sched-sh" style="margin-top:7px">
-    <div class="sh-n">3</div>
+    <div class="sh-n">2</div>
     <div class="sh-t">Tiến độ thanh toán</div>
     <div class="sh-r"></div>
   </div>
