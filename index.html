@@ -323,7 +323,7 @@ body{font-family:var(--sans);background:var(--bg);color:var(--body);font-size:13
     </div>
     <div class="ebar" id="ebar">
       <span class="ef" id="ef"></span>
-      <button class="bexp" id="bexp" onclick="exportPNG()">⬇ Xuất ảnh PNG · A4</button>
+      <button class="bexp" id="bexp" onclick="exportPNG()">📤 Chia sẻ / Lưu ảnh</button>
     </div>
     <div id="doc"></div>
   </section>
@@ -356,22 +356,35 @@ const VND=n=>Math.round(n).toLocaleString('vi-VN')+' đ';
 const PCT=n=>(n*100).toFixed(1).replace(/\.0$/,'')+' %';
 const FD=d=>d?`${String(d.getDate()).padStart(2,'0')}/${String(d.getMonth()+1).padStart(2,'0')}/${d.getFullYear()}`:'–';
 
-const D={
-  hdthnv:new Date(2026,3,15),hdmb:new Date(2026,8,30),bg:new Date(2028,2,31),
-  i1_d2:new Date(2026,3,29),i1_d3:new Date(2026,6,13),i1_d4:new Date(2026,8,26),
-  i1_d5:new Date(2026,10,25),i1_d6:new Date(2027,0,24),i1_d7:new Date(2027,2,25),
-  i1_d8:new Date(2027,4,24),i1_d9:new Date(2027,6,23),i1_d10:new Date(2027,8,21),
-  i1_d11:new Date(2027,10,20),i1_d12:new Date(2028,0,19),i1_d13:new Date(2028,2,19),
-  i1_d14:new Date(2028,6,17),i1_d15:new Date(2028,10,14),i1_d16:new Date(2029,2,14),
-  i1_d17:new Date(2029,6,12),i1_d18:new Date(2029,10,9),i1_d19:new Date(2030,2,31),
-  i2_d5:new Date(2026,9,14),tts_d2:new Date(2026,3,25),
-  tts70_d4:new Date(2028,6,17),tts70_d5:new Date(2028,10,14),tts70_d6:new Date(2029,2,14),
-  tts70_d7:new Date(2029,6,12),tts70_d8:new Date(2029,10,9),tts70_d9:new Date(2030,2,31),
-  tts50_d4:new Date(2027,8,21),tts50_d5:new Date(2027,10,20),tts50_d6:new Date(2028,0,19),
-  tts50_d7:new Date(2028,2,19),tts50_d8:new Date(2028,6,17),tts50_d9:new Date(2028,10,14),
-  tts50_d10:new Date(2029,2,14),tts50_d11:new Date(2029,6,12),tts50_d12:new Date(2029,10,9),
-  tts50_d13:new Date(2030,2,31),
-};
+// ── NGÀY ĐỘNG: tính từ ngày lập phiếu (HĐTHNV = hôm nay) ──
+function addDays(base,days){const d=new Date(base);d.setDate(d.getDate()+days);return d;}
+function buildDates(T){
+  return {
+    hdthnv:T,
+    hdmb:   addDays(T,168),   // +168 ngày (~5.5 tháng)
+    bg:     addDays(T,716),   // +716 ngày (~23.5 tháng)
+    // I.1 Ko vay – 19 đợt (offset từ Excel gốc)
+    i1_d2: addDays(T,14),   i1_d3: addDays(T,89),   i1_d4: addDays(T,164),
+    i1_d5: addDays(T,224),  i1_d6: addDays(T,284),  i1_d7: addDays(T,344),
+    i1_d8: addDays(T,404),  i1_d9: addDays(T,464),  i1_d10:addDays(T,524),
+    i1_d11:addDays(T,584),  i1_d12:addDays(T,644),  i1_d13:addDays(T,704),
+    i1_d14:addDays(T,824),  i1_d15:addDays(T,944),  i1_d16:addDays(T,1064),
+    i1_d17:addDays(T,1184), i1_d18:addDays(T,1304), i1_d19:addDays(T,1446),
+    // I.2 Có vay: NH giải ngân tại HĐMB+14
+    i2_d5: addDays(T,182),
+    // TTS 95%/70%/50%: lần 2+3 tại T+10
+    tts_d2:addDays(T,10),
+    // TTS 70%
+    tts70_d4:addDays(T,824), tts70_d5:addDays(T,944), tts70_d6:addDays(T,1064),
+    tts70_d7:addDays(T,1184),tts70_d8:addDays(T,1304),tts70_d9:addDays(T,1446),
+    // TTS 50%
+    tts50_d4: addDays(T,524), tts50_d5: addDays(T,584), tts50_d6: addDays(T,644),
+    tts50_d7: addDays(T,704), tts50_d8: addDays(T,824), tts50_d9: addDays(T,944),
+    tts50_d10:addDays(T,1064),tts50_d11:addDays(T,1184),tts50_d12:addDays(T,1304),
+    tts50_d13:addDays(T,1446),
+  };
+}
+let D=buildDates(new Date());
 
 
 /* ── PARSE EXCEL ROW ── */
@@ -582,6 +595,8 @@ function buildSched(c){
 }
 
 function gen(){
+  // Khởi tạo ngày động từ hôm nay (ngày lập phiếu = ngày ký HĐTHNV)
+  D = buildDates(new Date());
   const c=calc();
   const{NY,gtck,ckEB,ckTC,tc_rate,ckTTS,tts_rate,tts_lbl,netH,blnh_rate,ckBLNH,ct2_rate,ckCT2,net,VAT,KPBT,tong,datCoc,m}=c;
   const tenKH=document.getElementById('tenKH').value||'(Chưa điền)';
@@ -633,7 +648,7 @@ function gen(){
   <div class="dh">
     <div class="dh-logo">
       <img src="https://res.cloudinary.com/ds6czij1k/image/upload/v1776438027/Logo_FourS_bfvt9q.png" alt="FourS" crossorigin="anonymous">
-      <div class="dtag">FOURS TOWER - DA NANG</div>
+      <div class="dtag">Premium Residential · Ho Chi Minh City</div>
     </div>
     <div class="dh-right">
       <span class="dh-pill">${M_SH[m]}</span>
@@ -709,25 +724,63 @@ async function exportPNG(){
   const doc=document.getElementById('doc');
   if(!doc.classList.contains('rdy')){alert('Vui lòng bấm Xác nhận trước!');return;}
   const btn=document.getElementById('bexp');
-  btn.textContent='⏳ Đang xuất…';btn.disabled=true;
-  // Pre-load background image for html2canvas
+  btn.textContent='⏳ Đang xử lý…';btn.disabled=true;
+
+  // Pre-load images
   await new Promise(res=>{
-    const img=new Image();
-    img.crossOrigin='anonymous';
-    img.onload=res; img.onerror=res;
+    const img=new Image();img.crossOrigin='anonymous';img.onload=res;img.onerror=res;
     img.src='https://res.cloudinary.com/dn7cvccms/image/upload/v1776851727/Walllll_vo9buc.png';
   });
-  await Promise.all([...doc.querySelectorAll('img')].map(img=>img.complete?Promise.resolve():new Promise(r=>{img.onload=r;img.onerror=r;})));
+  await Promise.all([...doc.querySelectorAll('img')].map(img=>
+    img.complete?Promise.resolve():new Promise(r=>{img.onload=r;img.onerror=r;})
+  ));
   await new Promise(r=>setTimeout(r,200));
+
   const SCALE=3.5,W=794;
   const pw=doc.style.width,pm=doc.style.maxWidth;
   doc.style.width=W+'px';doc.style.maxWidth=W+'px';
   await new Promise(r=>requestAnimationFrame(()=>requestAnimationFrame(r)));
-  const canvas=await html2canvas(doc,{scale:SCALE,useCORS:true,allowTaint:true,backgroundColor:'#ffffff',logging:false,width:W,windowWidth:W,imageTimeout:10000});
+
+  const canvas=await html2canvas(doc,{
+    scale:SCALE,useCORS:true,allowTaint:true,
+    backgroundColor:'#ffffff',logging:false,
+    width:W,windowWidth:W,imageTimeout:10000,
+  });
   doc.style.width=pw;doc.style.maxWidth=pm;
+
   const fname=document.getElementById('ef').textContent||'PTG.png';
-  const a=document.createElement('a');a.download=fname;a.href=canvas.toDataURL('image/png',1.0);a.click();
-  btn.textContent='⬇ Xuất ảnh PNG · A4';btn.disabled=false;
+
+  // Chuyển canvas -> Blob
+  const blob = await new Promise(res=>canvas.toBlob(res,'image/png',1.0));
+  const file = new File([blob], fname, {type:'image/png'});
+
+  // Thử Web Share API (mobile: Zalo, Messenger, lưu ảnh...)
+  if(navigator.share && navigator.canShare && navigator.canShare({files:[file]})){
+    try{
+      btn.textContent='📤 Chia sẻ…';
+      await navigator.share({
+        files:[file],
+        title:'Phiếu Tính Giá – Fours Tower',
+        text:fname.replace('.png',''),
+      });
+      btn.textContent='✓ Đã chia sẻ!';
+      setTimeout(()=>{btn.textContent='📤 Chia sẻ / Lưu ảnh';btn.disabled=false;},2000);
+      return;
+    } catch(e){
+      if(e.name==='AbortError'){
+        // User cancelled share sheet
+        btn.textContent='📤 Chia sẻ / Lưu ảnh';btn.disabled=false;
+        return;
+      }
+      // Fall through to download
+    }
+  }
+
+  // Desktop / fallback: download trực tiếp
+  const url=URL.createObjectURL(blob);
+  const a=document.createElement('a');a.download=fname;a.href=url;a.click();
+  setTimeout(()=>URL.revokeObjectURL(url),3000);
+  btn.textContent='📤 Chia sẻ / Lưu ảnh';btn.disabled=false;
 }
 </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
