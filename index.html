@@ -323,7 +323,10 @@ body{font-family:var(--sans);background:var(--bg);color:var(--body);font-size:13
     </div>
     <div class="ebar" id="ebar">
       <span class="ef" id="ef"></span>
-      <button class="bexp" id="bexp" onclick="exportPNG()">📤 Chia sẻ / Lưu ảnh</button>
+      <div style="display:flex;gap:6px;flex-shrink:0;">
+        <button class="bexp" id="bexp" onclick="exportPNG()" title="Tải về máy">📥 Tải ảnh PNG</button>
+        <button class="bexp" id="bshare" onclick="sharePNG()" title="Chia sẻ Zalo/Messenger" style="background:#0068FF;">📤 Chia sẻ</button>
+      </div>
     </div>
     <div id="doc"></div>
   </section>
@@ -648,7 +651,7 @@ function gen(){
   <div class="dh">
     <div class="dh-logo">
       <img src="https://res.cloudinary.com/ds6czij1k/image/upload/v1776438027/Logo_FourS_bfvt9q.png" alt="FourS" crossorigin="anonymous">
-      <div class="dtag">FOURS TOWER - DA NANG</div>
+      <div class="dtag">Premium Residential · Ho Chi Minh City</div>
     </div>
     <div class="dh-right">
       <span class="dh-pill">${M_SH[m]}</span>
@@ -720,68 +723,77 @@ function gen(){
   doc.scrollIntoView({behavior:'smooth',block:'start'});
 }
 
-async function exportPNG(){
+async function renderCanvas(){
   const doc=document.getElementById('doc');
-  if(!doc.classList.contains('rdy')){alert('Vui lòng bấm Xác nhận trước!');return;}
-  const btn=document.getElementById('bexp');
-  btn.textContent='⏳ Đang xử lý…';btn.disabled=true;
-
-  // Pre-load images
+  if(!doc.classList.contains('rdy')){alert('Vui lòng bấm Xác nhận trước!');return null;}
   await new Promise(res=>{
-    const img=new Image();img.crossOrigin='anonymous';img.onload=res;img.onerror=res;
-    img.src='https://res.cloudinary.com/dn7cvccms/image/upload/v1776851727/Walllll_vo9buc.png';
+    const bg=new Image();bg.crossOrigin='anonymous';
+    bg.onload=res;bg.onerror=res;
+    bg.src='https://res.cloudinary.com/dn7cvccms/image/upload/v1776851727/Walllll_vo9buc.png';
   });
   await Promise.all([...doc.querySelectorAll('img')].map(img=>
     img.complete?Promise.resolve():new Promise(r=>{img.onload=r;img.onerror=r;})
   ));
-  await new Promise(r=>setTimeout(r,200));
-
+  await new Promise(r=>setTimeout(r,300));
   const SCALE=3.5,W=794;
   const pw=doc.style.width,pm=doc.style.maxWidth;
   doc.style.width=W+'px';doc.style.maxWidth=W+'px';
   await new Promise(r=>requestAnimationFrame(()=>requestAnimationFrame(r)));
-
   const canvas=await html2canvas(doc,{
     scale:SCALE,useCORS:true,allowTaint:true,
     backgroundColor:'#ffffff',logging:false,
     width:W,windowWidth:W,imageTimeout:10000,
   });
   doc.style.width=pw;doc.style.maxWidth=pm;
-
-  const fname=document.getElementById('ef').textContent||'PTG.png';
-
-  // Chuyển canvas -> Blob
-  const blob = await new Promise(res=>canvas.toBlob(res,'image/png',1.0));
-  const file = new File([blob], fname, {type:'image/png'});
-
-  // Thử Web Share API (mobile: Zalo, Messenger, lưu ảnh...)
-  if(navigator.share && navigator.canShare && navigator.canShare({files:[file]})){
-    try{
-      btn.textContent='📤 Chia sẻ…';
-      await navigator.share({
-        files:[file],
-        title:'Phiếu Tính Giá – Fours Tower',
-        text:fname.replace('.png',''),
-      });
-      btn.textContent='✓ Đã chia sẻ!';
-      setTimeout(()=>{btn.textContent='📤 Chia sẻ / Lưu ảnh';btn.disabled=false;},2000);
-      return;
-    } catch(e){
-      if(e.name==='AbortError'){
-        // User cancelled share sheet
-        btn.textContent='📤 Chia sẻ / Lưu ảnh';btn.disabled=false;
-        return;
-      }
-      // Fall through to download
-    }
-  }
-
-  // Desktop / fallback: download trực tiếp
-  const url=URL.createObjectURL(blob);
-  const a=document.createElement('a');a.download=fname;a.href=url;a.click();
-  setTimeout(()=>URL.revokeObjectURL(url),3000);
-  btn.textContent='📤 Chia sẻ / Lưu ảnh';btn.disabled=false;
+  return canvas;
 }
+
+async function exportPNG(){
+  const btn=document.getElementById('bexp');
+  btn.textContent='⏳ Đang tạo…';btn.disabled=true;
+  try{
+    const canvas=await renderCanvas();
+    if(!canvas){btn.textContent='📥 Tải ảnh';btn.disabled=false;return;}
+    const fname=document.getElementById('ef').textContent||'PTG_baogia.png';
+    const dataUrl=canvas.toDataURL('image/png',1.0);
+    const a=document.createElement('a');
+    a.download=fname;a.href=dataUrl;
+    document.body.appendChild(a);a.click();document.body.removeChild(a);
+    btn.textContent='✓ Đã tải!';
+    setTimeout(()=>{btn.textContent='📥 Tải ảnh';btn.disabled=false;},2000);
+  }catch(err){
+    console.error(err);
+    btn.textContent='📥 Tải ảnh';btn.disabled=false;
+  }
+}
+
+async function sharePNG(){
+  const btn=document.getElementById('bshare');
+  if(!navigator.share){alert('Trình duyệt không hỗ trợ chia sẻ. Dùng nút Tải ảnh.');return;}
+  btn.textContent='⏳ Đang tạo…';btn.disabled=true;
+  try{
+    const canvas=await renderCanvas();
+    if(!canvas){btn.textContent='📤 Chia sẻ';btn.disabled=false;return;}
+    const fname=document.getElementById('ef').textContent||'PTG_baogia.png';
+    const blob=await new Promise(res=>canvas.toBlob(res,'image/png',1.0));
+    const file=new File([blob],fname,{type:'image/png'});
+    if(navigator.canShare&&navigator.canShare({files:[file]})){
+      await navigator.share({files:[file],title:'Phiếu Tính Giá – Fours Tower'});
+      btn.textContent='✓ Đã chia sẻ!';
+      setTimeout(()=>{btn.textContent='📤 Chia sẻ';btn.disabled=false;},2000);
+    }else{
+      // fallback: download
+      const dataUrl=canvas.toDataURL('image/png',1.0);
+      const a=document.createElement('a');a.download=fname;a.href=dataUrl;
+      document.body.appendChild(a);a.click();document.body.removeChild(a);
+      btn.textContent='📤 Chia sẻ';btn.disabled=false;
+    }
+  }catch(e){
+    if(e.name!=='AbortError')console.error(e);
+    btn.textContent='📤 Chia sẻ';btn.disabled=false;
+  }
+}
+
 </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 </body>
