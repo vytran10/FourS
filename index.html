@@ -308,9 +308,9 @@ body{font-family:var(--sans);background:var(--bg);color:var(--body);font-size:13
     <div class="mts">
       <div class="mt on" id="tab_ko_vay" onclick="setM('ko_vay')"><div class="rd"></div><div><div class="mn">I.1 – Không vay · Tiến độ chuẩn</div><div class="mc">CK không vay 5% · 18 đợt</div></div></div>
       <div class="mt" id="tab_co_vay" onclick="setM('co_vay')"><div class="rd"></div><div><div class="mn">I.2 – Có vay ngân hàng</div><div class="mc">CK vay 0% · NH giải ngân 70%</div></div></div>
-      <div class="mt" id="tab_tts95" onclick="setM('tts95')"><div class="rd"></div><div><div class="mn">III.2 – Thanh toán sớm 95%</div><div class="mc">CK TTS 16.5% · 3 đợt</div></div></div>
-      <div class="mt" id="tab_tts70" onclick="setM('tts70')"><div class="rd"></div><div><div class="mn">III.3 – Thanh toán sớm 70%</div><div class="mc">CK TTS 9% · 9 đợt</div></div></div>
-      <div class="mt" id="tab_tts50" onclick="setM('tts50')"><div class="rd"></div><div><div class="mn">III.4 – Thanh toán sớm 50%</div><div class="mc">CK TTS 5.5% · 13 đợt</div></div></div>
+      <div class="mt" id="tab_tts95" onclick="setM('tts95')"><div class="rd"></div><div><div class="mn">III.2 – Thanh toán sớm 95%</div><div class="mc">CK TTS 16% · 3 đợt</div></div></div>
+      <div class="mt" id="tab_tts70" onclick="setM('tts70')"><div class="rd"></div><div><div class="mn">III.3 – Thanh toán sớm 70%</div><div class="mc">CK TTS 8.5% · 9 đợt</div></div></div>
+      <div class="mt" id="tab_tts50" onclick="setM('tts50')"><div class="rd"></div><div><div class="mn">III.4 – Thanh toán sớm 50%</div><div class="mc">CK TTS 5% · 13 đợt</div></div></div>
     </div>
     <button class="bok" onclick="gen()">XÁC NHẬN – TẠO PHIẾU TÍNH GIÁ</button>
   </aside>
@@ -516,9 +516,9 @@ function calc(){
   const tc_rate=m==='co_vay'?0:0.05;
   const ckTC=Math.round((gtck-ckEB)*tc_rate);
   let tts_rate=0,tts_lbl='';
-  if(m==='tts95'){tts_rate=0.165;tts_lbl='TTS 95%';}
-  if(m==='tts70'){tts_rate=0.09;tts_lbl='TTS 70%';}
-  if(m==='tts50'){tts_rate=0.055;tts_lbl='TTS 50%';}
+  if(m==='tts95'){tts_rate=0.16;tts_lbl='TTS 95%';}
+  if(m==='tts70'){tts_rate=0.085;tts_lbl='TTS 70%';}
+  if(m==='tts50'){tts_rate=0.05;tts_lbl='TTS 50%';}
   const ckTTS=Math.round((gtck-ckEB-ckTC)*tts_rate);
   const netH=gtck-ckEB-ckTC-ckTTS;
   const blnh_rate=(S.blnh==='yes'&&m!=='co_vay')?(parseFloat(document.getElementById('blnh_rate').value)||0)/100:0;
@@ -701,7 +701,10 @@ function gen(){
         <th class="ar" style="width:128px">Số tiền (VNĐ)</th>
       </tr></thead>
       <tbody>${sR}</tbody>
-      <tfoot><tr><td colspan="4">TỔNG GIÁ TRỊ THANH TOÁN</td><td class="ar">${VND(tong)}</td></tr></tfoot>
+      <tfoot>
+        <tr><td colspan="4">TỔNG GIÁ TRỊ THANH TOÁN</td><td class="ar">${VND(tong)}</td></tr>
+        ${tongCK > 0 ? '<tr><td colspan="4" style="background:#1A5C35;border-top:2px solid #1A5C35;padding:9px 12px;"><span style="font-size:9px;color:rgba(255,255,255,.7);letter-spacing:1px;text-transform:uppercase;font-weight:500;">🏷 Quý khách tiết kiệm so với giá niêm yết&ensp;</span><span style="font-family:Times New Roman,Times,serif;font-size:14px;font-weight:800;color:#7DEFA8;">' + VND(tongCK) + '</span><span style="font-size:10px;color:rgba(255,255,255,.6);">&ensp;(' + tongPctStr + ')</span></td><td style="background:#1A5C35;border-top:2px solid #1A5C35;"></td></tr>' : ''}
+      </tfoot>
     </table>
   </div>
 
