@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>FOURS TOWER – Phiếu Tính Giá</title>
+<title>Phiếu Tính Giá – FourS Tower & Sun Symphony 5</title>
 <style>
 /* ══ TOKENS – FourS brand green ══ */
 :root{
@@ -220,9 +220,65 @@ body{font-family:var(--sans);background:var(--bg);color:var(--body);font-size:13
 .parse-ok{color:#5A7A30;font-weight:500;}
 .parse-warn{color:#8A5010;}
 </style>
+
+<style>
+/* ══ PROJECT TABS ══ */
+.proj-tabs{display:flex;background:#111;border-bottom:3px solid #B8960A;padding:0 20px;}
+.proj-tab{
+  padding:12px 28px;cursor:pointer;font-family:'Times New Roman',Times,serif;
+  font-size:13px;letter-spacing:1px;color:rgba(255,255,255,.5);
+  border-bottom:3px solid transparent;margin-bottom:-3px;transition:all .2s;
+  display:flex;align-items:center;gap:10px;
+}
+.proj-tab img{height:28px;object-fit:contain;opacity:.5;filter:grayscale(1);}
+.proj-tab.active{color:#fff;border-bottom-color:#B8960A;}
+.proj-tab.active img{opacity:1;filter:none;}
+.proj-tab:hover{color:rgba(255,255,255,.8);}
+.proj-panel{display:none;}
+.proj-panel.active{display:block;}
+/* Symphony 5 color overrides – sapphire blue accent */
+.s5 .shdr{border-bottom-color:#1A6BB5;}
+.s5 .fp{border-top-color:#1A6BB5;}
+.s5 .sl{color:#1A6BB5;}
+.s5 .sl::after{background:#D0E8FF;}
+.s5 .tb.on{background:#1A3A5C;border-color:#1A3A5C;}
+.s5 .mt.on{border-color:#1A6BB5;background:#EBF5FF;}
+.s5 .mt.on .rd{border-color:#1A6BB5;background:#1A6BB5;}
+.s5 .sf{background:#EBF5FF;border-left-color:#1A6BB5;}
+.s5 .bok{background:#1A3A5C;}
+.s5 .bok:hover{background:#1A6BB5;}
+.s5 .bexp{background:#1A3A5C;}
+.s5 .bexp:hover{background:#1A6BB5;}
+.s5 .bshare{background:#0045A0!important;}
+.s5 .rb.on{background:#1A6BB5;border-color:#1A6BB5;}
+.s5 #s5_doc .dh{border-bottom-color:#1A6BB5;}
+.s5 #s5_doc .gr{background:linear-gradient(90deg,#1A3A5C 0%,#1A6BB5 50%,#1A3A5C 100%);}
+.s5 #s5_doc .ps{border-color:#D0E8FF;}
+.s5 #s5_doc .sh-n{border-color:#1A6BB5;}
+.s5 #s5_doc .sh.sched-sh{border-bottom-color:#1A6BB5;}
+.s5 #s5_doc .sh.sched-sh .sh-t{color:#1A3A5C;}
+.s5 #s5_doc .pt thead tr{border-bottom-color:#1A6BB5;}
+.s5 #s5_doc .pt thead th{color:#1A6BB5;}
+.s5 #s5_doc .hlr td:first-child{border-left-color:#1A6BB5;}
+.s5 #s5_doc .st{border-color:#1A6BB5;}
+.s5 #s5_doc .st thead tr{border-bottom-color:#1A3A5C;}
+.s5 #s5_doc .st tfoot tr{border-top-color:#1A3A5C;}
+.s5 #s5_doc .df .dr{color:#1A6BB5;}
+.s5 #s5_doc .tbg.th{color:#1A4060;border-color:#1A6BB5;background:#EBF5FF;}
+</style>
 </head>
 <body>
-
+<div class="proj-tabs">
+  <div class="proj-tab active" id="ptab_fourst" onclick="switchProj('fourst')">
+    <img src="https://res.cloudinary.com/ds6czij1k/image/upload/v1776438027/Logo_FourS_bfvt9q.png" alt="FourS">
+    <span>Fours Tower</span>
+  </div>
+  <div class="proj-tab" id="ptab_s5" onclick="switchProj('s5')">
+    <img src="https://res.cloudinary.com/dn7cvccms/image/upload/v1779781416/Screenshot_2_capnea.png" alt="Symphony 5">
+    <span>Sun Symphony 5</span>
+  </div>
+</div>
+<div class="proj-panel active" id="proj_fourst">
 <header class="shdr">
   <img src="https://res.cloudinary.com/ds6czij1k/image/upload/v1776438027/Logo_FourS_bfvt9q.png" alt="FourS" style="height:32px;">
   <div class="sdv"></div>
@@ -308,9 +364,9 @@ body{font-family:var(--sans);background:var(--bg);color:var(--body);font-size:13
     <div class="mts">
       <div class="mt on" id="tab_ko_vay" onclick="setM('ko_vay')"><div class="rd"></div><div><div class="mn">I.1 – Không vay · Tiến độ chuẩn</div><div class="mc">CK không vay 5% · 18 đợt</div></div></div>
       <div class="mt" id="tab_co_vay" onclick="setM('co_vay')"><div class="rd"></div><div><div class="mn">I.2 – Có vay ngân hàng</div><div class="mc">CK vay 0% · NH giải ngân 70%</div></div></div>
-      <div class="mt" id="tab_tts95" onclick="setM('tts95')"><div class="rd"></div><div><div class="mn">III.2 – Thanh toán sớm 95%</div><div class="mc">CK TTS 16% · 3 đợt</div></div></div>
-      <div class="mt" id="tab_tts70" onclick="setM('tts70')"><div class="rd"></div><div><div class="mn">III.3 – Thanh toán sớm 70%</div><div class="mc">CK TTS 8.5% · 9 đợt</div></div></div>
-      <div class="mt" id="tab_tts50" onclick="setM('tts50')"><div class="rd"></div><div><div class="mn">III.4 – Thanh toán sớm 50%</div><div class="mc">CK TTS 5% · 13 đợt</div></div></div>
+      <div class="mt" id="tab_tts95" onclick="setM('tts95')"><div class="rd"></div><div><div class="mn">III.2 – Thanh toán sớm 95%</div><div class="mc">CK TTS 15.5% · 3 đợt</div></div></div>
+      <div class="mt" id="tab_tts70" onclick="setM('tts70')"><div class="rd"></div><div><div class="mn">III.3 – Thanh toán sớm 70%</div><div class="mc">CK TTS 8% · 9 đợt</div></div></div>
+      <div class="mt" id="tab_tts50" onclick="setM('tts50')"><div class="rd"></div><div><div class="mn">III.4 – Thanh toán sớm 50%</div><div class="mc">CK TTS 4.5% · 13 đợt</div></div></div>
     </div>
     <button class="bok" onclick="gen()">XÁC NHẬN – TẠO PHIẾU TÍNH GIÁ</button>
   </aside>
@@ -331,8 +387,107 @@ body{font-family:var(--sans);background:var(--bg);color:var(--body);font-size:13
     <div id="doc"></div>
   </section>
 </div>
-
+</div>
+<div class="proj-panel" id="proj_s5">
+<header class="shdr">
+  <img src="https://res.cloudinary.com/dn7cvccms/image/upload/v1779781416/Screenshot_2_capnea.png" alt="Sun Symphony 5" style="height:32px;">
+  <div class="sdv"></div>
+  <span class="sst">Công cụ tạo phiếu tính giá – CSBH01 · Sun Symphony 5</span>
+</header>
+<div class="app">
+  <aside class="fp">
+    <div class="fpt">Phiếu Tính Giá</div>
+    <div class="fps">Sun Symphony 5 – Nhập thông tin &amp; chính sách</div>
+    <div class="paste-box">
+      <label>⚡ Dán dòng Excel – tự điền</label>
+      <textarea id="s5_pasteInput" placeholder="Dán dữ liệu từ Excel..."></textarea>
+      <button class="paste-btn" onclick="s5ParseExcel()">NHẬN DIỆN &amp; ĐIỀN TỰ ĐỘNG</button>
+      <div class="parse-status" id="s5_parseStatus"></div>
+    </div>
+    <div class="sl">Khách hàng</div>
+    <div class="fi"><label>Họ và tên</label><input type="text" id="s5_tenKH" placeholder="Nguyễn Văn A"></div>
+    <div class="sl">Thông tin căn hộ</div>
+    <div class="r2">
+      <div class="fi"><label>Tòa</label>
+        <select id="s5_toa" oninput="s5UpdateMa()">
+          <option value="S5A">S5A</option><option value="S5B">S5B</option><option value="S5C">S5C</option>
+        </select>
+      </div>
+      <div class="fi"><label>Tầng</label><input type="number" id="s5_tang" value="15" min="1" max="50" oninput="s5UpdateMa()"></div>
+    </div>
+    <div class="r2">
+      <div class="fi"><label>Căn số</label><input type="text" id="s5_can" value="01" oninput="s5UpdateMa()"></div>
+      <div class="fi"><label>Loại hình</label>
+        <select id="s5_loai">
+          <option value="STU">Studio</option><option value="1BR" selected>1BR</option>
+          <option value="1BR+">1BR+</option><option value="2BR">2BR</option><option value="3BR">3BR</option>
+        </select>
+      </div>
+    </div>
+    <div class="r2">
+      <div class="fi"><label>Diện tích thông thủy (m²)</label><input type="text" id="s5_dt" value="50" inputmode="decimal"></div>
+      <div class="fi"><label>Mã căn hộ</label><input type="text" id="s5_ma" readonly></div>
+    </div>
+    <div class="sl">Giá bán</div>
+    <div class="fi"><label>Tổng giá niêm yết (đã VAT + KPBT) – VNĐ</label><input type="number" id="s5_ny" value="3000000000" step="1000000"></div>
+    <div class="fi"><label>Tiền đặt cọc – VNĐ</label><input type="number" id="s5_datcoc" value="100000000" step="1000000"></div>
+    <div class="sl">Chiết khấu</div>
+    <div class="fi"><label>Early Bird (5%)</label></div>
+    <div class="tog-row">
+      <button class="tb on" id="s5_eb_yes" onclick="s5Tog('eb','yes')">Được áp dụng (5%)</button>
+      <button class="tb" id="s5_eb_no" onclick="s5Tog('eb','no')">Không áp dụng</button>
+    </div>
+    <div class="fi"><label>CK Từ chối bảo lãnh NH (tại HĐMB)</label></div>
+    <div class="tog-row">
+      <button class="tb" id="s5_blnh_no" onclick="s5Tog('blnh','no')">Không áp dụng</button>
+      <button class="tb on" id="s5_blnh_yes" onclick="s5Tog('blnh','yes')">Được áp dụng</button>
+    </div>
+    <div id="s5_blnh_wrap" class="sf">
+      <label>Mức chiết khấu BLNH</label>
+      <div class="sf-r"><input type="number" id="s5_blnh_rate" value="1" step="0.1" min="0" max="20"><span>%</span></div>
+    </div>
+    <div class="fi"><label>CK KH thân thiết – căn mua thứ 2 (tại HĐMB)</label></div>
+    <div class="tog-row">
+      <button class="tb on" id="s5_ct2_no" onclick="s5Tog('ct2','no')">Chưa kích hoạt</button>
+      <button class="tb" id="s5_ct2_yes" onclick="s5Tog('ct2','yes')">Đã kích hoạt</button>
+    </div>
+    <div id="s5_ct2_wrap">
+      <div class="fi"><label>Hạng thành viên tại HĐMB</label></div>
+      <div class="rr">
+        <button class="rb" onclick="s5SetRank('BRONZE')">BRONZE<span class="rp">1%</span></button>
+        <button class="rb on" onclick="s5SetRank('SILVER')">SILVER<span class="rp">1%</span></button>
+        <button class="rb" onclick="s5SetRank('GOLD')">GOLD<span class="rp">1%</span></button>
+        <button class="rb" onclick="s5SetRank('PLATINUM')">PLATINUM<span class="rp">1.3%</span></button>
+        <button class="rb" onclick="s5SetRank('DIAMOND')">DIAMOND<span class="rp">1.5%</span></button>
+      </div>
+    </div>
+    <div class="sl">Phương thức thanh toán</div>
+    <div class="mts">
+      <div class="mt on" id="s5_tab_ko_vay" onclick="s5SetM('ko_vay')"><div class="rd"></div><div><div class="mn">I.1 – Không vay · Tiến độ chuẩn</div><div class="mc">CK không vay 5% · 14 đợt</div></div></div>
+      <div class="mt" id="s5_tab_co_vay" onclick="s5SetM('co_vay')"><div class="rd"></div><div><div class="mn">I.2 – Có vay ngân hàng</div><div class="mc">CK vay 0% · NH giải ngân 70%</div></div></div>
+      <div class="mt" id="s5_tab_tts95" onclick="s5SetM('tts95')"><div class="rd"></div><div><div class="mn">III.2 – Thanh toán sớm 95%</div><div class="mc">CK TTS 13% · 3 đợt</div></div></div>
+      <div class="mt" id="s5_tab_tts70" onclick="s5SetM('tts70')"><div class="rd"></div><div><div class="mn">III.3 – Thanh toán sớm 70%</div><div class="mc">CK TTS 5.5% · 9 đợt</div></div></div>
+    </div>
+    <button class="bok" onclick="s5Gen()">XÁC NHẬN – TẠO PHIẾU TÍNH GIÁ</button>
+  </aside>
+  <section class="qp">
+    <div class="ph" id="s5_ph">
+      <div class="ico">▣</div>
+      <p>Điền thông tin &amp; chọn phương thức<br>thanh toán, sau đó nhấn <strong>Xác nhận</strong></p>
+    </div>
+    <div class="ebar" id="s5_ebar">
+      <span class="ef" id="s5_ef"></span>
+      <div style="display:flex;gap:6px;flex-shrink:0;">
+        <button class="bexp" id="s5_bexp" onclick="s5ExportPNG()">📥 Tải ảnh PNG</button>
+        <button class="bexp" id="s5_bshare" onclick="s5SharePNG()" style="background:#0068FF;">📤 Chia sẻ Zalo</button>
+      </div>
+    </div>
+    <div id="s5_doc"></div>
+  </section>
+</div>
+</div>
 <script>
+
 const S={method:'ko_vay',eb:'yes',blnh:'yes',ct2:'no',rank:'SILVER'};
 const RANK_RATE={BRONZE:.01,SILVER:.01,GOLD:.01,PLATINUM:.013,DIAMOND:.015};
 const M_CSBH={ko_vay:'CSBH 01 – I.1 Không vay · Tiến độ chuẩn',co_vay:'CSBH 02 – I.2 Có vay ngân hàng',tts95:'CSBH 01 – III.2 TTS 95%',tts70:'CSBH 01 – III.3 TTS 70%',tts50:'CSBH 01 – III.4 TTS 50%'};
@@ -516,9 +671,9 @@ function calc(){
   const tc_rate=m==='co_vay'?0:0.05;
   const ckTC=Math.round((gtck-ckEB)*tc_rate);
   let tts_rate=0,tts_lbl='';
-  if(m==='tts95'){tts_rate=0.16;tts_lbl='TTS 95%';}
-  if(m==='tts70'){tts_rate=0.085;tts_lbl='TTS 70%';}
-  if(m==='tts50'){tts_rate=0.05;tts_lbl='TTS 50%';}
+  if(m==='tts95'){tts_rate=0.155;tts_lbl='TTS 95%';}
+  if(m==='tts70'){tts_rate=0.08;tts_lbl='TTS 70%';}
+  if(m==='tts50'){tts_rate=0.045;tts_lbl='TTS 50%';}
   const ckTTS=Math.round((gtck-ckEB-ckTC)*tts_rate);
   const netH=gtck-ckEB-ckTC-ckTTS;
   const blnh_rate=(S.blnh==='yes'&&m!=='co_vay')?(parseFloat(document.getElementById('blnh_rate').value)||0)/100:0;
@@ -797,6 +952,398 @@ async function sharePNG(){
   }
 }
 
+
+
+// ══════════════════════════════════════════════
+//  SUN SYMPHONY 5 – PTG ENGINE
+// ══════════════════════════════════════════════
+
+const S5 = { method:'ko_vay', eb:'yes', blnh:'yes', ct2:'no', rank:'SILVER' };
+const S5_RANK_RATE = { BRONZE:.01, SILVER:.01, GOLD:.01, PLATINUM:.013, DIAMOND:.015 };
+const S5_M_CSBH = {
+  ko_vay:'CSBH 01 – I.1 Không vay · Tiến độ chuẩn',
+  co_vay:'CSBH 02 – I.2 Có vay ngân hàng',
+  tts95: 'CSBH 01 – III.2 TTS 95%',
+  tts70: 'CSBH 01 – III.3 TTS 70%',
+};
+const S5_M_SH = {
+  ko_vay:'I.1 – Không vay', co_vay:'I.2 – Có vay',
+  tts95:'III.2 – TTS 95%', tts70:'III.3 – TTS 70%',
+};
+
+function s5Tog(k,v){
+  S5[k]=v;
+  ['yes','no'].forEach(x=>{
+    const b=document.getElementById('s5_'+k+'_'+x);
+    if(b) b.className='tb'+(x===v?' on':'');
+  });
+  if(k==='blnh') document.getElementById('s5_blnh_wrap').style.display=v==='yes'?'block':'none';
+}
+function s5SetM(m){
+  S5.method=m;
+  document.querySelectorAll('.s5 .mt').forEach(t=>t.classList.remove('on'));
+  document.getElementById('s5_tab_'+m).classList.add('on');
+}
+function s5SetRank(r){
+  S5.rank=r;
+  document.querySelectorAll('.s5 .rb').forEach(b=>b.classList.toggle('on',b.textContent.trim().startsWith(r)));
+}
+function s5UpdateMa(){
+  const toa=document.getElementById('s5_toa').value;
+  const tang=document.getElementById('s5_tang').value;
+  const can=String(document.getElementById('s5_can').value).padStart(2,'0');
+  const fl=parseInt(tang)===13?'12A':String(tang).padStart(2,'0');
+  document.getElementById('s5_ma').value=toa+fl+can;
+}
+['s5_toa','s5_tang','s5_can'].forEach(id=>{
+  const el=document.getElementById(id);
+  if(el) el.addEventListener('input',s5UpdateMa);
+});
+
+function s5AddDays(base,days){ const d=new Date(base); d.setDate(d.getDate()+days); return d; }
+function s5BuildDates(T){
+  return {
+    hdthnv:T,
+    hdmb:  s5AddDays(T,20),    // HĐMB = T+20 ngày
+    bg:    s5AddDays(T,766),   // Bàn giao = T+766 ngày
+    // I.1 Ko vay (14 đợt)
+    d2:  s5AddDays(T,14),
+    d3:  s5AddDays(T,134),
+    d4:  s5AddDays(T,254),
+    d5:  s5AddDays(T,374),
+    d6:  s5AddDays(T,494),
+    d7:  s5AddDays(T,614),
+    d8:  s5AddDays(T,734),
+    d9:  s5AddDays(T,854),
+    d10: s5AddDays(T,974),
+    d11: s5AddDays(T,1094),
+    d12: s5AddDays(T,1214),
+    d13: s5AddDays(T,1334),
+    d14: s5AddDays(T,1496),
+    // I.2 NH giai ngan
+    i2_d3: s5AddDays(T,34),
+    i2_d4: s5AddDays(T,134),
+    // TTS 95%/70% dates
+    tts_d2: s5AddDays(T,14),
+    tts_d3: s5AddDays(T,30),
+    // TTS 70% post-BG
+    t70_d4: s5AddDays(T,854),
+    t70_d5: s5AddDays(T,974),
+    t70_d6: s5AddDays(T,1094),
+    t70_d7: s5AddDays(T,1214),
+    t70_d8: s5AddDays(T,1334),
+    t70_d9: s5AddDays(T,1496),
+  };
+}
+let S5D = s5BuildDates(new Date());
+
+// ── CALC (Symphony 5) ──
+// Symp5 KHÔNG có CK từ chối BLNH trong file Excel
+// Chỉ có: EB(5%) + TC(5%/0%) + TTS(13%/5.5%) + CT2(1%)
+function s5Calc(){
+  const NY    = parseFloat(document.getElementById('s5_ny').value)||3000000000;
+  const datCoc= parseFloat(document.getElementById('s5_datcoc').value)||100000000;
+  const m     = S5.method;
+  const gtck  = Math.round(NY/1.12);
+  const ckEB  = S5.eb==='yes' ? Math.round(gtck*0.05) : 0;
+  const tc_rate = m==='co_vay' ? 0 : 0.05;
+  const ckTC  = Math.round((gtck-ckEB)*tc_rate);
+  // TTS
+  let tts_rate=0, tts_lbl='';
+  if(m==='tts95'){ tts_rate=0.13;  tts_lbl='TTS 95%'; }
+  if(m==='tts70'){ tts_rate=0.055; tts_lbl='TTS 70%'; }
+  const ckTTS = Math.round((gtck-ckEB-ckTC)*tts_rate);
+  const netH  = gtck-ckEB-ckTC-ckTTS;
+  // HĐMB
+  const blnh_rate = (S5.blnh==='yes'&&m!=='co_vay') ? (parseFloat(document.getElementById('s5_blnh_rate').value)||0)/100 : 0;
+  const ckBLNH= Math.round(netH*blnh_rate);
+  const ct2_rate = S5.ct2==='yes' ? (S5_RANK_RATE[S5.rank]||0.01) : 0;
+  const ckCT2 = Math.round(netH*ct2_rate);
+  const net   = netH-ckBLNH-ckCT2;
+  const VAT   = Math.round(net*0.10);
+  const KPBT  = Math.round(net*0.02);
+  const tong  = net+VAT+KPBT;
+  return{NY,datCoc,gtck,ckEB,ckTC,tc_rate,ckTTS,tts_rate,tts_lbl,
+         netH,blnh_rate,ckBLNH,ct2_rate,ckCT2,net,VAT,KPBT,tong,m};
+}
+
+// ── BUILD SCHEDULE (Symphony 5) ──
+// KEY DIFF vs FourS:
+// I.1: lần 3-7 = 10% each (5 lần), lần 8-13 = 5% each (6 lần), lần 14 = KPBT+Thuế
+// I.2: lần 3 NH 70%, lần 4 = 10%, lần 5 = KPBT+Thuế
+// TTS95: lần 2=15%, lần 3=80%, lần 4=KPBT+Thuế
+// TTS70: lần 2=15%, lần 3=55%, lần 4-8=5%, lần 9=KPBT+Thuế
+function s5BuildSched(c){
+  const{net,datCoc,m}=c;
+  const R=[];
+  const ms=(lbl,d)=>({ms:true,lbl,d});
+  const row=(stt,lbl,pct,d,val)=>({stt,lbl,pct,d,val});
+  const dfr=(lbl,val)=>({dfr:true,lbl,val});
+  // payment formulas
+  const lan2   = Math.round(net*0.15*1.1) - datCoc;
+  const lan10p = Math.round(net*0.10*1.1);  // 10% + VAT
+  const lan5p  = Math.round(net*0.05*1.1);  // 5% + VAT
+  const lanCuoi= Math.round(net*0.025);      // KPBT(2%) + VAT của 5%(0.5%)
+  const d5     = Math.round(net*0.05);
+  const ln     = '5% gốc – Trả lãi TTS 8%/năm từ bàn giao đến khi nhận GCN';
+
+  if(m==='ko_vay'){
+    R.push(row(1,'Ký HĐTHNV – Thanh toán lần 1','Đặt cọc',S5D.hdthnv,datCoc));
+    R.push(row(2,'Thanh toán lần 2','15%',S5D.d2,lan2));
+    R.push(ms('Ký HĐMB',S5D.hdmb));
+    R.push(row(3,'Thanh toán lần 3','10%',S5D.d3,lan10p));
+    R.push(row(4,'Thanh toán lần 4','10%',S5D.d4,lan10p));
+    R.push(row(5,'Thanh toán lần 5','10%',S5D.d5,lan10p));
+    R.push(row(6,'Thanh toán lần 6','10%',S5D.d6,lan10p));
+    R.push(row(7,'Thanh toán lần 7','10%',S5D.d7,lan10p));
+    R.push(row(8,'Thanh toán lần 8','5%',S5D.d8,lan5p));
+    R.push(ms('Nhận "Bàn giao sử dụng" – Sun Early Key',S5D.bg));
+    R.push(row(9,'Thanh toán lần 9','5%',S5D.d9,lan5p));
+    R.push(row(10,'Thanh toán lần 10','5%',S5D.d10,lan5p));
+    R.push(row(11,'Thanh toán lần 11','5%',S5D.d11,lan5p));
+    R.push(row(12,'Thanh toán lần 12','5%',S5D.d12,lan5p));
+    R.push(row(13,'Thanh toán lần 13','5%',S5D.d13,lan5p));
+    R.push(row(14,'Thanh toán lần 14 (Theo TB Bàn Giao Căn Hộ chính thức)','100% KPBT + Thuế của 5%',S5D.d14,lanCuoi));
+    R.push(dfr(ln,d5));
+  } else if(m==='co_vay'){
+    const nh70b=Math.round(net*0.70);
+    const lan3_nh=nh70b+Math.round(nh70b*0.10);
+    R.push(row(1,'Ký HĐTHNV – Thanh toán lần 1','Đặt cọc',S5D.hdthnv,datCoc));
+    R.push(row(2,'Thanh toán lần 2','15%',S5D.tts_d2,lan2));
+    R.push(ms('Ký HĐMB',S5D.hdmb));
+    R.push(row(3,'Thanh toán lần 3 – Ngân hàng giải ngân','70%',S5D.i2_d3,lan3_nh));
+    R.push(row(4,'Thanh toán lần 4','10%',S5D.i2_d4,lan10p));
+    R.push(row(5,'Thanh toán lần 5 (Theo TB Bàn Giao Căn Hộ)','100% KPBT + Thuế của 5%',S5D.bg,lanCuoi));
+    R.push(dfr(ln,d5));
+  } else if(m==='tts95'){
+    const l80=Math.round(net*0.80*1.1);
+    R.push(row(1,'Ký HĐTHNV – Thanh toán lần 1','Đặt cọc',S5D.hdthnv,datCoc));
+    R.push(row(2,'Thanh toán lần 2','15%',S5D.tts_d2,lan2));
+    R.push(row(3,'Thanh toán lần 3','80%',S5D.tts_d3,l80));
+    R.push(ms('Ký HĐMB',S5D.hdmb));
+    R.push(row(4,'Thanh toán lần 4 (Theo TB Bàn Giao Căn Hộ)','100% KPBT + Thuế của 5%',S5D.bg,lanCuoi));
+    R.push(dfr(ln,d5));
+  } else if(m==='tts70'){
+    const l55=Math.round(net*0.55*1.1);
+    R.push(row(1,'Ký HĐTHNV – Thanh toán lần 1','Đặt cọc',S5D.hdthnv,datCoc));
+    R.push(row(2,'Thanh toán lần 2','15%',S5D.tts_d2,lan2));
+    R.push(row(3,'Thanh toán lần 3','55%',S5D.tts_d3,l55));
+    R.push(ms('Ký HĐMB',S5D.hdmb));
+    R.push(ms('Nhận "Bàn giao sử dụng" – Sun Early Key',S5D.bg));
+    R.push(row(4,'Thanh toán lần 4','5%',S5D.t70_d4,lan5p));
+    R.push(row(5,'Thanh toán lần 5','5%',S5D.t70_d5,lan5p));
+    R.push(row(6,'Thanh toán lần 6','5%',S5D.t70_d6,lan5p));
+    R.push(row(7,'Thanh toán lần 7','5%',S5D.t70_d7,lan5p));
+    R.push(row(8,'Thanh toán lần 8','5%',S5D.t70_d8,lan5p));
+    R.push(row(9,'Thanh toán lần 9 (Theo TB Bàn Giao Căn Hộ)','100% KPBT + Thuế của 5%',S5D.t70_d9,lanCuoi));
+    R.push(dfr(ln,d5));
+  }
+  return R;
+}
+
+// ── PARSE EXCEL ROW (Symphony 5) ──
+function s5ParseExcel(){
+  const raw = document.getElementById('s5_pasteInput').value.trim();
+  const st  = document.getElementById('s5_parseStatus');
+  if(!raw){ st.innerHTML=''; return; }
+  const filled=[];
+  let toa=null,tang=null,can=null,loai=null,dt=null,gia=null,kh=null;
+
+  if(raw.includes('\t')){
+    const parts=raw.split('\t');
+    const toaS=(parts[1]||'').trim();
+    if(/^S5[A-Z]$/.test(toaS)) toa=toaS;
+    const tangS=(parts[2]||'').trim();
+    if(/^\d+$/.test(tangS)) tang=parseInt(tangS);
+    else if(/^\d+A$/i.test(tangS)) tang=parseInt(tangS)+1;
+    can=(parts[3]||'').trim()||null;
+    const loaiS=(parts[5]||'').trim();
+    const mL=loaiS.match(/(STU|1BR\+|1BR|2BR|3BR)/i);
+    if(mL) loai=mL[1].toUpperCase();
+    const dtS=(parts[6]||'').trim();
+    if(dtS) dt=dtS.replace(',','.');
+    let bestG='';
+    parts.forEach(p=>{ const ms=p.trim().match(/\d+(?:\.\d{3})+/g)||[]; ms.forEach(m=>{ if(m.replace(/\./g,'').length>bestG.replace(/\./g,'').length) bestG=m; }); });
+    if(bestG) gia=parseInt(bestG.replace(/\./g,''));
+    const khS=(parts[14]||'').trim();
+    if(khS&&!/^[\d:_]+$/.test(khS)) kh=khS;
+    else { for(let i=parts.length-1;i>=0;i--){ const p=parts[i].trim(); if(p&&!/^[\d:_]+$/.test(p)&&!/LOCK|NOTE|PTG|^S5/i.test(p)){kh=p;break;} } }
+  } else {
+    const mMa=raw.match(/S5([A-Z])(\d{2})(\d{2}[A-Za-z]?)/);
+    if(mMa){ toa='S5'+mMa[1]; tang=parseInt(mMa[2]); can=mMa[3]; }
+    const mL=raw.match(/(STU|1BR\+|1BR|2BR|3BR)/i);
+    if(mL) loai=mL[1].toUpperCase();
+    const mDT=raw.match(/(\d{2,3}),(\d{1,2})/);
+    if(mDT) dt=mDT[1]+'.'+mDT[2];
+    const allDot=raw.match(/\d+(?:\.\d{3})+/g)||[];
+    const gS=allDot.length?allDot.reduce((a,b)=>a.replace(/\./g,'').length>=b.replace(/\./g,'').length?a:b):null;
+    if(gS) gia=parseInt(gS.replace(/\./g,''));
+    const mKH=raw.match(/(?:\d{1,2}:\d{2})(.+?)$/);
+    if(mKH) kh=mKH[1].trim();
+  }
+
+  if(toa){ const sel=document.getElementById('s5_toa'); [...sel.options].forEach(o=>{if(o.value===toa)o.selected=true;}); filled.push('Tòa '+toa); }
+  if(tang!==null&&!isNaN(tang)){ document.getElementById('s5_tang').value=tang; filled.push('Tầng '+tang); }
+  if(can){ document.getElementById('s5_can').value=can; filled.push('Căn '+can); }
+  if(loai){ const sel=document.getElementById('s5_loai'); [...sel.options].forEach(o=>{if(o.value===loai)o.selected=true;}); filled.push(loai); }
+  if(dt){ document.getElementById('s5_dt').value=dt; filled.push('DT '+dt+'m²'); }
+  if(gia){ document.getElementById('s5_ny').value=gia; filled.push('Giá '+gia.toLocaleString('vi-VN')+'đ'); }
+  if(kh){ document.getElementById('s5_tenKH').value=kh; filled.push('KH: '+kh); }
+  ['s5_toa','s5_tang','s5_can'].forEach(id=>{ const el=document.getElementById(id); if(el) el.dispatchEvent(new Event('input')); });
+  s5UpdateMa();
+  st.innerHTML=filled.length?'<span class="parse-ok">✓ Đã nhận diện: '+filled.join(' · ')+'</span>':'<span class="parse-warn">⚠ Không nhận diện được</span>';
+}
+
+// ── GENERATE QUOTE (Symphony 5) ──
+function s5Gen(){
+  S5D = s5BuildDates(new Date());
+  const c=s5Calc();
+  const{NY,gtck,ckEB,ckTC,tc_rate,ckTTS,tts_rate,tts_lbl,netH,blnh_rate,ckBLNH,ct2_rate,ckCT2,net,VAT,KPBT,tong,datCoc,m}=c;
+  const tenKH=document.getElementById('s5_tenKH').value||'(Chưa điền)';
+  const toa=document.getElementById('s5_toa').value;
+  const tang=document.getElementById('s5_tang').value;
+  const can=String(document.getElementById('s5_can').value).padStart(2,'0');
+  const loai=document.getElementById('s5_loai').value;
+  const dt=document.getElementById('s5_dt').value;
+  const ma=document.getElementById('s5_ma').value;
+  const fl=parseInt(tang)===13?'12A':String(tang).padStart(2,'0');
+  const sched=s5BuildSched(c);
+  const tongCK=ckEB+ckTC+ckTTS+ckBLNH+ckCT2;
+  const tongPctCK=(S5.eb==='yes'?5:0)+(tc_rate*100)+(tts_rate*100)+(blnh_rate*100)+(ct2_rate*100);
+  const tongPctStr=tongPctCK>0?tongPctCK.toFixed(1).replace(/\.0$/,'')+' %':'';
+  const today=new Date().toLocaleDateString('vi-VN');
+  // Policy rows
+  const pR=[];
+  pR.push('<tr><td class="sn">8</td><td colspan="3">Tổng giá bán (đã VAT &amp; KPBT) – <em>Giá niêm yết</em></td><td class="ar"></td><td class="ar"><strong>'+VND(NY)+'</strong></td></tr>');
+  pR.push('<tr><td class="sn">9</td><td colspan="3">Tổng giá bán (chưa VAT &amp; KPBT) trước chiết khấu</td><td class="ar"></td><td class="ar">'+VND(gtck)+'</td></tr>');
+  const eb_s=S5.eb==='yes'?'<span class="ok">Được áp dụng</span>':'<span class="no">Không áp dụng</span>';
+  pR.push('<tr><td class="sn">10</td><td>Chiết khấu Early Bird</td><td>'+eb_s+'</td><td><span class="tbg th">HĐTHNV</span></td><td class="ar">'+PCT(0.05)+'</td><td class="ar">'+(ckEB?VND(ckEB):'–')+'</td></tr>');
+  const tc_s=tc_rate>0?'<span class="ok">Không Vay</span>':'<span class="no">Vay</span>';
+  pR.push('<tr><td class="sn">11</td><td>Chiết khấu CS tài chính</td><td>'+tc_s+'</td><td><span class="tbg th">HĐTHNV</span></td><td class="ar">'+PCT(tc_rate)+'</td><td class="ar">'+(ckTC?VND(ckTC):'–')+'</td></tr>');
+  if(tts_rate>0) pR.push('<tr><td class="sn">14</td><td>Chiết khấu TTS – '+tts_lbl+'</td><td><span class="ok">'+tts_lbl+'</span></td><td><span class="tbg th">HĐTHNV</span></td><td class="ar">'+PCT(tts_rate)+'</td><td class="ar">'+VND(ckTTS)+'</td></tr>');
+  const blnh_s=blnh_rate>0?'<span class="ok">Được áp dụng</span>':'<span class="no">Không áp dụng</span>';
+  pR.push('<tr><td class="sn">12</td><td>Chiết khấu từ chối BL ngân hàng (HĐMB)</td><td>'+blnh_s+'</td><td><span class="tbg tm">HĐMB</span></td><td class="ar">'+(blnh_rate?PCT(blnh_rate):'–')+'</td><td class="ar">'+(ckBLNH?VND(ckBLNH):'–')+'</td></tr>');
+  const ct2_s=ct2_rate>0?'<span class="ok">Kích hoạt – '+S5.rank+'</span>':'<span class="no">Chưa kích hoạt</span>';
+  pR.push('<tr><td class="sn">13</td><td>Chiết khấu KH thân thiết (căn thứ 2 – '+S5.rank+')</td><td>'+ct2_s+'</td><td><span class="tbg tm">HĐMB</span></td><td class="ar">'+(ct2_rate?PCT(ct2_rate):'–')+'</td><td class="ar">'+(ckCT2?VND(ckCT2):'–')+'</td></tr>');
+  const nr=tts_rate>0?15:14;
+  pR.push('<tr class="hlr"><td class="sn">'+nr+'</td><td colspan="3"><strong>Tổng giá bán (chưa VAT &amp; KPBT) sau chiết khấu</strong></td><td class="ar"></td><td class="ar"><strong>'+VND(net)+'</strong></td></tr>');
+  pR.push('<tr><td class="sn">'+(nr+1)+'</td><td colspan="3">Thuế VAT (tạm tính)</td><td class="ar">10%</td><td class="ar">'+VND(VAT)+'</td></tr>');
+  pR.push('<tr><td class="sn">'+(nr+2)+'</td><td colspan="3">Kinh phí bảo trì (tạm tính)</td><td class="ar">2%</td><td class="ar">'+VND(KPBT)+'</td></tr>');
+
+  const sR=sched.map(r=>{
+    if(r.ms) return '<tr class="msr"><td colspan="5">'+r.lbl+'&ensp;–&ensp;'+FD(r.d)+'</td></tr>';
+    if(r.dfr) return '<tr class="dfr"><td></td><td colspan="2">'+r.lbl+'</td><td></td><td class="ar">'+VND(r.val)+'</td></tr>';
+    return '<tr><td class="sn">'+r.stt+'</td><td>'+r.lbl+'</td><td>'+r.pct+'</td><td class="ar">'+FD(r.d)+'</td><td class="ar">'+VND(r.val)+'</td></tr>';
+  }).join('');
+
+  const ckL=[];
+  if(ckEB)  ckL.push('<div class="pb-row ded"><span class="rl">– Early Bird 5%</span><span class="rv">−'+VND(ckEB)+'</span></div>');
+  if(ckTC)  ckL.push('<div class="pb-row ded"><span class="rl">– CS Tài chính '+PCT(tc_rate)+'</span><span class="rv">−'+VND(ckTC)+'</span></div>');
+  if(ckTTS) ckL.push('<div class="pb-row ded"><span class="rl">– '+tts_lbl+' '+PCT(tts_rate)+'</span><span class="rv">−'+VND(ckTTS)+'</span></div>');
+  if(ckBLNH)ckL.push('<div class="pb-row ded"><span class="rl">– BLNH '+PCT(blnh_rate)+'</span><span class="rv">−'+VND(ckBLNH)+'</span></div>');
+  if(ckCT2) ckL.push('<div class="pb-row ded"><span class="rl">– KH thân thiết '+S5.rank+' '+PCT(ct2_rate)+'</span><span class="rv">−'+VND(ckCT2)+'</span></div>');
+
+  document.getElementById('s5_ph').style.display='none';
+  const doc=document.getElementById('s5_doc');
+  doc.className='rdy';
+  doc.innerHTML=
+    '<div style="position:absolute;inset:0;background-image:url(\'https://res.cloudinary.com/dn7cvccms/image/upload/v1779781096/z7867380092207_56a7829b4bec753aa1e9c5ea86b05153_ax9jo9.jpg\');background-size:cover;background-position:center;background-repeat:no-repeat;opacity:0.07;pointer-events:none;z-index:0;"></div>'+
+    '<div class="dh">' +
+      '<div class="dh-logo"><img src="https://res.cloudinary.com/dn7cvccms/image/upload/v1779781416/Screenshot_2_capnea.png" alt="Sun Symphony 5" crossorigin="anonymous" style="height:44px;"><div class="dtag">Premium Residential · Ho Chi Minh City</div></div>' +
+      '<div class="dh-right"><span class="dh-pill">'+S5_M_SH[m]+'</span><span class="dh-title">Phiếu Tính Giá</span><span class="dh-sub">'+S5_M_CSBH[m]+' &nbsp;·&nbsp; Ngày lập: '+today+'</span></div>' +
+    '</div>' +
+    '<div class="gr"></div>' +
+    '<div class="ps">' +
+      '<div class="pi"><div class="pl">Khách hàng</div><div class="pv">'+tenKH+'</div></div>' +
+      '<div class="pi"><div class="pl">Mã căn hộ</div><div class="pv">'+ma+'</div></div>' +
+      '<div class="pi"><div class="pl">Tòa / Tầng / Căn</div><div class="pv">'+toa+' – T.'+fl+' – Căn '+can+'</div></div>' +
+      '<div class="pi"><div class="pl">Loại hình</div><div class="pv">'+loai+'</div></div>' +
+      '<div class="pi"><div class="pl">Diện tích TT</div><div class="pv">'+dt+' m²</div></div>' +
+      '<div class="pi"><div class="pl">HĐMB dự kiến</div><div class="pv">'+FD(S5D.hdmb)+'</div></div>' +
+    '</div>' +
+    '<div class="sh" style="margin-top:10px"><div class="sh-n">1</div><div class="sh-t">Thông tin giá &amp; chính sách chiết khấu</div><div class="sh-r"></div></div>' +
+    '<div class="wp"><table class="pt"><thead><tr>' +
+      '<th style="width:20px">STT</th><th>Nội dung</th>' +
+      '<th style="width:110px">Trạng thái</th><th style="width:72px">Thời điểm</th>' +
+      '<th class="ar" style="width:52px">Mức CK</th><th class="ar" style="width:118px">Giá trị (VNĐ)</th>' +
+    '</tr></thead><tbody>'+pR.join('')+'</tbody></table></div>' +
+    '<div class="sh" style="margin-top:8px"><div class="sh-n">2</div><div class="sh-t">Tiến độ thanh toán</div><div class="sh-r"></div></div>' +
+    '<div class="ws"><table class="st"><thead><tr>' +
+      '<th style="width:26px">STT</th><th>Nội dung thanh toán</th>' +
+      '<th style="width:85px">Tỷ lệ</th><th class="ar" style="width:95px">Ngày</th>' +
+      '<th class="ar" style="width:125px">Số tiền (VNĐ)</th>' +
+    '</tr></thead><tbody>'+sR+'</tbody>' +
+    '<tfoot>' +
+      '<tr><td colspan="4">TỔNG GIÁ TRỊ THANH TOÁN</td><td class="ar">'+VND(tong)+'</td></tr>' +
+      (tongCK > 0 ? '<tr><td colspan="4" style="background:#1A5C35;border-top:2px solid #1A5C35;padding:9px 12px;"><span style="font-size:9px;color:rgba(255,255,255,.7);letter-spacing:1px;text-transform:uppercase;font-weight:500;">🏷 Quý khách tiết kiệm so với giá niêm yết&ensp;</span><span style="font-family:Times New Roman,Times,serif;font-size:14px;font-weight:800;color:#7DEFA8;">'+VND(tongCK)+'</span><span style="font-size:10px;color:rgba(255,255,255,.6);">&ensp;('+tongPctStr+')</span></td><td style="background:#1A5C35;border-top:2px solid #1A5C35;"></td></tr>' : '') +
+    '</tfoot></table></div>' +
+    '<div class="df"><span class="dl">* Phiếu tính giá tạm tính · Lãi TTS: 8%/năm từ bàn giao đến GCN · CK BLNH &amp; KH thân thiết áp dụng tại HĐMB</span><span class="dr">SUN SYMPHONY 5 · '+today+'</span></div>';
+
+  document.getElementById('s5_ebar').style.display='flex';
+  document.getElementById('s5_ef').textContent='PTG_S5_'+ma+'_'+m.toUpperCase()+'.png';
+  doc.scrollIntoView({behavior:'smooth',block:'start'});
+}
+
+async function s5RenderCanvas(){
+  const doc=document.getElementById('s5_doc');
+  if(!doc.classList.contains('rdy')){alert('Vui lòng bấm Xác nhận trước!');return null;}
+  await new Promise(res=>{ const bg=new Image();bg.crossOrigin='anonymous';bg.onload=res;bg.onerror=res;bg.src='https://res.cloudinary.com/dn7cvccms/image/upload/v1779781096/z7867380092207_56a7829b4bec753aa1e9c5ea86b05153_ax9jo9.jpg'; });
+  await Promise.all([...doc.querySelectorAll('img')].map(img=>img.complete?Promise.resolve():new Promise(r=>{img.onload=r;img.onerror=r;})));
+  await new Promise(r=>setTimeout(r,300));
+  const SCALE=3.5,W=794;
+  const pw=doc.style.width,pm=doc.style.maxWidth;
+  doc.style.width=W+'px';doc.style.maxWidth=W+'px';
+  await new Promise(r=>requestAnimationFrame(()=>requestAnimationFrame(r)));
+  const canvas=await html2canvas(doc,{scale:SCALE,useCORS:true,allowTaint:true,backgroundColor:'#ffffff',logging:false,width:W,windowWidth:W,imageTimeout:10000});
+  doc.style.width=pw;doc.style.maxWidth=pm;
+  return canvas;
+}
+async function s5ExportPNG(){
+  const btn=document.getElementById('s5_bexp');
+  btn.textContent='⏳ Đang tạo…';btn.disabled=true;
+  try{
+    const canvas=await s5RenderCanvas();
+    if(!canvas){btn.textContent='📥 Tải ảnh';btn.disabled=false;return;}
+    const fname=document.getElementById('s5_ef').textContent||'PTG_S5.png';
+    const dataUrl=canvas.toDataURL('image/png',1.0);
+    const a=document.createElement('a');a.download=fname;a.href=dataUrl;
+    document.body.appendChild(a);a.click();document.body.removeChild(a);
+    btn.textContent='✓ Đã tải!';setTimeout(()=>{btn.textContent='📥 Tải ảnh';btn.disabled=false;},2000);
+  }catch(e){console.error(e);btn.textContent='📥 Tải ảnh';btn.disabled=false;}
+}
+async function s5SharePNG(){
+  const btn=document.getElementById('s5_bshare');
+  if(!navigator.share){alert('Trình duyệt không hỗ trợ chia sẻ.');return;}
+  btn.textContent='⏳ Đang tạo…';btn.disabled=true;
+  try{
+    const canvas=await s5RenderCanvas();
+    if(!canvas){btn.textContent='📤 Chia sẻ';btn.disabled=false;return;}
+    const fname=document.getElementById('s5_ef').textContent||'PTG_S5.png';
+    const blob=await new Promise(res=>canvas.toBlob(res,'image/png',1.0));
+    const file=new File([blob],fname,{type:'image/png'});
+    if(navigator.canShare&&navigator.canShare({files:[file]})){
+      await navigator.share({files:[file],title:'Phiếu Tính Giá – Sun Symphony 5'});
+      btn.textContent='✓ Chia sẻ!';setTimeout(()=>{btn.textContent='📤 Chia sẻ';btn.disabled=false;},2000);
+    } else {
+      const dataUrl=canvas.toDataURL('image/png',1.0);
+      const a=document.createElement('a');a.download=fname;a.href=dataUrl;
+      document.body.appendChild(a);a.click();document.body.removeChild(a);
+      btn.textContent='📤 Chia sẻ';btn.disabled=false;
+    }
+  }catch(e){if(e.name!=='AbortError')console.error(e);btn.textContent='📤 Chia sẻ';btn.disabled=false;}
+}
+
+
+
+function switchProj(name){
+  ['fourst','s5'].forEach(p=>{
+    document.getElementById('proj_'+p).classList.toggle('active',p===name);
+    document.getElementById('ptab_'+p).classList.toggle('active',p===name);
+  });
+}
+document.addEventListener('DOMContentLoaded',function(){
+  s5UpdateMa();s5Tog('eb','yes');s5Tog('blnh','yes');s5Tog('ct2','no');
+});
 </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 </body>
